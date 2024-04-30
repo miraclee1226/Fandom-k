@@ -1,5 +1,11 @@
 import React from "react";
+import Button from "../components/Button";
+import styles from "../pages/Landing.module.scss";
 
 export default function Landing() {
-  return <div>Landing</div>;
+  return (
+    <>
+      <Button>후원하기</Button>
+    </>
+  );
 }

@@ -127,3 +127,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+button {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+  background: inherit;
+  cursor: pointer;
+  border-radius: 0;
+}
