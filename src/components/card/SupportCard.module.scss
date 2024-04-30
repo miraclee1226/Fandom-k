@@ -25,12 +25,13 @@
       height: 100%;
       object-fit: cover;
     }
-    .btnSupport {
+    button {
       position: absolute;
       z-index: 1;
       bottom: 20px;
       left: 24px;
       right: 24px;
+      width: auto;
     }
   }
   .header {
