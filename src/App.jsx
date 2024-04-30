@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing";
 import List from "./pages/List";
 import MyPage from "./pages/MyPage";
+import "./styles/common.scss";
+import "./styles/reset.scss";
 
 export default function App() {
   return (
@@ -14,4 +16,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
