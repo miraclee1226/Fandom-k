@@ -1,5 +1,5 @@
+import creditImg from "assets/credit.png";
 import styles from "./SupportCard.module.scss";
-import creditImg from "../../assets/credit.png";
 import DefaultButton from "../Button/Button";
 import LineGraph from "./LineGraph";
 

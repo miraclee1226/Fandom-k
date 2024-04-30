@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "../Button.module.scss";
-import { ReactComponent as RadioIcon } from "../../../assets/icons/radio.svg";
+import { ReactComponent as RadioIcon } from "assets/icons/radio.svg";
 
 const DEFAULT_FILL = "#8C92AB";
 
