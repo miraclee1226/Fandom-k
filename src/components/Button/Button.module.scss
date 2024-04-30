@@ -25,6 +25,11 @@
   &.disabled {
     background-color: var(--btn-disabled);
     background-image: none;
+
+    &:focus,
+    &:hover {
+      background-image: none;
+    }
   }
 
   &:focus,
