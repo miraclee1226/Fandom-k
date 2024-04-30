@@ -3,12 +3,14 @@ import styles from "./SupportCard.module.scss";
 import creditImg from "../../assets/credit.png";
 import DefaultButton from "../Button/Button";
 
+const MEDIUM_GRAPH_LENGTH = 282;
+
 export default function SupportCard() {
   const supportRate = 50; // 50%일 경우
   const [graphLength, setGraphLength] = useState(0);
 
   useEffect(() => {
-    setGraphLength((282 * supportRate) / 100);
+    setGraphLength((MEDIUM_GRAPH_LENGTH * supportRate) / 100);
   }, []);
 
   return (
