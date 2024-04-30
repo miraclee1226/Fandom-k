@@ -10,7 +10,7 @@
   font-weight: 700;
   line-height: 26px;
   color: white;
-  border-radius: 24px;
+  border-radius: 3px;
 
   &.sm {
     padding: 2.5px 14px;
@@ -95,4 +95,11 @@
   &:hover {
     background-image: linear-gradient(90deg, #fd6a5f, #fc4789);
   }
+}
+
+/* Radio Button */
+
+.radioButton {
+  cursor: pointer;
+  user-select: none;
 }
