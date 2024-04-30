@@ -2,9 +2,22 @@
   background-image: linear-gradient(90deg, #f86f65, #fe5493);
   color: white;
   border-radius: 3px;
-  width: 100%;
-  padding: 10px 0;
   font-weight: 700;
   line-height: 26px;
   font-size: 1.3rem;
+
+  &.sm {
+    width: max-content;
+    padding: 2.5px 14px;
+  }
+
+  &.md {
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  &.disabled {
+    background-image: none;
+    background-color: var(--btn-disabled);
+  }
 }
