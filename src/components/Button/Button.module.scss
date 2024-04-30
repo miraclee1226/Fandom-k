@@ -1,14 +1,20 @@
+/* Button Main */
+
 .defaultButton {
-  background-image: linear-gradient(90deg, #f86f65, #fe5493);
-  color: white;
-  border-radius: 3px;
+  background-image: linear-gradient(
+    90deg,
+    var(--brand-orange),
+    var(--brand-pink)
+  );
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 26px;
-  font-size: 1.3rem;
+  color: white;
+  border-radius: 3px;
 
   &.sm {
-    width: max-content;
     padding: 2.5px 14px;
+    width: max-content;
   }
 
   &.md {
@@ -17,7 +23,32 @@
   }
 
   &.disabled {
-    background-image: none;
     background-color: var(--btn-disabled);
+    background-image: none;
+  }
+
+  &:focus,
+  &:hover {
+    background-image: linear-gradient(90deg, #fd6a5f, #fc4789);
+  }
+}
+
+/* Border Button */
+
+.borderButton {
+  width: 100%;
+  max-width: 326px;
+  background-color: #1b1926;
+  color: white;
+  padding: 8px 0;
+  font-weight: 700;
+  line-height: 26px;
+  font-size: 1.4rem;
+  border-radius: 3px;
+  border: 1px solid #f1eef9;
+
+  &:focus,
+  &:hover {
+    background-color: #111018;
   }
 }
