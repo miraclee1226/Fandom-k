@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
 import styles from "./SupportCard.module.scss";
 import creditImg from "../../assets/credit.png";
 import DefaultButton from "../Button/Button";
-
-const MEDIUM_GRAPH_LENGTH = 282;
+import LineGraph from "./LineGraph";
 
 export default function SupportCard() {
-  const supportRate = 50; // 50%일 경우
-  const [graphLength, setGraphLength] = useState(0);
-
-  useEffect(() => {
-    setGraphLength((MEDIUM_GRAPH_LENGTH * supportRate) / 100);
-  }, []);
-
   return (
     <div className={styles.supportCard}>
       <div className={styles.content}>
@@ -37,35 +28,7 @@ export default function SupportCard() {
           <p className={styles.date}>5일 남음</p>
         </div>
         <div>
-          <svg
-            width="282"
-            height="1"
-            viewBox="0 0 282 1"
-            className={styles.creditGraph}
-          >
-            <line
-              x1="0"
-              y1="1"
-              x2="282"
-              y2="1"
-              fill="none"
-              stroke-width="1"
-              stroke="#fff"
-              stroke-linecap="round"
-            />
-            <line
-              x1="0"
-              y1="1"
-              x2={graphLength}
-              y2="1"
-              fill="none"
-              stroke-width="1"
-              stroke="#FC4D04"
-              stroke-dasharray="282"
-              stroke-dashoffset="dashOffsetLine"
-              stroke-linecap="round"
-            />
-          </svg>
+          <LineGraph width="282" percent="50" />
         </div>
       </div>
     </div>
