@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+.Navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 23px;
+}
+
+.Navbar > div {
+  width: 32px;
+  height: 32px;
+}
+
+.Navbar-logo {
+  width: 168px;
+  height: 32px;
+}
+
+.Navbar-profile {
+  width: 32px;
+  height: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .Navbar {
+    padding: 29px 24px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .Navbar {
+    padding: 24px 360px;
+  }
+}
