@@ -1,0 +1,185 @@
+* {
+  box-sizing: border-box;
+  color: white;
+}
+
+.view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MainTitle {
+  color: #d2c030;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.SubTitle {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.LandingSection1 {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+
+  .BackgroundImg {
+    inset: 0;
+    position: absolute;
+    background-image: url("../../assets/landing1.png");
+    background-size: 393px 330px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.7;
+  }
+
+  & > h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 100px;
+    margin-left: 91px;
+    margin-right: 91px;
+    margin-bottom: 20px;
+  }
+
+  & > img {
+    width: 237px;
+    height: 45px;
+    margin-bottom: 451px;
+  }
+
+  & > button {
+    width: 230px;
+    height: 48px;
+  }
+}
+
+.LandingSection2 {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+
+  .BackgroundImg {
+    inset: 0;
+    position: absolute;
+    background-image: url("../../assets/landing2.png");
+    background-size: 744px 744px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.7;
+    z-index: -1;
+  }
+
+  .LandingTitle {
+    width: 100%;
+    padding: 76px 32px 66px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  & > img {
+    width: 240px;
+    height: 520px;
+  }
+}
+
+.LandingSection3 {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+
+  .BackgroundImg {
+    inset: 0;
+    position: absolute;
+    background-image: url("../../assets/landing3.png");
+    background-size: 744px 744px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.7;
+    z-index: -1;
+  }
+
+  .LandingTitle {
+    width: 100%;
+    padding: 77px 32px 66px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    gap: 8px;
+  }
+
+  & > img {
+    width: 240px;
+    height: 520px;
+  }
+}
+
+.LandingSection4 {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+
+  .BackgroundImg {
+    inset: 0;
+    position: absolute;
+    background-image: url("../../assets/landing4.png");
+    background-size: 744px 744px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.7;
+    z-index: -1;
+  }
+
+  .LandingTitle {
+    width: 100%;
+    padding: 76px 32px 68px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  & > img {
+    width: 240px;
+    height: 520px;
+  }
+}
+
+.CenterLine {
+  position: absolute;
+  top: 1050px;
+  width: 117px;
+  height: 2133px;
+  background-image: linear-gradient(
+    #030615,
+    #051d31,
+    #051e32,
+    #051c30,
+    #030b1c
+  );
+}
+
