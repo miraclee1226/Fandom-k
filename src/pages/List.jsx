@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import SupportCard from "../components/Card/SupportCard";
 import styles from "./List.module.scss";
+import ArrowButton from "../components/Button/ArrowButton/ArrowButton";
 
 export default function List() {
   const slider = useRef();
@@ -37,27 +38,35 @@ export default function List() {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
           <div className={styles.sectionContent}>
-            <ul
-              className={styles.supportLists}
-              ref={slider}
-              onMouseDown={handleMouseDown}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <li className={styles.supportList}>
-                <SupportCard />
-              </li>
-              <li className={styles.supportList}>
-                <SupportCard />
-              </li>
-              <li className={styles.supportList}>
-                <SupportCard />
-              </li>
-              <li className={styles.supportList}>
-                <SupportCard />
-              </li>
-            </ul>
+            <div className={styles.slideContainer}>
+              <div className={styles.slideBtn}>
+                <ArrowButton direction="left" />
+              </div>
+              <ul
+                className={styles.supportLists}
+                ref={slider}
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+              >
+                <li className={styles.supportList}>
+                  <SupportCard />
+                </li>
+                <li className={styles.supportList}>
+                  <SupportCard />
+                </li>
+                <li className={styles.supportList}>
+                  <SupportCard />
+                </li>
+                <li className={styles.supportList}>
+                  <SupportCard />
+                </li>
+              </ul>
+              <div className={styles.slideBtn}>
+                <ArrowButton direction="right" />
+              </div>
+            </div>
           </div>
         </section>
       </div>
