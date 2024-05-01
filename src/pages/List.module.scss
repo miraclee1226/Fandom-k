@@ -66,3 +66,72 @@
     }
   }
 }
+
+/* Credit Section */
+
+.creditSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+
+  @media screen and (min-width: $tablet) {
+    padding: 36px 64px;
+  }
+
+  .leftContent {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+
+    & > span {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba($color: white, $alpha: 0.6);
+      user-select: none;
+
+      @media screen and (min-width: $tablet) {
+        font-size: 1.6rem;
+      }
+    }
+
+    .credit {
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 26px;
+        user-select: none;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 2.4rem;
+        }
+      }
+    }
+  }
+
+  .rightContent {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 26px;
+    color: var(--brand-orange);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    user-select: none;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 1.6rem;
+    }
+
+    &:focus,
+    &:hover {
+      color: var(--brand-pink);
+    }
+  }
+}
