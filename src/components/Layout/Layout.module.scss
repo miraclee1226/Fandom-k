@@ -1,0 +1,12 @@
+@import "styles/mixin_var.scss";
+.view {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  @media screen and (max-width: $desktop) {
+    gap: 60px;
+  }
+  @media screen and (max-width: $tablet) {
+    gap: 40px;
+  }
+}

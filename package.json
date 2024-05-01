@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "classnames": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-modal": "^3.16.1",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "classname": "^0.0.0",
     "eslint-config-naver": "^2.1.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "3.2.5",

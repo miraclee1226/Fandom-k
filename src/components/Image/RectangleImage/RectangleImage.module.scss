@@ -1,0 +1,23 @@
+@import "../../../styles/mixin_var.scss";
+
+.rectangleImage {
+  position: relative;
+  width: 282px;
+  height: 293px;
+  @media screen and (max-width: $mobile) {
+    width: 158px;
+    height: 206px;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58.9%, #000000 100%);
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+}
