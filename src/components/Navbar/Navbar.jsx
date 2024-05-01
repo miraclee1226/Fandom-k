@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav className="Navbar">
         <div></div>
         <img
-          className="Navbar-logo"
+          className="NavbarLogo"
           onClick={() => {
             nav("/list");
           }}
@@ -18,7 +18,7 @@ const Navbar = () => {
           alt="로고"
         />
         <img
-          className="Navbar-profile"
+          className="NavbarProfile"
           onClick={() => nav("/mypage")}
           src={profile}
           alt="프로필"
