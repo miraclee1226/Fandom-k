@@ -60,6 +60,7 @@
     color: var(--brand-orange);
     letter-spacing: 0.5px;
     cursor: pointer;
+    user-select: none;
 
     @media screen and (min-width: $tablet) {
       font-size: 1.6rem;

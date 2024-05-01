@@ -11,19 +11,23 @@ export default function List() {
   );
 }
 
-// TODO: Util 함수
-
 function CreditSection() {
+  const handleChargeCredit = () => {
+    // TODO: 충전 Modal을 pop up 합니다.
+  };
+
   return (
     <div className={styles.creditSection}>
       <div className={styles.leftContent}>
         <span>내 크레딧</span>
         <div className={styles.credit}>
           <img src={creditIcon} alt="credit" />
-          <span>36,000</span>
+          <span>{(36000).toLocaleString()}</span>
         </div>
       </div>
-      <div className={styles.rightContent}>충전하기</div>
+      <div className={styles.rightContent} onClick={handleChargeCredit}>
+        충전하기
+      </div>
     </div>
   );
 }
