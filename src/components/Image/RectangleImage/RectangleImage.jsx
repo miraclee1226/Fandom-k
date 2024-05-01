@@ -1,10 +1,9 @@
 import styles from "./RectangleImage.module.scss";
-import IdolImg from "../../../assets/Image_Idol.png";
 
-export default function RectangleImage() {
+export default function RectangleImage({ src, alt }) {
   return (
     <div className={styles.rectangleImage}>
-      <img src={IdolImg} alt="르세라핌 채원 이미지" />
+      <img src={src} alt={alt} />
     </div>
   );
 }
