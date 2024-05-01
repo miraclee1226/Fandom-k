@@ -3,7 +3,7 @@
   "rules": {
     "no-console": 1,
     "react-hooks/exhaustive-deps": 0,
-    "no-unused-expression": "off",
+    "no-unused-expression": 0,
     "no-unused-vars": "off",
     "react/prop-types": "off",
     "arrow-body-style": "off"

@@ -107,4 +107,8 @@
 .radioButton {
   cursor: pointer;
   user-select: none;
+
+  input {
+    display: none;
+  }
 }

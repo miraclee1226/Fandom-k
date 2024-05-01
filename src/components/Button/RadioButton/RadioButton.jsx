@@ -15,8 +15,11 @@ export default function RadioButton({ onClick = () => {} }) {
   };
 
   return (
-    <div className={styles.radioButton}>
-      <RadioIcon fill={fill} onClick={handleClick} />
-    </div>
+    <>
+      <label className={styles.radioButton}>
+        <RadioIcon fill={fill} onClick={handleClick} />
+        <input id="radio-button" type="radio" />
+      </label>
+    </>
   );
 }
