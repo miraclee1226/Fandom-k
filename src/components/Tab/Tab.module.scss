@@ -1,0 +1,23 @@
+@import "../../styles/mixin_var.scss";
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  height: 42px;
+  border-bottom: 1px solid var(--txt-white);
+  background-color: #ffffff1a;
+  @media screen and (max-width: $tablet) {
+    width: 348px;
+  }
+  @media screen and (max-width: $mobile) {
+    width: 136.5px;
+  }
+  span {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    color: var(--txt-white);
+  }
+}
