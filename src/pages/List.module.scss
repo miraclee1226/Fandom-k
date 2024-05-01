@@ -1,0 +1,44 @@
+@import "/src/styles/mixin_var.scss";
+.view {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  @media screen and (max-width: $desktop) {
+    gap: 60px;
+  }
+  @media screen and (max-width: $tablet) {
+    gap: 40px;
+  }
+}
+
+.section {
+  @media screen and (min-width: $desktop) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .sectionTitle {
+    margin-bottom: 24px;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 2.6rem;
+    color: var(--txt-white);
+    @media screen and (max-width: $desktop) {
+      padding: 0 24px;
+    }
+  }
+}
+
+.supportLists {
+  box-sizing: border-box;
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  padding-bottom: 10px;
+  overflow-x: scroll;
+  @media screen and (max-width: $desktop) {
+    padding: 0 24px 10px;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
