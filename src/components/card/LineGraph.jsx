@@ -16,9 +16,9 @@ export default function LineGraph({ width, percent }) {
         x2={width}
         y2="1"
         fill="none"
-        strokeWidth="1"
+        stroke-width="1"
         stroke="#fff"
-        strokeLinecap="round"
+        stroke-linecap="round"
       />
       <line
         x1="0"
@@ -26,11 +26,11 @@ export default function LineGraph({ width, percent }) {
         x2={graphLength}
         y2="1"
         fill="none"
-        strokeWidth="1"
+        stroke-width="1"
         stroke="#FC4D04"
-        strokeDasharray={width}
-        strokeDashoffset="dashOffsetLine"
-        strokeLinecap="round"
+        stroke-dasharray={width}
+        stroke-dashoffset="dashOffsetLine"
+        stroke-linecap="round"
       />
     </svg>
   );
