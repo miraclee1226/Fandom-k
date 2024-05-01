@@ -1,18 +1,6 @@
 @import "/src/styles/mixin_var.scss";
 
 /*list page 공통*/
-.view {
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-  @media screen and (max-width: $desktop) {
-    gap: 60px;
-  }
-  @media screen and (max-width: $tablet) {
-    gap: 40px;
-  }
-}
-
 .section {
   @media screen and (min-width: $desktop) {
     max-width: 1200px;

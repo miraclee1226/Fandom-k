@@ -1,28 +1,38 @@
-import { useRef } from "react";
-import SupportCard from "../components/Card/SupportCard";
+import { useRef, useState } from "react";
+import Navbar from "components/Navbar/Navbar";
+import Layout from "components/Layout/Layout";
+import Button from "components/Button/Button";
+import SupportCard from "components/Card/SupportCard";
 import styles from "./List.module.scss";
-import ArrowButton from "../components/Button/ArrowButton/ArrowButton";
 
 export default function List() {
+  return (
+    <>
+      <Navbar />
+      <Layout>
+        <SupportSection />
+      </Layout>
+    </>
+  );
+}
+
+function SupportSection() {
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(null);
+  const [scrollLeft, setScrollLeft] = useState(null);
   const slider = useRef();
-  let isDown = false;
-  let startX;
-  let scrollLeft;
 
   const handleMouseDown = (e) => {
-    isDown = true;
-    startX = e.pageX - slider.current.offsetLeft;
-    scrollLeft = slider.current.scrollLeft;
+    setIsDown(true);
+    setStartX(e.pageX - slider.current.offsetLeft);
+    setScrollLeft(slider.current.scrollLeft);
   };
-
-  const handleMouseLeave = (e) => {
-    isDown = false;
+  const handleMouseLeave = () => {
+    setIsDown(false);
   };
-
-  const handleMouseUp = (e) => {
-    isDown = false;
+  const handleMouseUp = () => {
+    setIsDown(false);
   };
-
   const handleMouseMove = (e) => {
     if (!isDown) return;
     e.preventDefault();
@@ -40,7 +50,7 @@ export default function List() {
           <div className={styles.sectionContent}>
             <div className={styles.slideContainer}>
               <div className={styles.slideBtn}>
-                <ArrowButton direction="left" />
+                <Button.Arrow direction="left" />
               </div>
               <ul
                 className={styles.supportLists}
@@ -64,7 +74,7 @@ export default function List() {
                 </li>
               </ul>
               <div className={styles.slideBtn}>
-                <ArrowButton direction="right" />
+                <Button.Arrow direction="right" />
               </div>
             </div>
           </div>
