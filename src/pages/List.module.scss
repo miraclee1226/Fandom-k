@@ -66,3 +66,43 @@
     }
   }
 }
+
+/* ChartSection */
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .sectionDetail {
+    margin-bottom: 51px;
+    .sectionHeader {
+      display: flex;
+      justify-content: space-between;
+      .voteButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        width: 128px;
+        height: 32px;
+        border-radius: 3px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        line-height: 26px;
+        letter-spacing: 0.02em;
+        color: #ffffff;
+      }
+    }
+    .chartList {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 17px;
+      margin: 24px 0;
+    }
+  }
+  .borderButton {
+    border: 1px solid rgba(241, 238, 249, 0.8);
+    margin-bottom: 243px;
+  }
+}
+
