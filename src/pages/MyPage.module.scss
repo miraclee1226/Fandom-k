@@ -1,0 +1,159 @@
+@import "/src/styles/mixin_var.scss";
+
+/* mypage 공통 */
+.section {
+  padding: 32px 0;
+  margin: 0 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  &:first-child {
+    margin-top: 8px;
+    border-top: none;
+    @media screen and (min-width: $tablet) {
+      margin-top: 36px;
+    }
+  }
+  @media screen and (min-width: $tablet) {
+    margin: 0 24px;
+    padding: 40px 0;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .sectionTitle {
+    margin-bottom: 16px;
+    font-size: 2rem;
+    line-height: 2.6rem;
+    color: var(--txt-white);
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 24px;
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+  }
+}
+
+/* AddFavoriteSection */
+.AddFavorite {
+  position: relative;
+  display: flex;
+  align-items: center;
+  @media screen and (min-width: $tablet) {
+    gap: 27px;
+    padding-top: 33px;
+  }
+  @media screen and (min-width: $desktop) {
+    gap: 32px;
+    padding-top: 8px;
+  }
+  .sliderBtn {
+    display: none;
+
+    @media screen and (min-width: $tablet) {
+      display: block;
+    }
+    @media screen and (min-width: $desktop) {
+      position: absolute;
+      top: 50%;
+    }
+    &:first-child {
+      @media screen and (min-width: $desktop) {
+        left: -32px;
+        transform: translate(-100%, -50%);
+      }
+    }
+    &:last-child {
+      @media screen and (min-width: $desktop) {
+        right: -32px;
+        transform: translate(100%, -50%);
+      }
+    }
+  }
+  .slider {
+    flex: 1 1;
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 24px 17px;
+    @media screen and (min-width: $tablet) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 32px 24px;
+    }
+    .chkItem {
+      display: none;
+      &:checked + .labelItem::after {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        border-radius: 50%;
+        background:
+          url("../assets/icons/Checkmark.svg") no-repeat center,
+          linear-gradient(
+            271.36deg,
+            rgba(249, 110, 104, 0.5) -9.84%,
+            rgba(254, 87, 143, 0.5) 107.18%
+          );
+        background-size: 45.45% 45.45%;
+      }
+    }
+    .labelItem {
+      position: relative;
+      cursor: pointer;
+    }
+    .imgWrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      @media screen and (min-width: $desktop) {
+        width: 128px;
+        padding-bottom: 128px;
+      }
+      > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .itemInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      margin-top: 8px;
+      .itemTitle {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 2.6rem;
+        color: #f4efef;
+      }
+      .itemCategory {
+        font-size: 1.4rem;
+        line-height: 1.67rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+}
+.btnAddFavorite {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  @media screen and (min-width: $desktop) {
+    margin-top: 48px;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+}

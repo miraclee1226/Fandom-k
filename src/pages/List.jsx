@@ -68,42 +68,40 @@ function SupportSection() {
 
   return (
     <>
-      <div className={styles.view}>
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
-          <div className={styles.sectionContent}>
-            <div className={styles.slideContainer}>
-              <div className={styles.slideBtn}>
-                <Button.Arrow direction="left" />
-              </div>
-              <ul
-                className={styles.supportLists}
-                ref={slider}
-                onMouseDown={handleMouseDown}
-                onMouseUp={handleMouseUp}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              >
-                <li className={styles.supportList}>
-                  <SupportCard />
-                </li>
-                <li className={styles.supportList}>
-                  <SupportCard />
-                </li>
-                <li className={styles.supportList}>
-                  <SupportCard />
-                </li>
-                <li className={styles.supportList}>
-                  <SupportCard />
-                </li>
-              </ul>
-              <div className={styles.slideBtn}>
-                <Button.Arrow direction="right" />
-              </div>
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
+        <div className={styles.sectionContent}>
+          <div className={styles.slideContainer}>
+            <div className={styles.sliderBtn}>
+              <Button.Arrow direction="left" />
+            </div>
+            <ul
+              className={styles.supportLists}
+              ref={slider}
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <li className={styles.supportList}>
+                <SupportCard />
+              </li>
+              <li className={styles.supportList}>
+                <SupportCard />
+              </li>
+              <li className={styles.supportList}>
+                <SupportCard />
+              </li>
+              <li className={styles.supportList}>
+                <SupportCard />
+              </li>
+            </ul>
+            <div className={styles.sliderBtn}>
+              <Button.Arrow direction="right" />
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 }

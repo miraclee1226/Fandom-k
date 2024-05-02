@@ -3,22 +3,20 @@
 /*list page 공통*/
 .section {
   @media screen and (min-width: $desktop) {
-    max-width: 1200px;
+    min-width: 1200px;
     margin: 0 auto;
   }
   .sectionTitle {
-    margin-bottom: 24px;
-    font-size: 2.4rem;
-    font-weight: 700;
+    margin-bottom: 16px;
+    padding: 0 24px;
+    font-size: 2rem;
     line-height: 2.6rem;
+    font-weight: 700;
     color: var(--txt-white);
-    @media screen and (max-width: $desktop) {
-      padding: 0 24px;
-      font-size: 2rem;
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 24px;
+      font-size: 2.4rem;
       line-height: 2.6rem;
-    }
-    @media screen and (max-width: $tablet) {
-      margin-bottom: 16px;
     }
   }
 }
@@ -50,7 +48,7 @@
     }
   }
 
-  .slideBtn {
+  .sliderBtn {
     position: absolute;
     top: 50%;
     @media screen and (max-width: $desktop) {
