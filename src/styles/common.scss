@@ -22,6 +22,13 @@
   // 12px == 1.2rem / 15px == 1.5rem
 }
 
+body {
+  background-image: url("../assets/linear.png");
+  background-position: left top;
+  background-size: 199px 273px;
+  background-repeat: no-repeat;
+}
+
 input,
 button,
 textarea {
