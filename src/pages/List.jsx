@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Navbar from "components/Navbar/Navbar";
 import Layout from "components/Layout/Layout";
-import Button from "components/Button/Button";
+import Button from "components/Button";
 import SupportCard from "components/Card/SupportCard";
 import creditIcon from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
@@ -32,9 +32,9 @@ function CreditSection() {
           <span>{(36000).toLocaleString()}</span>
         </div>
       </div>
-      <div className={styles.rightContent} onClick={handleChargeCredit}>
+      <Button.Text className={styles.rightContent} onClick={handleChargeCredit}>
         충전하기
-      </div>
+      </Button.Text>
     </section>
   );
 }
