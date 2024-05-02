@@ -13,11 +13,18 @@
   color: #d2c030;
   font-weight: 500;
   font-size: 14px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 }
 
 .SubTitle {
   font-weight: 700;
   font-size: 20px;
+
+  @media screen and (min-width: 1200px) {
+    font-size: 24px;
+  }
 }
 
 .LandingSection1 {
@@ -30,34 +37,118 @@
 
   position: relative;
 
-  .BackgroundImg {
-    inset: 0;
-    position: absolute;
-    background-image: url("../../assets/landing1.png");
-    background-size: 393px 330px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    opacity: 0.7;
-  }
-
   & > h2 {
     font-size: 20px;
     font-weight: 400;
-    margin-top: 100px;
-    margin-left: 91px;
-    margin-right: 91px;
-    margin-bottom: 20px;
+    padding-top: 100px;
+    padding-left: 91px;
+    padding-right: 91px;
+    padding-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+      font-weight: 700;
+      padding-top: 120px;
+      padding-left: 217px;
+      padding-right: 217px;
+      padding-bottom: 32px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 26px;
+      padding-top: 140px;
+      padding-left: 802px;
+      padding-right: 807px;
+      padding-bottom: 29px;
+      z-index: 1;
+    }
   }
 
-  & > img {
+  .SpanWord {
+    color: #f96868;
+  }
+
+  .LandingLogo {
     width: 237px;
     height: 45px;
     margin-bottom: 451px;
+
+    @media screen and (min-width: 768px) {
+      width: 325px;
+      height: 62px;
+      margin-bottom: 770px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 509px;
+      height: 97px;
+      margin-bottom: 584px;
+      z-index: 1;
+    }
   }
 
-  & > button {
+  .LandingBackground {
+    width: 394px;
+    height: 330px;
+
+    position: absolute;
+    top: 241px;
+    z-index: -2;
+
+    opacity: 0.7;
+
+    @media screen and (min-width: 768px) {
+      width: 714px;
+      height: 598px;
+      top: 301px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 932px;
+      height: 781px;
+      top: 95px;
+    }
+  }
+
+  .BackgroundLinear {
+    width: 456px;
+    height: 456px;
+
+    position: absolute;
+    top: 178px;
+    background: linear-gradient(
+      90deg,
+      rgba(217, 217, 217, 0) 0%,
+      rgba(217, 217, 217, 0.4) 30.73%,
+      rgba(217, 217, 217, 0.6) 51.04%,
+      rgba(217, 217, 217, 0.4) 71.87%,
+      rgba(217, 217, 217, 0) 100%
+    );
+    opacity: 0.03;
+
+    z-index: -3;
+
+    @media screen and (min-width: 768px) {
+      width: 827px;
+      height: 827px;
+      top: 187px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 1080px;
+      height: 1080px;
+      top: 0px;
+    }
+  }
+
+  .LandingButton {
     width: 230px;
     height: 48px;
+    z-index: 2;
+
+    @media screen and (min-width: 768px) {
+      width: 477px;
+      height: 48px;
+    }
   }
 }
 
@@ -71,15 +162,27 @@
 
   position: relative;
 
+  @media screen and (min-width: 768px) {
+    height: 768px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 1200px;
+  }
+
   .BackgroundImg {
     inset: 0;
     position: absolute;
     background-image: url("../../assets/landing2.png");
-    background-size: 744px 744px;
+    background-size: 768px 768px;
     background-repeat: no-repeat;
     background-position: 50%;
     opacity: 0.7;
     z-index: -1;
+
+    @media screen and (min-width: 1200px) {
+      background-size: 1200px 1200px;
+    }
   }
 
   .LandingTitle {
@@ -89,11 +192,33 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+
+    @media screen and (min-width: 768px) {
+      padding: 74px 216px 39px 217px;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding: 160px 804px 60px 805px;
+      align-items: center;
+      text-align: center;
+    }
   }
 
   & > img {
     width: 240px;
     height: 520px;
+
+    @media screen and (min-width: 768px) {
+      width: 200px;
+      height: 434px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 320px;
+      height: 694px;
+    }
   }
 }
 
@@ -107,30 +232,64 @@
 
   position: relative;
 
+  @media screen and (min-width: 768px) {
+    height: 768px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 1200px;
+  }
+
   .BackgroundImg {
     inset: 0;
     position: absolute;
     background-image: url("../../assets/landing3.png");
-    background-size: 744px 744px;
+    background-size: 768px 768px;
     background-repeat: no-repeat;
     background-position: 50%;
     opacity: 0.7;
     z-index: -1;
+
+    @media screen and (min-width: 1200px) {
+      background-size: 1200px 1200px;
+    }
   }
 
   .LandingTitle {
     width: 100%;
-    padding: 77px 32px 66px 32px;
+    padding: 76px 32px 66px 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     text-align: right;
     gap: 8px;
+
+    @media screen and (min-width: 768px) {
+      padding: 74px 216px 39px 217px;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding: 160px 804px 60px 805px;
+      align-items: center;
+      text-align: center;
+    }
   }
 
   & > img {
     width: 240px;
     height: 520px;
+
+    @media screen and (min-width: 768px) {
+      width: 200px;
+      height: 434px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 320px;
+      height: 694px;
+    }
   }
 }
 
@@ -144,15 +303,27 @@
 
   position: relative;
 
+  @media screen and (min-width: 768px) {
+    height: 768px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 1200px;
+  }
+
   .BackgroundImg {
     inset: 0;
     position: absolute;
     background-image: url("../../assets/landing4.png");
-    background-size: 744px 744px;
+    background-size: 768px 768px;
     background-repeat: no-repeat;
     background-position: 50%;
     opacity: 0.7;
     z-index: -1;
+
+    @media screen and (min-width: 1200px) {
+      background-size: 1200px 1200px;
+    }
   }
 
   .LandingTitle {
@@ -161,11 +332,33 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    @media screen and (min-width: 768px) {
+      padding: 74px 216px 39px 217px;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding: 160px 804px 60px 805px;
+      align-items: center;
+      text-align: center;
+    }
   }
 
   & > img {
     width: 240px;
     height: 520px;
+
+    @media screen and (min-width: 768px) {
+      width: 200px;
+      height: 434px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 320px;
+      height: 694px;
+    }
   }
 }
 
@@ -181,5 +374,16 @@
     #051c30,
     #030b1c
   );
+
+  @media screen and (min-width: 768px) {
+    top: 1400px;
+    height: 1928px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    top: 1400px;
+    width: 187px;
+    height: 3091px;
+  }
 }
 
