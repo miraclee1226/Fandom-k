@@ -14,17 +14,17 @@ const customStyles = {
     backgroundColor: "#181d26",
     border: "none",
     borderRadius: "12px",
+    padding: "24px",
+    color: "white",
   },
 };
 
-export default function DefaultModal({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function DefaultModal({ children, isOpen, handleModalOpen }) {
   return (
     <>
       <ReactModal
         isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
+        onRequestClose={() => handleModalOpen(false)}
         style={customStyles}
         contentLabel="modal"
       >
