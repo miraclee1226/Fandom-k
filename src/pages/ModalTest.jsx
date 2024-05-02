@@ -13,7 +13,8 @@ export default function ModalTest() {
     <>
       <Button onClick={() => setIsOpen(true)}>모달 열기</Button>
       {/* <Modal.CreditWarning isOpen={isOpen} handleModalOpen={handleModalOpen} /> */}
-      <Modal.CreditCharge isOpen={isOpen} handleModalOpen={handleModalOpen} />
+      {/* <Modal.CreditCharge isOpen={isOpen} handleModalOpen={handleModalOpen} /> */}
+      <Modal.Support isOpen={isOpen} handleModalOpen={handleModalOpen} />
     </>
   );
 }
