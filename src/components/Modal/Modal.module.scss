@@ -1,28 +1,30 @@
+.xIcon {
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    opacity: 0.3;
+  }
+}
+
 /* Credit Warning Modal */
 
 .creditWarningModal {
+  width: 343px;
+
   .header {
     display: flex;
     justify-content: flex-end;
-
-    .xIcon {
-      cursor: pointer;
-
-      &:focus,
-      &:hover {
-        opacity: 0.3;
-      }
-    }
   }
 
   .main {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
 
     span {
-      font-weight: 500;
       font-size: 1.6rem;
+      font-weight: 500;
       line-height: 26px;
 
       & > span {
@@ -33,8 +35,53 @@
 
   .footer {
     margin-top: 31px;
-    .confirmBtn {
-      width: 295px;
-    }
+  }
+}
+
+/* Credit Charge Modal */
+
+.creditChargeModal {
+  width: 327px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .main {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer {
+    margin-top: 24px;
+  }
+}
+
+.chargeItem {
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
+  background-color: black;
+  border-radius: 8px;
+  display: flex;
+
+  &:hover,
+  &:focus {
+    border: 1px solid rgba($color: #f1eef9, $alpha: 1);
+  }
+
+  span {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 26px;
+    flex-grow: 1;
+    user-select: none;
   }
 }
