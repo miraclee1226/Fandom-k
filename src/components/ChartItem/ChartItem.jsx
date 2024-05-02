@@ -9,7 +9,7 @@ export default function ChartItem({ data }) {
         <span className={styles.ranking}>{data.rank}</span>
         <strong className={styles.name}>{data.name}</strong>
       </div>
-      <span className={styles.votes}>{data.totalVotes}</span>
+      <span className={styles.votes}>{data.totalVotes.toLocaleString()}</span>
     </div>
   );
 }

@@ -13,11 +13,11 @@ import maleData from "mockData/maleData";
 
 export default function ChartSection() {
   const [sortedData, setSortedData] = useState(
-    femaleData.sort((a, b) => b.totalVotes - a.totalVotes),
+    [...femaleData].sort((a, b) => b.totalVotes - a.totalVotes),
   );
 
   const handleTabChange = (index) => {
-    const selectedGender = index === 0 ? femaleData : maleData;
+    const selectedGender = index === 0 ? [...femaleData] : [...maleData];
 
     setSortedData(selectedGender.sort((a, b) => b.totalVotes - a.totalVotes));
   };
