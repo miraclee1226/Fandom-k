@@ -1,0 +1,37 @@
+@import "/src/styles/mixin_var.scss";
+
+/* mypage 공통 */
+.section {
+  padding: 32px 0;
+  margin: 0 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  &:first-child {
+    margin-top: 8px;
+    border-top: none;
+    @media screen and (min-width: $tablet) {
+      margin-top: 36px;
+    }
+  }
+  @media screen and (min-width: $tablet) {
+    min-width: 1200px;
+    margin: 0 24px;
+    padding: 40px 0;
+  }
+  @media screen and (min-width: $desktop) {
+    margin: 0 auto;
+  }
+  .sectionTitle {
+    margin-bottom: 16px;
+    color: var(--txt-white);
+    @media screen and (min-width: $mobile) {
+      padding: 0 24px;
+      font-size: 2rem;
+      line-height: 2.6rem;
+    }
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 24px;
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+  }
+}
