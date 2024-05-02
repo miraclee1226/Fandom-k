@@ -3,16 +3,17 @@ import Navbar from "components/Navbar/Navbar";
 import Layout from "components/Layout/Layout";
 import Button from "components/Button";
 import SupportCard from "components/Card/SupportCard";
+import ChartSection from "pages/ListPage/ChartSection";
 import creditIcon from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
 
 export default function List() {
   return (
     <>
-      <Navbar />
       <Layout>
         <CreditSection />
         <SupportSection />
+        <ChartSection />
       </Layout>
     </>
   );
@@ -67,42 +68,40 @@ function SupportSection() {
 
   return (
     <>
-      <div className={styles.view}>
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
-          <div className={styles.sectionContent}>
-            <div className={styles.slideContainer}>
-              <div className={styles.slideBtn}>
-                <Button.Arrow direction="left" />
-              </div>
-              <ul
-                className={styles.supportLists}
-                ref={slider}
-                onMouseDown={handleMouseDown}
-                onMouseUp={handleMouseUp}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              >
-                <li className={styles.supportList}>
-                  <SupportCard />
-                </li>
-                <li className={styles.supportList}>
-                  <SupportCard />
-                </li>
-                <li className={styles.supportList}>
-                  <SupportCard />
-                </li>
-                <li className={styles.supportList}>
-                  <SupportCard />
-                </li>
-              </ul>
-              <div className={styles.slideBtn}>
-                <Button.Arrow direction="right" />
-              </div>
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
+        <div className={styles.sectionContent}>
+          <div className={styles.slideContainer}>
+            <div className={styles.sliderBtn}>
+              <Button.Arrow direction="left" />
+            </div>
+            <ul
+              className={styles.supportLists}
+              ref={slider}
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <li className={styles.supportList}>
+                <SupportCard />
+              </li>
+              <li className={styles.supportList}>
+                <SupportCard />
+              </li>
+              <li className={styles.supportList}>
+                <SupportCard />
+              </li>
+              <li className={styles.supportList}>
+                <SupportCard />
+              </li>
+            </ul>
+            <div className={styles.sliderBtn}>
+              <Button.Arrow direction="right" />
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -1,12 +1,17 @@
 import { useState } from "react";
 import cn from 'classnames';
-import styles from "./Tab.module.scss";
+import styles from "components/Tab/Tab.module.scss";
 
-export default function Tab() {
+export default function Tab({ handleTabChange }) {
   const [currentTab, setCurrentTab] = useState(0);
 
   const menuArr = ["이달의 여자 아이돌", "이달의 남자 아이돌"];
 
+  const handleTabItemClick = (index) => {
+    setCurrentTab(index);
+    handleTabChange(index);
+  };
+  
   return (
     <div>
       <ul className={styles.tabContainer}>
@@ -14,7 +19,7 @@ export default function Tab() {
           <li
             key={index}
             className={cn(styles.tab, { [styles.tabFocused]: index === currentTab })}
-            onClick={() => setCurrentTab(index)}
+            onClick={() => handleTabItemClick(index)}
           >
             {menuArr[index]}
           </li>
