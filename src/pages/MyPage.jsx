@@ -5,74 +5,10 @@ import Button from "components/Button";
 import RoundImage from "components/Image/RoundImage/RoundImage";
 import { useState } from "react";
 import icoPlus from "assets/icons/plus.svg";
+import mockData from "mockData/femaleData.json";
 
 export default function MyPage() {
-  const [idols, setIdols] = useState([
-    {
-      totalVotes: 1000,
-      profilePicture: "https://example.com/profile.jpg",
-      group: "아이브",
-      gender: "female",
-      name: "장원영",
-      id: 0,
-    },
-    {
-      totalVotes: 1000,
-      profilePicture: "https://example.com/profile.jpg",
-      group: "블랙핑크",
-      gender: "female",
-      name: "리사",
-      id: 0,
-    },
-    {
-      totalVotes: 1000,
-      profilePicture: "https://example.com/profile.jpg",
-      group: "아이브",
-      gender: "female",
-      name: "장원영",
-      id: 0,
-    },
-    {
-      totalVotes: 1000,
-      profilePicture: "https://example.com/profile.jpg",
-      group: "블랙핑크",
-      gender: "female",
-      name: "리사",
-      id: 0,
-    },
-    {
-      totalVotes: 1000,
-      profilePicture: "https://example.com/profile.jpg",
-      group: "아이브",
-      gender: "female",
-      name: "장원영",
-      id: 0,
-    },
-    {
-      totalVotes: 1000,
-      profilePicture: "https://example.com/profile.jpg",
-      group: "블랙핑크",
-      gender: "female",
-      name: "리사",
-      id: 0,
-    },
-    {
-      totalVotes: 1000,
-      profilePicture: "https://example.com/profile.jpg",
-      group: "아이브",
-      gender: "female",
-      name: "장원영",
-      id: 0,
-    },
-    {
-      totalVotes: 1000,
-      profilePicture: "https://example.com/profile.jpg",
-      group: "블랙핑크",
-      gender: "female",
-      name: "리사",
-      id: 0,
-    },
-  ]);
+  const [idols, setIdols] = useState(mockData);
 
   return (
     <>
@@ -103,7 +39,7 @@ function AddFavoriteSection({ idols }) {
         <div className={styles.sectionContent}>
           <div className={styles.AddFavorite}>
             <div className={styles.sliderBtn}>
-              <Button.Arrow direction="left" />
+              <Button.Arrow direction="left" size="lg" />
             </div>
             <div className={styles.slider}>
               <ul className={styles.gridContainer}>
@@ -112,10 +48,10 @@ function AddFavoriteSection({ idols }) {
                     <li className={styles.gridItem}>
                       <input
                         type="checkbox"
-                        id={idol.name}
+                        id={idol.id}
                         className={styles.chkItem}
                       />
-                      <label htmlFor={idol.name} className={styles.labelItem}>
+                      <label htmlFor={idol.id} className={styles.labelItem}>
                         <div className={styles.imgWrap}>
                           <RoundImage />
                         </div>
@@ -132,7 +68,7 @@ function AddFavoriteSection({ idols }) {
               </ul>
             </div>
             <div className={styles.sliderBtn}>
-              <Button.Arrow direction="right" />
+              <Button.Arrow direction="right" size="lg" />
             </div>
           </div>
           <div className={styles.btnAddFavorite}>

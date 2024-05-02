@@ -17,12 +17,11 @@
     padding: 40px 0;
   }
   @media screen and (min-width: $desktop) {
-    min-width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .sectionTitle {
     margin-bottom: 16px;
-    padding: 0 24px;
     font-size: 2rem;
     line-height: 2.6rem;
     color: var(--txt-white);
@@ -38,6 +37,14 @@
 .AddFavorite {
   display: flex;
   align-items: center;
+  @media screen and (min-width: $tablet) {
+    gap: 27px;
+    padding-top: 33px;
+  }
+  @media screen and (min-width: $desktop) {
+    gap: 32px;
+    padding-top: 8px;
+  }
   .sliderBtn {
     display: none;
     flex: 0 0;
@@ -66,17 +73,36 @@
     }
     .chkItem {
       display: none;
+      &:checked + .labelItem::after {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        border-radius: 50%;
+        background:
+          url("../assets/icons/Checkmark.svg") no-repeat center,
+          linear-gradient(
+            271.36deg,
+            rgba(249, 110, 104, 0.5) -9.84%,
+            rgba(254, 87, 143, 0.5) 107.18%
+          );
+      }
     }
     .labelItem {
-      .imgWrap {
-        position: relative;
+      position: relative;
+      cursor: pointer;
+    }
+    .imgWrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      @media screen and (min-width: $desktop) {
+        width: 128px;
+        padding-bottom: 128px;
+      }
+      > div {
+        position: absolute;
         width: 100%;
-        padding-bottom: 100%;
-        > div {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-        }
+        height: 100%;
       }
     }
     .itemInfo {

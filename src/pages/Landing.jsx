@@ -1,5 +1,5 @@
 import Navbar from "components/Navbar/Navbar";
-import SupportCard from "components/Card/SupportCard";
+import List from "pages/List";
 
 export default function Landing() {
   return <></>;
