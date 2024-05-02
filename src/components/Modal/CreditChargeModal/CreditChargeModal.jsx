@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
 import Button from "components/Button";
+import classNames from "classnames/bind";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
+
+const cn = classNames.bind(styles);
 
 export default function CreditChargeModal({ isOpen, handleModalOpen }) {
   const handleChargeCredit = () => {
@@ -37,11 +41,26 @@ export default function CreditChargeModal({ isOpen, handleModalOpen }) {
 }
 
 function ChargeItem({ chargeAmount }) {
+  const [selected, setSelected] = useState(false);
+
+  const handleClick = () => {
+    setSelected(!selected);
+  };
+
+  const chargeItemClasses = cn({
+    [styles.chargeItem]: true,
+    [styles.isSelected]: selected,
+  });
+
   return (
-    <div className={styles.chargeItem}>
+    <div className={chargeItemClasses}>
       <CreditIcon width={24} height={24} />
-      <span>{chargeAmount}</span>
-      <Button.Radio />
+      <span>{chargeAmount.toLocaleString()}</span>
+      <Button.Radio
+        id={`radio-${chargeAmount}`}
+        name="charge-item"
+        onClick={handleClick}
+      />
     </div>
   );
 }

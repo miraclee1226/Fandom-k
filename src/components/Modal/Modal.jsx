@@ -13,10 +13,10 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     backgroundColor: "#181d26",
     border: "none",
-    borderRadius: "8px",
-    padding: "24px",
+    padding: 0,
     color: "white",
     boxShadow: "0px 4px 4px 0px #00000040",
+    borderRadius: "8px",
   },
 };
 
