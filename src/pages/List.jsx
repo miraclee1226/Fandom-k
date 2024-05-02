@@ -3,14 +3,15 @@ import Navbar from "components/Navbar/Navbar";
 import Layout from "components/Layout/Layout";
 import Button from "components/Button/Button";
 import SupportCard from "components/Card/SupportCard";
+import ChartSection from "pages/ListPage/ChartSection";
 import styles from "./List.module.scss";
 
 export default function List() {
   return (
     <>
-      <Navbar />
       <Layout>
         <SupportSection />
+        <ChartSection />
       </Layout>
     </>
   );
