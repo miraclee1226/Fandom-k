@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import Button from "components/Button";
+import logo from "assets/logo.png";
+import landing1 from "assets/landing1.png";
+import home1 from "assets/Home-1.png";
+import home2 from "assets/Home-2.png";
+import home3 from "assets/Home-3.png";
 import "./Landing.scss";
-import logo from "../../assets/logo.png";
-import DefaultButton from "../../components/Button/Button";
-import home1 from "../../assets/Home-1.png";
-import home2 from "../../assets/Home-2.png";
-import home3 from "../../assets/Home-3.png";
 
 export default function Landing({ childeren, onClick }) {
   const nav = useNavigate();
@@ -16,16 +17,22 @@ export default function Landing({ childeren, onClick }) {
         <h2>
           내가 좋아하는 아이돌을
           <br />
-          가장 <span>쉽게 덕질</span> 하는 방법
+          가장 <span className="SpanWord">쉽게 덕질</span> 하는 방법
         </h2>
-        <img src={logo} alt="로고" />
-        <div className="BackgroundImg"></div>
-        <DefaultButton onClick={() => nav("/list")}>
-          {"지금 시작하기"}
-        </DefaultButton>
+        <img className="LandingLogo" src={logo} alt="로고" />
+        <img className="LandingBackground" src={landing1} alt="배경 이미지" />
+        <div className="BackgroundLinear"></div>
+        <Button
+          className="LandingButton"
+          onClick={() => {
+            nav("/list");
+          }}
+        >
+          지금 시작하기
+        </Button>
       </section>
       <section className="LandingSection2">
-        <div class="LandingTitle">
+        <div className="LandingTitle">
           <span className="MainTitle">후원하기</span>
           <p className="SubTitle">
             좋아하는 아이돌에게
