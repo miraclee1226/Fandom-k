@@ -1,3 +1,5 @@
+@import "/src/styles/mixin_var.scss";
+
 /* Button Main */
 
 .defaultButton {
@@ -110,5 +112,17 @@
 
   input {
     display: none;
+  }
+}
+
+/* Text Button */
+
+.textButton {
+  color: var(--brand-orange);
+  user-select: none;
+
+  &:focus,
+  &:hover {
+    color: var(--brand-pink);
   }
 }
