@@ -35,6 +35,7 @@
 
 /* AddFavoriteSection */
 .AddFavorite {
+  position: relative;
   display: flex;
   align-items: center;
   @media screen and (min-width: $tablet) {
@@ -47,9 +48,25 @@
   }
   .sliderBtn {
     display: none;
-    flex: 0 0;
+
     @media screen and (min-width: $tablet) {
       display: block;
+    }
+    @media screen and (min-width: $desktop) {
+      position: absolute;
+      top: 50%;
+    }
+    &:first-child {
+      @media screen and (min-width: $desktop) {
+        left: -32px;
+        transform: translate(-100%, -50%);
+      }
+    }
+    &:last-child {
+      @media screen and (min-width: $desktop) {
+        right: -32px;
+        transform: translate(100%, -50%);
+      }
     }
   }
   .slider {
