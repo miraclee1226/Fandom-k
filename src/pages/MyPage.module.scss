@@ -13,25 +13,103 @@
     }
   }
   @media screen and (min-width: $tablet) {
-    min-width: 1200px;
     margin: 0 24px;
     padding: 40px 0;
   }
   @media screen and (min-width: $desktop) {
+    min-width: 1200px;
     margin: 0 auto;
   }
   .sectionTitle {
     margin-bottom: 16px;
+    padding: 0 24px;
+    font-size: 2rem;
+    line-height: 2.6rem;
     color: var(--txt-white);
-    @media screen and (min-width: $mobile) {
-      padding: 0 24px;
-      font-size: 2rem;
-      line-height: 2.6rem;
-    }
     @media screen and (min-width: $tablet) {
       margin-bottom: 24px;
       font-size: 2.4rem;
       font-weight: 700;
     }
+  }
+}
+
+/* AddFavoriteSection */
+.AddFavorite {
+  display: flex;
+  align-items: center;
+  .sliderBtn {
+    display: none;
+    flex: 0 0;
+    @media screen and (min-width: $tablet) {
+      display: block;
+    }
+  }
+  .slider {
+    flex: 1 1;
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 24px 17px;
+    @media screen and (min-width: $tablet) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 32px 24px;
+    }
+    .chkItem {
+      display: none;
+    }
+    .labelItem {
+      .imgWrap {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%;
+        > div {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .itemInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      margin-top: 8px;
+      .itemTitle {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 2.6rem;
+        color: #f4efef;
+      }
+      .itemCategory {
+        font-size: 1.4rem;
+        line-height: 1.67rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+}
+.btnAddFavorite {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  @media screen and (min-width: $desktop) {
+    margin-top: 48px;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 }

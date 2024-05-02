@@ -71,7 +71,7 @@ function SupportSection() {
         <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
         <div className={styles.sectionContent}>
           <div className={styles.slideContainer}>
-            <div className={styles.slideBtn}>
+            <div className={styles.sliderBtn}>
               <Button.Arrow direction="left" />
             </div>
             <ul
@@ -95,7 +95,7 @@ function SupportSection() {
                 <SupportCard />
               </li>
             </ul>
-            <div className={styles.slideBtn}>
+            <div className={styles.sliderBtn}>
               <Button.Arrow direction="right" />
             </div>
           </div>
