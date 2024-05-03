@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addCommas } from "utils/commas";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
 import Button from "components/Button";
 import RoundImage from "components/Image/RoundImage/RoundImage";
@@ -83,7 +84,11 @@ export default function VoteModal({ isOpen, handleModalOpen }) {
         </div>
 
         <div className={styles.footer}>
-          <Button className={styles.voteBtn} onClick={handleVote} disabled={!isSelected} >
+          <Button
+            className={styles.voteBtn}
+            onClick={handleVote}
+            disabled={!isSelected}
+          >
             투표하기
           </Button>
           <span>
@@ -106,7 +111,7 @@ function VoteItem({ data }) {
         <span className={styles.name}>
           {data.group} {data.name}
         </span>
-        <span className={styles.votes}>{data.totalVotes}</span>
+        <span className={styles.votes}>{addCommas(data.totalVotes)}표</span>
       </div>
 
       <div className={styles.btnBox}>

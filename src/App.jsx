@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "pages/Landing/Landing";
 import List from "pages/List";
 import MyPage from "pages/MyPage";
+import ModalTest from "pages/ModalTest";
 import "styles/common.scss";
 import "styles/reset.scss";
 

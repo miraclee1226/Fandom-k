@@ -2,7 +2,6 @@ import Button from "components/Button";
 import Modal from "components/Modal";
 import { useState } from "react";
 
-
 export default function ModalTest() {
   const [isOpen, setIsOpen] = useState(false);
 
