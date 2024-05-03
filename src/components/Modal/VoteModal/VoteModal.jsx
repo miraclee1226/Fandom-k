@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addCommas } from "utils/commas";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
 import Button from "components/Button";
@@ -58,7 +58,11 @@ const MOCK_DATA = [
 ];
 
 export default function VoteModal({ isOpen, handleModalOpen }) {
-  const [isSelected, setIsSelected] = useState(false);
+  const [checkedValue, setCheckedValue] = useState("");
+
+  const handleRadioChange = (e) => {
+    setCheckedValue(e.target.value);
+  };
 
   const handleVote = () => {
     // TODO: 투표 기능 추가
@@ -79,7 +83,12 @@ export default function VoteModal({ isOpen, handleModalOpen }) {
 
         <div className={styles.main}>
           {MOCK_DATA.map((data) => (
-            <VoteItem key={data.id} data={data} />
+            <VoteItem
+              key={data.id}
+              data={data}
+              checkedValue={checkedValue}
+              handleRadioChange={handleRadioChange}
+            />
           ))}
         </div>
 
@@ -87,7 +96,7 @@ export default function VoteModal({ isOpen, handleModalOpen }) {
           <Button
             className={styles.voteBtn}
             onClick={handleVote}
-            disabled={!isSelected}
+            disabled={!checkedValue}
           >
             투표하기
           </Button>
@@ -100,7 +109,7 @@ export default function VoteModal({ isOpen, handleModalOpen }) {
   );
 }
 
-function VoteItem({ data }) {
+function VoteItem({ data, checkedValue, handleRadioChange }) {
   return (
     <div className={styles.voteItem}>
       <div className={styles.content}>
@@ -115,7 +124,13 @@ function VoteItem({ data }) {
       </div>
 
       <div className={styles.btnBox}>
-        <Button.Radio />
+        <Button.Radio
+          id={`radio-${data.id}`}
+          name="vote-item"
+          value={String(data.id)}
+          checkedValue={checkedValue}
+          onChange={handleRadioChange}
+        />
       </div>
     </div>
   );

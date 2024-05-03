@@ -8,7 +8,15 @@ import styles from "../Modal.module.scss";
 
 const cn = classNames.bind(styles);
 
+const CHARGE_AMOUNTS = [100, 500, 1000];
+
 export default function CreditChargeModal({ isOpen, handleModalOpen }) {
+  const [checkedValue, setCheckedValue] = useState("");
+
+  const handleRadioChange = (e) => {
+    setCheckedValue(e.target.value);
+  };
+
   const handleChargeCredit = () => {
     // TODO: Credit 충전 핸들러
     handleModalOpen(false);
@@ -27,8 +35,13 @@ export default function CreditChargeModal({ isOpen, handleModalOpen }) {
         </div>
 
         <div className={styles.main}>
-          {[100, 500, 1000].map((chargeAmount) => (
-            <ChargeItem key={chargeAmount} chargeAmount={chargeAmount} />
+          {CHARGE_AMOUNTS.map((chargeAmount) => (
+            <ChargeItem
+              key={chargeAmount}
+              chargeAmount={chargeAmount}
+              checkedValue={checkedValue}
+              handleRadioChange={handleRadioChange}
+            />
           ))}
         </div>
 
@@ -40,16 +53,10 @@ export default function CreditChargeModal({ isOpen, handleModalOpen }) {
   );
 }
 
-function ChargeItem({ chargeAmount }) {
-  const [selected, setSelected] = useState(false);
-
-  const handleClick = () => {
-    setSelected(!selected);
-  };
-
+function ChargeItem({ chargeAmount, checkedValue, handleRadioChange }) {
   const chargeItemClasses = cn({
     [styles.chargeItem]: true,
-    [styles.isSelected]: selected,
+    [styles.isSelected]: checkedValue === String(chargeAmount),
   });
 
   return (
@@ -59,7 +66,9 @@ function ChargeItem({ chargeAmount }) {
       <Button.Radio
         id={`radio-${chargeAmount}`}
         name="charge-item"
-        onClick={handleClick}
+        value={String(chargeAmount)}
+        checkedValue={checkedValue}
+        onChange={handleRadioChange}
       />
     </div>
   );
