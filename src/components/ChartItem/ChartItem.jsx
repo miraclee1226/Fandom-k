@@ -5,7 +5,7 @@ export default function ChartItem({ data }) {
   return (
     <div className={styles.chartItemContainer}>
       <div className={styles.content}>
-        <RoundImage />
+        <RoundImage size="sm"/>
         <span className={styles.ranking}>{data.rank}</span>
         <strong className={styles.name}>{data.name}</strong>
       </div>

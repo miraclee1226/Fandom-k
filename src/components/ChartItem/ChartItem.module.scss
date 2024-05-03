@@ -4,13 +4,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 588px;
+  width: 327px;
   height: 70px;
-  @media screen and (max-width: $tablet) {
+  @media screen and (min-width: $tablet) {
     width: 700px;
   }
-  @media screen and (max-width: $mobile) {
-    width: 327px;
+  @media screen and (min-width: $desktop) {
+    width: 588px
   }
   .content {
     display: flex;
@@ -19,47 +19,47 @@
     .ranking {
       font-size: 1.6rem;
       font-weight: 400;
-      line-height: 19.09px;
+      line-height: 19.09rem;
       color: var(--brand-orange);
       opacity: 0.6;
-      @media screen and (max-width: $tablet) {
+      @media screen and (min-width: $tablet) {
         font-size: 1.4rem;
-        line-height: 16.71px;
+        line-height: 16.71rem;
       }
-      @media screen and (max-width: $mobile) {
-        font-size: 1.4rem;
-        line-height: 16.71px;
+      @media screen and (min-width: $desktop) {
+        font-size: 1.6rem;
+        line-height: 19.09rem;
       }
     }
     .name {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 500;
-      line-height: 19.09px;
+      line-height: 16.71rem;
       color: var(--white);
       opacity: 0.87;
-      @media screen and (max-width: $tablet) {
+      @media screen and (min-width: $tablet) {
         font-size: 1.4rem;
-        line-height: 16.71px;
+        line-height: 16.71rem;
       }
-      @media screen and (max-width: $mobile) {
-        font-size: 1.4rem;
-        line-height: 16.71px;
+      @media screen and (min-width: $desktop) {
+        font-size: 1.6rem;
+        line-height: 19.09rem;
       }
     }
   }
   .votes {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 400;
-    line-height: 19.09px;
+    line-height: 16.71rem;
     color: var(--white);
     opacity: 0.6;
-    @media screen and (max-width: $tablet) {
+    @media screen and (min-width: $tablet) {
       font-size: 1.4rem;
-      line-height: 16.71px;
+      line-height: 16.71rem;
     }
-    @media screen and (max-width: $mobile) {
-      font-size: 1.4rem;
-      line-height: 16.71px;
+    @media screen and (min-width: $desktop) {
+      font-size: 1.6rem;
+      line-height: 19.09rem;
     }
   }
 }
