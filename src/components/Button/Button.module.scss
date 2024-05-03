@@ -24,7 +24,7 @@
     width: 100%;
   }
 
-  &.disabled {
+  :disabled {
     background-color: var(--btn-disabled);
     background-image: none;
 
