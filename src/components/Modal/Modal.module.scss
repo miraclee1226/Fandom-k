@@ -184,3 +184,91 @@
     margin-top: 24px;
   }
 }
+
+/* Vote Modal */
+
+.voteModal {
+  width: 525px;
+  padding: 24px 24px 12px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  .main {
+    margin-top: 19px;
+  }
+
+  .footer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    .voteBtn {
+      height: 42px;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 500;
+      span {
+        color: var(--brand-orange);
+      }
+    }
+  }
+}
+
+.voteItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(white, 0.1);
+  padding-bottom: 8px;
+
+  .content {
+    display: grid;
+    grid-template-columns: 70px repeat(2, max-content);
+    grid-template-rows: repeat(2, auto);
+    margin-top: 8px;
+
+    .profile {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+
+    .rank {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      padding: 0 12px;
+      justify-self: center;
+      align-self: center;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: rgba($color: #f96d69, $alpha: 0.6);
+    }
+
+    .name {
+      grid-column: 3;
+      grid-row: 1;
+      align-self: end;
+      margin-bottom: 2px;
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+
+    .votes {
+      grid-column: 3;
+      grid-row: 2;
+      align-self: start;
+      margin-top: 2px;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: rgba($color: white, $alpha: 0.6);
+    }
+  }
+}
