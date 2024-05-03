@@ -1,9 +1,19 @@
-import styles from "./RectangleImage.module.scss";
+import IdolImg from "assets/Image_Idol.png";
+import styles from "components/Image/RectangleImage/RectangleImage.module.scss";
+import classNames from "classnames/bind";
 
-export default function RectangleImage({ src, alt }) {
+const cn = classNames.bind(styles);
+
+export default function RectangleImage({ size="md" }) {
+  const rectangleImageClasses = cn({
+    [styles.rectangleImage]: true,
+    [styles.md]: size === "md",
+    [styles.lg]: size === "lg",
+  })
+
   return (
-    <div className={styles.rectangleImage}>
-      <img src={src} alt={alt} />
+    <div className={rectangleImageClasses}>
+      <img src={IdolImg} alt="채원 이미지" />
     </div>
   );
 }

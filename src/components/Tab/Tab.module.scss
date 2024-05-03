@@ -5,7 +5,7 @@
   align-items: center;
   color: var(--btn-disabled);
   background-color: #02000e;
-  width: 1200px;
+  width: inherit;
   height: 42px;
   .tab {
     display: flex;
@@ -17,11 +17,11 @@
     font-weight: 400;
     line-height: 1.8rem;
     cursor: pointer;
-    @media screen and (max-width: $tablet) {
-      width: 348px;
+    @media screen and (min-width: $tablet) {
+      width: calc(100% / 2);
     }
-    @media screen and (max-width: $mobile) {
-      width: 136.5px;
+    @media screen and (min-width: $desktop) {
+      width: calc(100% / 2);
     }
   }
   .tabFocused {

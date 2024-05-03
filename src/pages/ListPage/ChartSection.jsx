@@ -25,22 +25,24 @@ export default function ChartSection() {
   return (
     <section className={styles.section}>
       <div className={styles.sectionContainer}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>이달의 차트</h2>
+          <VoteButton className={styles.voteButton}>
+            <ChartIcon />
+            차트 투표하기
+          </VoteButton>
+        </div>
         <div className={styles.sectionDetail}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>이달의 차트</h2>
-            <VoteButton className={styles.voteButton}>
-              <ChartIcon />
-              차트 투표하기
-            </VoteButton>
+          <div className={styles.tab}>
+            <Tab handleTabChange={handleTabChange} />
           </div>
-          <Tab handleTabChange={handleTabChange} />
           <ul className={styles.chartList}>
             {sortedData.map((data, index) => (
               <ChartItem key={data.id} data={data} />
             ))}
           </ul>
+          <BorderButton className={styles.borderButton}>더보기</BorderButton>
         </div>
-        <BorderButton className={styles.borderButton}>더보기</BorderButton>
       </div>
     </section>
   );
