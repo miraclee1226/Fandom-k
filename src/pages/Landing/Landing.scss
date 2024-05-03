@@ -1,3 +1,5 @@
+@import "/src/styles/mixin_var.scss";
+
 * {
   box-sizing: border-box;
   color: white;
@@ -13,7 +15,7 @@
 .landingTitle {
   min-width: 311px;
   // 아래 패딩값 줬는데 텍스트 상자 크기 안줘서 이상해서 100% 였는데 min-width로 반응형으로 바꿈
-  padding: 0px 32px 67px;
+  margin-bottom: 67px;
   //padding: 76px 32px 66px 32px; 이거 였는데 수정함
   display: flex;
   flex-direction: column;
@@ -22,13 +24,13 @@
   // 왼쪽 정렬 못하겠어용 ㅠ
   gap: 8px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     padding: 0px 216px 39px 217px;
     align-items: center;
     text-align: center;
   }
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     padding: 0px 804px 60px 805px;
     align-items: center;
     text-align: center;
@@ -40,7 +42,7 @@
   color: var(--txt-yellow);
   font-weight: 500;
   font-size: 14px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     font-size: 16px;
   }
 }
@@ -50,7 +52,7 @@
   font-weight: 700;
   font-size: 20px;
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     font-size: 24px;
   }
 }
@@ -60,12 +62,12 @@
   width: 240px;
   height: 520px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     width: 200px;
     height: 434px;
   }
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     width: 320px;
     height: 694px;
   }
@@ -95,10 +97,10 @@
     opacity: 0.05;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     background-size: 744px 744px;
   }
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     background-size: 1200px 1200px;
   }
   //위에 2개도 background-size 크기 지정해줌
@@ -126,11 +128,11 @@
 
   position: relative;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     min-height: 1200px;
   }
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     min-height: 1080px;
   }
   //위 2개 추가
@@ -140,12 +142,12 @@
     font-weight: 400;
     padding: 100px 91px 20px;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
       font-weight: 700;
       padding: 120px 217px 32px;
     }
 
-    @media screen and (min-width: 1900px) {
+    @media screen and (min-width: $desktop) {
       font-size: 26px;
       padding: 140px 802px 29px 807px;
     }
@@ -162,13 +164,13 @@
     height: 45px;
     margin-bottom: 451px;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
       width: 325px;
       height: 62px;
       margin-bottom: 770px;
     }
 
-    @media screen and (min-width: 1900px) {
+    @media screen and (min-width: $desktop) {
       width: 509px;
       height: 97px;
       margin-bottom: 584px;
@@ -184,13 +186,13 @@
 
     opacity: 0.7;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
       width: 714px;
       height: 598px;
       top: 301px;
     }
 
-    @media screen and (min-width: 1900px) {
+    @media screen and (min-width: $desktop) {
       width: 932px;
       height: 781px;
       top: 95px;
@@ -213,13 +215,13 @@
     );
     opacity: 0.05;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
       width: 827px;
       height: 827px;
       top: 187px;
     }
 
-    @media screen and (min-width: 1900px) {
+    @media screen and (min-width: $desktop) {
       width: 1080px;
       height: 1080px;
       top: 0px;
@@ -232,7 +234,7 @@
     font-weight: 400;
     //400추가 기본이 700이여서
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
       width: 477px;
       height: 48px;
     }
@@ -253,12 +255,12 @@
   background-image: url("/assets/landing2.png");
   //절대경로 안되용 앞에 /슬래시 붙여야 되는데 뭘까용
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     min-height: 744px;
   }
   //min-width가 768이면 min-height도 768이여야함
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     min-height: 1200px;
   }
 }
@@ -277,12 +279,12 @@
   background-image: url("/assets/landing3.png");
   //절대경로 안되용 앞에 /슬래시 붙여야 되는데 뭘까용
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     min-height: 744px;
   }
   //min-width가 768이면 min-height도 768이여야함
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     min-height: 1200px;
   }
 
@@ -290,7 +292,7 @@
     // 클래스 오른쪽 정렬 따로 추가
     min-width: 311px;
     // 아래 패딩값 줬는데 텍스트 상자 크기 안줘서 이상해서 100% 였는데 min-width로 반응형으로 바꿈
-    padding: 0px 32px 66px;
+    margin-bottom: 67px;
 
     display: flex;
     flex-direction: column;
@@ -298,13 +300,13 @@
     text-align: right;
     gap: 8px;
   
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
       padding: 0px 216px 39px 217px;
       align-items: center;
       text-align: center;
     }
   
-    @media screen and (min-width: 1900px) {
+    @media screen and (min-width: $desktop) {
       padding: 0px 804px 60px 805px;
       align-items: center;
       text-align: center;
@@ -326,12 +328,12 @@
   background-image: url("/assets/landing4.png");
   //절대경로 안되용 앞에 /슬래시 붙여야 되는데 뭘까용
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     min-height: 744px;
   }
   //min-width가 768이면 min-height도 768이여야함
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     min-height: 1200px;
   }
 }
@@ -350,12 +352,12 @@
     #030b1c 100%
   );
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     top: 1394px;
     height: 1928px;
   }
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $desktop) {
     width: 187px;
     height: 3091px;
   }
