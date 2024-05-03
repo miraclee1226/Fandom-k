@@ -56,7 +56,7 @@ export default function CreditChargeModal({ isOpen, handleModalOpen }) {
 function ChargeItem({ chargeAmount, checkedValue, handleRadioChange }) {
   const chargeItemClasses = cn({
     [styles.chargeItem]: true,
-    [styles.isSelected]: checkedValue === String(chargeAmount),
+    [styles.isChecked]: checkedValue === String(chargeAmount),
   });
 
   return (

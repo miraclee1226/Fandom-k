@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { addCommas } from "utils/commas";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
 import Button from "components/Button";
 import RoundImage from "components/Image/RoundImage/RoundImage";
+import classNames from "classnames/bind";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 
@@ -57,6 +58,8 @@ const MOCK_DATA = [
   },
 ];
 
+const cn = classNames.bind(styles);
+
 export default function VoteModal({ isOpen, handleModalOpen }) {
   const [checkedValue, setCheckedValue] = useState("");
 
@@ -110,10 +113,15 @@ export default function VoteModal({ isOpen, handleModalOpen }) {
 }
 
 function VoteItem({ data, checkedValue, handleRadioChange }) {
+  const profileClasses = cn({
+    [styles.profile]: true,
+    [styles.isChecked]: checkedValue === String(data.id),
+  });
+
   return (
     <div className={styles.voteItem}>
       <div className={styles.content}>
-        <div className={styles.profile}>
+        <div className={profileClasses}>
           <RoundImage />
         </div>
         <span className={styles.rank}>{data.rank}</span>

@@ -79,7 +79,7 @@
   background-color: black;
   border-radius: 8px;
 
-  &.isSelected {
+  &.isChecked {
     border: 1px solid var(--brand-orange);
 
     &:hover,
@@ -243,6 +243,22 @@
     .profile {
       grid-column: 1;
       grid-row: 1 / span 2;
+      position: relative;
+    }
+
+    .profile.isChecked::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      background:
+        url("../../assets/icons/Checkmark.svg") no-repeat center,
+        linear-gradient(
+          271.36deg,
+          rgba(249, 110, 104, 0.5) -9.84%,
+          rgba(254, 87, 143, 0.5) 107.18%
+        );
+      background-size: 45.45% 45.45%;
     }
 
     .rank {
