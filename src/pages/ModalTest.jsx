@@ -12,10 +12,10 @@ export default function ModalTest() {
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>모달 열기</Button>
-      {/* <Modal.CreditWarning isOpen={isOpen} handleModalOpen={handleModalOpen} /> */}
+      <Modal.CreditWarning isOpen={isOpen} handleModalOpen={handleModalOpen} />
       {/* <Modal.CreditCharge isOpen={isOpen} handleModalOpen={handleModalOpen} /> */}
       {/* <Modal.Support isOpen={isOpen} handleModalOpen={handleModalOpen} /> */}
-      <Modal.Vote isOpen={isOpen} handleModalOpen={handleModalOpen} />
+      {/* <Modal.Vote isOpen={isOpen} handleModalOpen={handleModalOpen} /> */}
     </>
   );
 }

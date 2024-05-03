@@ -122,7 +122,7 @@ function VoteItem({ data, checkedValue, handleRadioChange }) {
     <div className={styles.voteItem}>
       <div className={styles.content}>
         <div className={profileClasses}>
-          <RoundImage />
+          <RoundImage size="sm" />
         </div>
         <span className={styles.rank}>{data.rank}</span>
         <span className={styles.name}>
