@@ -8,6 +8,7 @@ import creditIcon from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
 
 export default function List() {
+
   return (
     <>
       <Layout>
