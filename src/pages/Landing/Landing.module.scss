@@ -30,19 +30,19 @@
 }
 
 .mainTitle {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 500;
   color: var(--txt-yellow);
   @media screen and (min-width: $tablet) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 }
 
 .subTitle {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
   @media screen and (min-width: $desktop) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 }
 
@@ -127,7 +127,7 @@
   }
   & > h2 {
     padding: 100px 0px 20px;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 400;
     @media screen and (min-width: $tablet) {
       padding: 120px 0px 32px;
@@ -135,7 +135,7 @@
     }
     @media screen and (min-width: $desktop) {
       padding: 140px 0px 29px;
-      font-size: 26px;
+      font-size: 2.6rem;
     }
   }
 
@@ -275,8 +275,8 @@
     #030b1c 100%
   );
   @media screen and (min-width: $tablet) {
-    top: 1394px;
-    height: 1928px;
+    top: 1450px;
+    height: 2050px;
   }
   @media screen and (min-width: $desktop) {
     width: 187px;
