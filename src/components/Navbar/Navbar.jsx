@@ -1,25 +1,25 @@
 import { useNavigate } from "react-router-dom";
-import "./Navbar.scss";
-import logo from "../../assets/logo.png";
-import profile from "../../assets/profile.png";
+import logo from "assets/logo.png";
+import profile from "assets/profile.png";
+import styles from "components/Navbar/Navbar.module.scss";
 
 const Navbar = () => {
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <nav className="Navbar">
+    <nav className={styles.navbar}>
       <div></div>
       <img
-        className="NavbarLogo"
+        className={styles.navbarLogo}
         onClick={() => {
-          nav("/list");
+          navigate("/list");
         }}
         src={logo}
         alt="로고"
       />
       <img
-        className="NavbarProfile"
-        onClick={() => nav("/mypage")}
+        className={styles.navbarProfile}
+        onClick={() => navigate("/mypage")}
         src={profile}
         alt="프로필"
       />
