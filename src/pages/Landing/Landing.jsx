@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom";
 import Button from "components/Button";
 import logo from "assets/logo.png";
 import landing1 from "assets/landing1.png";
+import landing2 from "assets/landing2.png";
+import landing3 from "assets/landing3.png";
+import landing4 from "assets/landing4.png";
 import home1 from "assets/Home-1.png";
 import home2 from "assets/Home-2.png";
 import home3 from "assets/Home-3.png";
@@ -11,7 +14,7 @@ export default function Landing({ childeren, onClick }) {
   const navigate = useNavigate();
 
   return (
-    <div className="view">
+    <div className="landingView">
       <div className="centerLine"></div>
       <section className="landingSection1">
         <h2>
@@ -42,7 +45,8 @@ export default function Landing({ childeren, onClick }) {
             </p>
           </div>
           <div className="sectionImgWrap">
-            <img className="homeImg" src={home1} alt="홈 사진1" />₩
+            <img className="homeImg" src={home1} alt="홈 사진1" />
+            <img className="backgroundImg" src={landing2} alt="배경 사진1" />
           </div>
         </div>
       </section>
@@ -58,6 +62,7 @@ export default function Landing({ childeren, onClick }) {
           </div>
           <div className="sectionImgWrap">
             <img className="homeImg" src={home2} alt="홈 사진2" />
+            <img className="backgroundImg" src={landing3} alt="배경 사진2" />
           </div>
         </div>
       </section>
@@ -73,6 +78,7 @@ export default function Landing({ childeren, onClick }) {
           </div>
           <div className="sectionImgWrap">
             <img className="homeImg" src={home3} alt="홈 사진3" />
+            <img className="backgroundImg" src={landing4} alt="배경 사진3" />
           </div>
         </div>
       </section>
