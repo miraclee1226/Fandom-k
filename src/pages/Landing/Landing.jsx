@@ -5,68 +5,76 @@ import landing1 from "assets/landing1.png";
 import home1 from "assets/Home-1.png";
 import home2 from "assets/Home-2.png";
 import home3 from "assets/Home-3.png";
-import "./Landing.scss";
+import "pages/Landing/Landing.scss";
 
 export default function Landing({ childeren, onClick }) {
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="view">
-      <div className="CenterLine"></div>
-      <section className="LandingSection1">
+      <div className="centerLine"></div>
+      <section className="landingSection1">
         <h2>
           내가 좋아하는 아이돌을
           <br />
-          가장 <span className="SpanWord">쉽게 덕질</span> 하는 방법
+          가장 <span className="spanWord">쉽게 덕질</span> 하는 방법
         </h2>
-        <img className="LandingLogo" src={logo} alt="로고" />
-        <img className="LandingBackground" src={landing1} alt="배경 이미지" />
-        <div className="BackgroundLinear"></div>
+        <img className="landingLogo" src={logo} alt="로고" />
+        <img className="landingBackground" src={landing1} alt="배경 이미지" />
+        <div className="backgroundLinear"></div>
         <Button
-          className="LandingButton"
+          className="landingButton"
           onClick={() => {
-            nav("/list");
+            navigate("/list");
           }}
         >
           지금 시작하기
         </Button>
       </section>
-      <section className="LandingSection2">
-        <div className="LandingTitle">
-          <span className="MainTitle">후원하기</span>
-          <p className="SubTitle">
-            좋아하는 아이돌에게
-            <br />
-            쉽게 조공해 보세요
-          </p>
+      <section className="landingSection landingSection2">
+        <div className="sectionContent">
+          <div className="landingTitle">
+            <span className="mainTitle">후원하기</span>
+            <p className="subTitle">
+              좋아하는 아이돌에게
+              <br />
+              쉽게 조공해 보세요
+            </p>
+          </div>
+          <div className="sectionImgWrap">
+            <img className="homeImg" src={home1} alt="홈 사진1" />₩
+          </div>
         </div>
-        <img src={home1} alt="홈 사진1" />
-        <div className="BackgroundImg"></div>
       </section>
-      <section className="LandingSection3">
-        <div className="LandingTitle">
-          <span className="MainTitle">이달의 아티스트</span>
-          <p className="SubTitle">
-            내 아티스트에게 1등의
-            <br />
-            영예를 선물하세요
-          </p>
+      <section className="landingSection landingSection3">
+        <div className="sectionContent">
+          <div className="landingRightTitle">
+            <span className="mainTitle">이달의 아티스트</span>
+            <p className="subTitle">
+              내 아티스트에게 1등의
+              <br />
+              영예를 선물하세요
+            </p>
+          </div>
+          <div className="sectionImgWrap">
+            <img className="homeImg" src={home2} alt="홈 사진2" />
+          </div>
         </div>
-        <img src={home2} alt="홈 사진2" />
-        <div className="BackgroundImg"></div>
       </section>
-
-      <section className="LandingSection4">
-        <div className="LandingTitle">
-          <span className="MainTitle">나만의 아티스트</span>
-          <p className="SubTitle">
-            좋아하는 아티스트들의
-            <br />
-            소식을 모아보세요
-          </p>
+      <section className="landingSection landingSection4">
+        <div className="sectionContent">
+          <div className="landingTitle">
+            <span className="mainTitle">나만의 아티스트</span>
+            <p className="subTitle">
+              좋아하는 아티스트들의
+              <br />
+              소식을 모아보세요
+            </p>
+          </div>
+          <div className="sectionImgWrap">
+            <img className="homeImg" src={home3} alt="홈 사진3" />
+          </div>
         </div>
-        <img src={home3} alt="홈 사진3" />
-        <div className="BackgroundImg"></div>
       </section>
     </div>
   );

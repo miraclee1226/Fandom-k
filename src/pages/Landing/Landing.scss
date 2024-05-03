@@ -8,28 +8,117 @@
   flex-direction: column;
   align-items: center;
 }
+//체크
 
-.MainTitle {
-  color: #d2c030;
+.landingTitle {
+  min-width: 311px;
+  // 아래 패딩값 줬는데 텍스트 상자 크기 안줘서 이상해서 100% 였는데 min-width로 반응형으로 바꿈
+  padding: 0px 32px 67px;
+  //padding: 76px 32px 66px 32px; 이거 였는데 수정함
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // 이거 없어도 똑같음
+  // 왼쪽 정렬 못하겠어용 ㅠ
+  gap: 8px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0px 216px 39px 217px;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 1900px) {
+    padding: 0px 804px 60px 805px;
+    align-items: center;
+    text-align: center;
+  }
+}
+//section2,4가 공통으로 가지고 있어서 밖으로 뺌
+
+.mainTitle {
+  color: var(--txt-yellow);
   font-weight: 500;
   font-size: 14px;
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
 }
+//체크
 
-.SubTitle {
+.subTitle {
   font-weight: 700;
   font-size: 20px;
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1900px) {
     font-size: 24px;
   }
 }
+//체크
 
-.LandingSection1 {
+.homeImg {
+  width: 240px;
+  height: 520px;
+
+  @media screen and (min-width: 768px) {
+    width: 200px;
+    height: 434px;
+  }
+
+  @media screen and (min-width: 1900px) {
+    width: 320px;
+    height: 694px;
+  }
+}
+//체크
+
+.landingSection {
+  position: relative;
+  background-size: 640px 640px;
+  // 율님 말씀대로 cover하면 확대되서 이상하고 contain써도 반응형으로 확대되면 이상하고 그래서 값으로 넣음
+  background-repeat: no-repeat;
+  background-position: 50%;
+  opacity: 0.7;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(217, 217, 217, 0) 0%,
+      rgba(217, 217, 217, 0.4) 30.73%,
+      rgba(217, 217, 217, 0.6) 51.04%,
+      rgba(217, 217, 217, 0.4) 71.87%,
+      rgba(217, 217, 217, 0) 100%
+    );
+    opacity: 0.05;
+  }
+
+  @media screen and (min-width: 768px) {
+    background-size: 744px 744px;
+  }
+  @media screen and (min-width: 1900px) {
+    background-size: 1200px 1200px;
+  }
+  //위에 2개도 background-size 크기 지정해줌
+
+  .sectionContent {
+    padding: 76px 0;
+    // padding: 160px 0 193px;
+  }
+
+  .sectionImgWrap {
+    display: flex;
+    justify-content: center;
+  }
+  //이거 있어도 없어도 똑같은것 같은데 모르겠어요
+}
+
+.landingSection1 {
   width: 100%;
-  height: 100vh;
+  min-height: 812px;
+  //추가
 
   display: flex;
   flex-direction: column;
@@ -37,37 +126,38 @@
 
   position: relative;
 
+  @media screen and (min-width: 768px) {
+    min-height: 1200px;
+  }
+
+  @media screen and (min-width: 1900px) {
+    min-height: 1080px;
+  }
+  //위 2개 추가
+
   & > h2 {
     font-size: 20px;
     font-weight: 400;
-    padding-top: 100px;
-    padding-left: 91px;
-    padding-right: 91px;
-    padding-bottom: 20px;
+    padding: 100px 91px 20px;
 
     @media screen and (min-width: 768px) {
       font-weight: 700;
-      padding-top: 120px;
-      padding-left: 217px;
-      padding-right: 217px;
-      padding-bottom: 32px;
+      padding: 120px 217px 32px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1900px) {
       font-size: 26px;
-      padding-top: 140px;
-      padding-left: 802px;
-      padding-right: 807px;
-      padding-bottom: 29px;
-      z-index: 1;
+      padding: 140px 802px 29px 807px;
     }
+    //위 2개 padding top left bottom right 단축
   }
 
-  .SpanWord {
-    color: #f96868;
+  .spanWord {
+    color: var(--txt-orange);
   }
+  //추가
 
-  .LandingLogo {
+  .landingLogo {
     width: 237px;
     height: 45px;
     margin-bottom: 451px;
@@ -78,21 +168,19 @@
       margin-bottom: 770px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1900px) {
       width: 509px;
       height: 97px;
       margin-bottom: 584px;
-      z-index: 1;
     }
   }
 
-  .LandingBackground {
+  .landingBackground {
     width: 394px;
     height: 330px;
 
     position: absolute;
     top: 241px;
-    z-index: -2;
 
     opacity: 0.7;
 
@@ -102,14 +190,14 @@
       top: 301px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1900px) {
       width: 932px;
       height: 781px;
       top: 95px;
     }
   }
 
-  .BackgroundLinear {
+  .backgroundLinear {
     width: 456px;
     height: 456px;
 
@@ -123,9 +211,7 @@
       rgba(217, 217, 217, 0.4) 71.87%,
       rgba(217, 217, 217, 0) 100%
     );
-    opacity: 0.03;
-
-    z-index: -3;
+    opacity: 0.05;
 
     @media screen and (min-width: 768px) {
       width: 827px;
@@ -133,17 +219,18 @@
       top: 187px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1900px) {
       width: 1080px;
       height: 1080px;
       top: 0px;
     }
   }
 
-  .LandingButton {
+  .landingButton {
     width: 230px;
     height: 48px;
-    z-index: 2;
+    font-weight: 400;
+    //400추가 기본이 700이여서
 
     @media screen and (min-width: 768px) {
       width: 477px;
@@ -152,9 +239,10 @@
   }
 }
 
-.LandingSection2 {
+.landingSection2 {
   width: 100%;
-  height: 100vh;
+  min-height: 812px;
+  //반응형 높이 추가
 
   display: flex;
   flex-direction: column;
@@ -162,69 +250,23 @@
 
   position: relative;
 
+  background-image: url("/assets/landing2.png");
+  //절대경로 안되용 앞에 /슬래시 붙여야 되는데 뭘까용
+
   @media screen and (min-width: 768px) {
-    height: 768px;
+    min-height: 744px;
   }
+  //min-width가 768이면 min-height도 768이여야함
 
-  @media screen and (min-width: 1200px) {
-    height: 1200px;
-  }
-
-  .BackgroundImg {
-    inset: 0;
-    position: absolute;
-    background-image: url("../../assets/landing2.png");
-    background-size: 768px 768px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    opacity: 0.7;
-    z-index: -1;
-
-    @media screen and (min-width: 1200px) {
-      background-size: 1200px 1200px;
-    }
-  }
-
-  .LandingTitle {
-    width: 100%;
-    padding: 76px 32px 66px 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-
-    @media screen and (min-width: 768px) {
-      padding: 74px 216px 39px 217px;
-      align-items: center;
-      text-align: center;
-    }
-
-    @media screen and (min-width: 1200px) {
-      padding: 160px 804px 60px 805px;
-      align-items: center;
-      text-align: center;
-    }
-  }
-
-  & > img {
-    width: 240px;
-    height: 520px;
-
-    @media screen and (min-width: 768px) {
-      width: 200px;
-      height: 434px;
-    }
-
-    @media screen and (min-width: 1200px) {
-      width: 320px;
-      height: 694px;
-    }
+  @media screen and (min-width: 1900px) {
+    min-height: 1200px;
   }
 }
 
-.LandingSection3 {
+.landingSection3 {
   width: 100%;
-  height: 100vh;
+  min-height: 812px;
+  //반응형 높이 추가
 
   display: flex;
   flex-direction: column;
@@ -232,70 +274,48 @@
 
   position: relative;
 
+  background-image: url("/assets/landing3.png");
+  //절대경로 안되용 앞에 /슬래시 붙여야 되는데 뭘까용
+
   @media screen and (min-width: 768px) {
-    height: 768px;
+    min-height: 744px;
+  }
+  //min-width가 768이면 min-height도 768이여야함
+
+  @media screen and (min-width: 1900px) {
+    min-height: 1200px;
   }
 
-  @media screen and (min-width: 1200px) {
-    height: 1200px;
-  }
+  .landingRightTitle {
+    // 클래스 오른쪽 정렬 따로 추가
+    min-width: 311px;
+    // 아래 패딩값 줬는데 텍스트 상자 크기 안줘서 이상해서 100% 였는데 min-width로 반응형으로 바꿈
+    padding: 0px 32px 66px;
 
-  .BackgroundImg {
-    inset: 0;
-    position: absolute;
-    background-image: url("../../assets/landing3.png");
-    background-size: 768px 768px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    opacity: 0.7;
-    z-index: -1;
-
-    @media screen and (min-width: 1200px) {
-      background-size: 1200px 1200px;
-    }
-  }
-
-  .LandingTitle {
-    width: 100%;
-    padding: 76px 32px 66px 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     text-align: right;
     gap: 8px;
-
+  
     @media screen and (min-width: 768px) {
-      padding: 74px 216px 39px 217px;
+      padding: 0px 216px 39px 217px;
       align-items: center;
       text-align: center;
     }
-
-    @media screen and (min-width: 1200px) {
-      padding: 160px 804px 60px 805px;
+  
+    @media screen and (min-width: 1900px) {
+      padding: 0px 804px 60px 805px;
       align-items: center;
       text-align: center;
-    }
-  }
-
-  & > img {
-    width: 240px;
-    height: 520px;
-
-    @media screen and (min-width: 768px) {
-      width: 200px;
-      height: 434px;
-    }
-
-    @media screen and (min-width: 1200px) {
-      width: 320px;
-      height: 694px;
     }
   }
 }
 
-.LandingSection4 {
+.landingSection4 {
   width: 100%;
-  height: 100vh;
+  min-height: 812px;
+  //반응형 높이 추가
 
   display: flex;
   flex-direction: column;
@@ -303,87 +323,40 @@
 
   position: relative;
 
+  background-image: url("/assets/landing4.png");
+  //절대경로 안되용 앞에 /슬래시 붙여야 되는데 뭘까용
+
   @media screen and (min-width: 768px) {
-    height: 768px;
+    min-height: 744px;
   }
+  //min-width가 768이면 min-height도 768이여야함
 
-  @media screen and (min-width: 1200px) {
-    height: 1200px;
-  }
-
-  .BackgroundImg {
-    inset: 0;
-    position: absolute;
-    background-image: url("../../assets/landing4.png");
-    background-size: 768px 768px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    opacity: 0.7;
-    z-index: -1;
-
-    @media screen and (min-width: 1200px) {
-      background-size: 1200px 1200px;
-    }
-  }
-
-  .LandingTitle {
-    width: 100%;
-    padding: 76px 32px 68px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    @media screen and (min-width: 768px) {
-      padding: 74px 216px 39px 217px;
-      align-items: center;
-      text-align: center;
-    }
-
-    @media screen and (min-width: 1200px) {
-      padding: 160px 804px 60px 805px;
-      align-items: center;
-      text-align: center;
-    }
-  }
-
-  & > img {
-    width: 240px;
-    height: 520px;
-
-    @media screen and (min-width: 768px) {
-      width: 200px;
-      height: 434px;
-    }
-
-    @media screen and (min-width: 1200px) {
-      width: 320px;
-      height: 694px;
-    }
+  @media screen and (min-width: 1900px) {
+    min-height: 1200px;
   }
 }
 
-.CenterLine {
+.centerLine {
   position: absolute;
-  top: 1050px;
+  top: 1029px;
   width: 117px;
   height: 2133px;
   background-image: linear-gradient(
-    #030615,
-    #051d31,
-    #051e32,
-    #051c30,
-    #030b1c
+    180deg,
+    #030615 0%,
+    #051d31 42.67%,
+    #051e32 53.12%,
+    #051c30 74.27%,
+    #030b1c 100%
   );
 
   @media screen and (min-width: 768px) {
-    top: 1400px;
+    top: 1394px;
     height: 1928px;
   }
 
-  @media screen and (min-width: 1200px) {
-    top: 1400px;
+  @media screen and (min-width: 1900px) {
     width: 187px;
     height: 3091px;
   }
 }
-
