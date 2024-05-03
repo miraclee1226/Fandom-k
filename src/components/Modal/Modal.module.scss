@@ -1,0 +1,186 @@
+.xIcon {
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    opacity: 0.3;
+  }
+}
+
+/* Credit Warning Modal */
+
+.creditWarningModal {
+  padding: 24px;
+  padding-bottom: 32px;
+  width: 343px;
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    span {
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 26px;
+
+      & > span {
+        color: var(--brand-orange);
+      }
+    }
+  }
+
+  .footer {
+    margin-top: 31px;
+  }
+}
+
+/* Credit Charge Modal */
+
+.creditChargeModal {
+  padding: 24px 16px 32px;
+  width: 327px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .main {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    margin-top: 24px;
+  }
+
+  .footer {
+    margin-top: 24px;
+  }
+}
+
+.chargeItem {
+  display: flex;
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
+  background-color: black;
+  border-radius: 8px;
+
+  &.isSelected {
+    border: 1px solid var(--brand-orange);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--brand-orange);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid rgba($color: #f1eef9, $alpha: 1);
+  }
+
+  span {
+    flex-grow: 1;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 26px;
+    user-select: none;
+  }
+}
+
+.supportModal {
+  padding: 24px 16px 32px;
+  width: 327px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 24px;
+
+    img {
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .titleContainer {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      width: 158px;
+      text-align: left;
+      gap: 6px;
+
+      .title {
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 18px;
+        color: rgba($color: white, $alpha: 0.5);
+      }
+
+      .subTitle {
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+    }
+
+    .inputContainer {
+      margin-top: 24px;
+      position: relative;
+
+      input {
+        padding: 16px;
+        border: 1px solid white;
+        background-color: #272f3d;
+        border-radius: 8px;
+        display: block;
+        width: 100%;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 26px;
+        color: white;
+        outline: none;
+
+        &.error {
+          border: 1px solid #ff3b3b;
+        }
+      }
+
+      .creditIcon {
+        position: absolute;
+        bottom: 15px;
+        right: 14px;
+      }
+    }
+
+    .error {
+      color: #ff2626;
+      font-weight: 500;
+      font-size: 1.2rem;
+      width: 100%;
+      margin-top: 6px;
+    }
+  }
+
+  .footer {
+    margin-top: 24px;
+  }
+}
