@@ -95,12 +95,12 @@
   background-repeat: no-repeat;
   background-position: 50%;
   .sectionContent {
-    padding: 76px 0px;
+    padding: 76px 0;
     @media screen and (min-width: $tablet) {
-      padding: 74px 0px;
+      padding: 74px 0;
     }
     @media screen and (min-width: $desktop) {
-      padding: 160px 0px;
+      padding: 160px 0;
     }
   }
   .sectionImgWrap {
@@ -126,15 +126,15 @@
     min-height: 1080px;
   }
   & > h2 {
-    padding: 100px 0px 20px;
+    padding: 100px 0 20px;
     font-size: 2rem;
     font-weight: 400;
     @media screen and (min-width: $tablet) {
-      padding: 120px 0px 32px;
+      padding: 120px 0 32px;
       font-weight: 700;
     }
     @media screen and (min-width: $desktop) {
-      padding: 140px 0px 29px;
+      padding: 140px 0 29px;
       font-size: 2.6rem;
     }
   }
@@ -198,7 +198,7 @@
       height: 827px;
     }
     @media screen and (min-width: $desktop) {
-      top: 0px;
+      top: 0;
       width: 1080px;
       height: 1080px;
     }
@@ -240,13 +240,13 @@
     text-align: right;
     @media screen and (min-width: $tablet) {
       align-items: center;
-      padding: 0px 0px 39px;
+      padding: 0 0 39px;
       text-align: center;
     }
 
     @media screen and (min-width: $desktop) {
       align-items: center;
-      padding: 0px 0px 60px;
+      padding: 0 0 60px;
       text-align: center;
     }
   }

@@ -1,9 +1,10 @@
 @import "/src/styles/mixin_var.scss";
 
-/*list page 공통*/
+/* list page 공통 */
 .section {
   padding: 0 24px;
   @media screen and (min-width: $desktop) {
+    margin: 0 auto;
     min-width: 1200px;
     margin: 0 auto;
     padding: 0;
@@ -11,8 +12,8 @@
   .sectionTitle {
     margin-bottom: 16px;
     font-size: 1.6rem;
-    line-height: 2.6rem;
     font-weight: 700;
+    line-height: 2.6rem;
     color: var(--txt-white);
 
     @media screen and (min-width: $desktop) {
@@ -23,7 +24,7 @@
   }
 }
 
-/*supportSection*/
+/* supportSection */
 .slideContainer {
   position: relative;
   @media screen and (min-width: $desktop) {
@@ -35,7 +36,6 @@
   -ms-user-select: none;
   user-select: none;
   .supportLists {
-    box-sizing: border-box;
     display: flex;
     gap: 8px;
     width: 100%;
@@ -82,8 +82,8 @@
 /* ChartSection */
 
 .sectionContainer {
-  width: 327px;
   margin-bottom: 59px;
+  width: 327px;
   @media screen and (min-width: $tablet) {
     margin-bottom: 330px;
   }
@@ -102,26 +102,26 @@
     }
     .voteButton {
       display: flex;
+      gap: 5px;
       align-items: center;
       justify-content: center;
-      gap: 5px;
       width: 128px;
       height: 32px;
-      border-radius: 3px;
       font-size: 1.3rem;
       font-weight: 700;
       line-height: 26rem;
-      letter-spacing: 0.02rem;
       color: var(--white);
+      letter-spacing: 0.02rem;
+      border-radius: 3px;
       @media screen and (min-width: $desktop) {
-        margin-right: 0px;
+        margin-right: 0;
       }
     }
   }
   .sectionDetail {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     width: 375px;
     @media screen and (min-width: $tablet) {
       width: 744px;
@@ -130,24 +130,24 @@
       width: 1248px;
     }
     .tab {
-      width: 327px;
       margin-bottom: 16px;
+      width: 327px;
       @media screen and (min-width: $tablet) {
-        width: 696px;
         margin-bottom: 24px;
+        width: 696px;
       }
       @media screen and (min-width: $desktop) {
-        width: 1200px;
         margin-bottom: 24px;
+        width: 1200px;
       }
     }
     .chartList {
       display: flex;
+      gap: 17px;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 17px;
-      padding: 0 24px;
       margin-bottom: 33px;
+      padding: 0 24px;
       @media screen and (min-width: $tablet) {
         margin-bottom: 27px;
       }

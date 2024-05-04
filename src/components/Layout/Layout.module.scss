@@ -1,8 +1,8 @@
 @import "styles/mixin_var.scss";
 .view {
   display: flex;
-  flex-direction: column;
   gap: 80px;
+  flex-direction: column;
   @media screen and (max-width: $desktop) {
     gap: 60px;
   }
