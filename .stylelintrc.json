@@ -8,6 +8,7 @@
   "rules": {
     "at-rule-no-unknown": null,
     "declaration-block-no-shorthand-property-overrides": null,
+    "no-descending-specificity": null,
     "order/properties-order": [
       "display",
       "grid",

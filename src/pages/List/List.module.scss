@@ -5,9 +5,8 @@
   padding: 0 24px;
   @media screen and (min-width: $desktop) {
     margin: 0 auto;
-    min-width: 1200px;
-    margin: 0 auto;
     padding: 0;
+    min-width: 1200px;
   }
   .sectionTitle {
     margin-bottom: 16px;
@@ -30,6 +29,7 @@
   @media screen and (min-width: $desktop) {
     max-width: $desktop;
   }
+
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -38,9 +38,9 @@
   .supportLists {
     display: flex;
     gap: 8px;
-    width: 100%;
-    overflow-x: scroll;
     padding: 0 0 10px;
+    overflow-x: scroll;
+    width: 100%;
     @media screen and (min-width: $tablet) {
       gap: 16px;
     }
@@ -102,7 +102,6 @@
       color: var(--white);
       letter-spacing: 0.02rem;
       border-radius: 3px;
-
     }
   }
   .sectionDetail {
@@ -132,8 +131,8 @@
         margin-bottom: 27px;
       }
       @media screen and (min-width: $desktop) {
-        padding: 0;
         margin-bottom: 51px;
+        padding: 0;
       }
     }
     .borderButton {

@@ -4,7 +4,7 @@ import Navbar from "components/Navbar/Navbar";
 import Layout from "components/Layout/Layout";
 import Button from "components/Button";
 import Card from "components/Card";
-import ChartSection from "pages/ListPage/ChartSection";
+import ChartSection from "pages/List/ChartSection";
 import creditIcon from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
 
@@ -32,7 +32,7 @@ function CreditSection() {
         <div className={styles.leftContent}>
           <span>내 크레딧</span>
           <div className={styles.credit}>
-            <img src={CreditIcon} alt="credit" />
+            <img src={creditIcon} alt="credit" />
             <span>{(36000).toLocaleString()}</span>
           </div>
         </div>

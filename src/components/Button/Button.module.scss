@@ -25,6 +25,11 @@
     width: 100%;
   }
 
+  &:focus,
+  &:hover {
+    background-image: linear-gradient(90deg, #fd6a5f, #fc4789);
+  }
+
   &:disabled {
     background-color: var(--btn-disabled);
     background-image: none;
@@ -33,11 +38,6 @@
     &:hover {
       background-image: none;
     }
-  }
-
-  &:focus,
-  &:hover {
-    background-image: linear-gradient(90deg, #fd6a5f, #fc4789);
   }
 }
 

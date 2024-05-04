@@ -5,10 +5,10 @@ import Tab from "components/Tab";
 import ChartItem from "components/ChartItem";
 // Design
 import { ReactComponent as ChartIcon } from "assets/icons/chart.svg";
-import styles from "pages/List.module.scss";
-// MockData
 import femaleData from "mockData/femaleData";
 import maleData from "mockData/maleData";
+import styles from "./List.module.scss";
+// MockData
 
 export default function ChartSection() {
   const [sortedData, setSortedData] = useState(
