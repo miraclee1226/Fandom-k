@@ -63,9 +63,11 @@
 .sectionBGImg {
   position: absolute;
   z-index: -3;
-  width: 640px;
-  min-height: 640px;
+  width: 375px;
   opacity: 0.7;
+  @media screen and (min-width: 560px) {
+    width: 560px;
+  }
   &::before {
     position: absolute;
     background: linear-gradient(
@@ -182,8 +184,8 @@
     position: absolute;
     top: 178px;
     z-index: -1;
-    width: 456px;
-    height: 456px;
+    width: 375px;
+    height: 375px;
     background: linear-gradient(
       90deg,
       rgba(217, 217, 217, 0) 0%,
@@ -195,8 +197,8 @@
     opacity: 0.05;
     @media screen and (min-width: $tablet) {
       top: 187px;
-      width: 827px;
-      height: 827px;
+      width: $tablet;
+      height: $tablet;
     }
     @media screen and (min-width: $desktop) {
       top: 0;
