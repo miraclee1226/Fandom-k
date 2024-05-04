@@ -2,8 +2,8 @@ import { useState } from "react";
 // Component
 import VoteButton from "components/Button/Button";
 import BorderButton from "components/Button/BorderButton";
-import Tab from "components/Tab/Tab";
-import ChartItem from "components/ChartItem/ChartItem";
+import Tab from "components/Tab";
+import ChartItem from "components/ChartItem";
 // Design
 import { ReactComponent as ChartIcon } from "assets/icons/chart.svg";
 import styles from "pages/List.module.scss";

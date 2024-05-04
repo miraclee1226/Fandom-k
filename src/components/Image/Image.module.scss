@@ -1,4 +1,4 @@
-@import "../../../styles/mixin_var.scss";
+@import "styles/mixin_var.scss";
 
 .rectangleImage {
   position: relative;
@@ -25,3 +25,29 @@
     border-radius: 8px;
   }
 }
+
+.roundImage {
+  border: 1px solid var(--brand-orange);
+  padding: 5px;
+  border-radius: 50%;
+  overflow: hidden;
+  &.sm {
+    width: 70px;
+    height: 70px;
+  }
+  &.md {
+    width: 100px;
+    height: 100px;
+  }
+  &.lg {
+    width: 128px;
+    height: 128px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
