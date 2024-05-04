@@ -26,15 +26,16 @@
 /* supportSection */
 .slideContainer {
   position: relative;
-  @media screen and (min-width: $desktop) {
-    max-width: $desktop;
-  }
+  margin: 0 auto;
 
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  @media screen and (min-width: $desktop) {
+    max-width: $desktop;
+  }
   .supportLists {
     display: flex;
     gap: 8px;
@@ -63,7 +64,7 @@
 
   .sliderBtn {
     display: none;
-    @media screen and (min-width: $desktop) {
+    @media screen and (min-width: calc($desktop + 78px * 2 + 80px)) {
       display: block;
       position: absolute;
       top: 50%;
@@ -147,6 +148,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 16px;
   padding: 20px;
   border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
   background-color: black;
@@ -154,6 +156,7 @@
   border-radius: 8px;
 
   @media screen and (min-width: $tablet) {
+    margin-top: 12px;
     padding: 36px 64px;
   }
 
@@ -161,6 +164,10 @@
     display: flex;
     gap: 8px;
     flex-direction: column;
+
+    @media screen and (min-width: $tablet) {
+      gap: 14px;
+    }
 
     & > span {
       font-size: 1.2rem;
