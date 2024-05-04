@@ -1,6 +1,6 @@
+import creditImg from "assets/credit.png";
+import DefaultButton from "components/Button/Button";
 import styles from "./SupportCard.module.scss";
-import creditImg from "../../assets/credit.png";
-import DefaultButton from "../Button/Button";
 
 export default function SupportCard({ donation }) {
   return (

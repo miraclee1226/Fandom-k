@@ -3,7 +3,7 @@ import donationMockData from "mockData/donations.json";
 import Navbar from "components/Navbar/Navbar";
 import Layout from "components/Layout/Layout";
 import Button from "components/Button";
-import SupportCard from "components/Card/SupportCard";
+import Card from "components/Card";
 import ChartSection from "pages/ListPage/ChartSection";
 import creditIcon from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
@@ -11,6 +11,7 @@ import styles from "./List.module.scss";
 export default function List() {
   return (
     <>
+      <Navbar />
       <Layout>
         <CreditSection />
         <SupportSection />
@@ -88,7 +89,7 @@ function SupportSection() {
               {donations.map((donation) => {
                 return (
                   <li key={donation.idolId} className={styles.supportList}>
-                    <SupportCard donation={donation} />
+                    <Card.Support donation={donation} />
                   </li>
                 );
               })}

@@ -8,14 +8,14 @@
   }
   .sectionTitle {
     margin-bottom: 16px;
-    padding: 0 24px;
     font-size: 1.6rem;
     line-height: 2.6rem;
     font-weight: 700;
     color: var(--txt-white);
+    padding: 0 24px;
     @media screen and (min-width: $desktop) {
-      margin-bottom: 24px;
       padding: 0;
+      margin-bottom: 24px;
       font-size: 2.4rem;
       line-height: 2.6rem;
     }
@@ -48,7 +48,13 @@
       padding: 0 0 10px;
     }
     .supportList {
-      flex: 1 0 calc(25% - (24px * 3 / 4));
+      flex: 1 0 calc(50% - (24px * 3 / 4));
+      @media screen and (min-width: $tablet) {
+        flex: 1 0 calc(40% - (24px * 3 / 4));
+      }
+      @media screen and (min-width: $desktop) {
+        flex: 1 0 calc(25% - (24px * 3 / 4));
+      }
     }
     &::-webkit-scrollbar {
       display: none;
