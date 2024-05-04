@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "pages/Landing";
-import List from "pages/List/List";
-import MyPage from "pages/MyPage/MyPage";
+import List from "pages/List";
+import MyPage from "pages/MyPage";
 import "styles/common.scss";
 import "styles/reset.scss";
 

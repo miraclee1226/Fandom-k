@@ -1,4 +1,4 @@
-import SupportCard from "./SupportCard/SupportCard";
+import SupportCard from "./SupportCard";
 
 const Card = Object.assign({
   Support: SupportCard,
