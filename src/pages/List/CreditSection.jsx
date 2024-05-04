@@ -1,5 +1,5 @@
 import Button from "components/Button";
-import creditIcon from "assets/icons/credit.svg";
+import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
 
 export default function CreditSection() {
@@ -13,7 +13,7 @@ export default function CreditSection() {
         <div className={styles.leftContent}>
           <span>내 크레딧</span>
           <div className={styles.credit}>
-            <img src={creditIcon} alt="credit" />
+            <CreditIcon width={24} height={24} />
             <span>{(36000).toLocaleString()}</span>
           </div>
         </div>
