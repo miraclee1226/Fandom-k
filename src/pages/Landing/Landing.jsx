@@ -1,44 +1,30 @@
-import { useNavigate } from "react-router-dom";
 import Button from "components/Button";
 import logo from "assets/logo.png";
-import landing1 from "assets/landing1.png";
-import landing2 from "assets/landing2.png";
-import landing3 from "assets/landing3.png";
-import landing4 from "assets/landing4.png";
-import home1 from "assets/Home-1.png";
-import home2 from "assets/Home-2.png";
-import home3 from "assets/Home-3.png";
+import LANDING_IMG from "assets/landing-img";
 import styles from "pages/Landing/Landing.module.scss";
 
-export default function Landing({ childeren, onClick }) {
-  const navigate = useNavigate();
-
+const Landing = () => {
   return (
-    <div className={styles.landingView}>
+    <div className={styles.view}>
       <div className={styles.centerLine}></div>
-      <section className={styles.landingSection1}>
+      <section className={styles.thumbnail}>
         <h2>
           내가 좋아하는 아이돌을
           <br />
-          가장 <span className={styles.spanWord}>쉽게 덕질</span> 하는 방법
+          가장 <span className={styles.highlight}>쉽게 덕질</span> 하는 방법
         </h2>
-        <img className={styles.landingLogo} src={logo} alt="로고" />
+        <img className={styles.thumbnailLogo} src={logo} alt="로고" />
         <img
-          className={styles.landingBackground}
-          src={landing1}
+          className={styles.thumbnailBackground}
+          src={LANDING_IMG.THUMBNAIL}
           alt="배경 이미지"
         />
-        <div className={styles.backgroundLinear}></div>
-        <Button
-          className={styles.landingButton}
-          onClick={() => {
-            navigate("/list");
-          }}
-        >
+        <div className={styles.thumbnailLinear}></div>
+        <Button.Link className={styles.startButton} to={"/list"}>
           지금 시작하기
-        </Button>
+        </Button.Link>
       </section>
-      <section className={`${styles.landingSection} ${styles.landingSection2}`}>
+      <section className={`${styles.commonSection} ${styles.firstSection}`}>
         <div className={styles.sectionContent}>
           <div className={styles.landingTitle}>
             <span className={styles.mainTitle}>후원하기</span>
@@ -49,16 +35,20 @@ export default function Landing({ childeren, onClick }) {
             </p>
           </div>
           <div className={styles.sectionImgWrap}>
-            <img className={styles.homeImg} src={home1} alt="홈 사진1" />
             <img
-              className={styles.backgroundImg}
-              src={landing2}
+              className={styles.mobileImg}
+              src={LANDING_IMG.MOBILE1}
+              alt="홈 사진1"
+            />
+            <img
+              className={styles.sectionBGImg}
+              src={LANDING_IMG.SECTION1}
               alt="배경 사진1"
             />
           </div>
         </div>
       </section>
-      <section className={`${styles.landingSection} ${styles.landingSection3}`}>
+      <section className={`${styles.commonSection} ${styles.secondSection}`}>
         <div className={styles.sectionContent}>
           <div className={styles.landingRightTitle}>
             <span className={styles.mainTitle}>이달의 아티스트</span>
@@ -69,16 +59,20 @@ export default function Landing({ childeren, onClick }) {
             </p>
           </div>
           <div className={styles.sectionImgWrap}>
-            <img className={styles.homeImg} src={home2} alt="홈 사진2" />
             <img
-              className={styles.backgroundImg}
-              src={landing3}
+              className={styles.mobileImg}
+              src={LANDING_IMG.MOBILE2}
+              alt="홈 사진2"
+            />
+            <img
+              className={styles.sectionBGImg}
+              src={LANDING_IMG.SECTION2}
               alt="배경 사진2"
             />
           </div>
         </div>
       </section>
-      <section className={`${styles.landingSection} ${styles.landingSection4}`}>
+      <section className={`${styles.commonSection} ${styles.thirdSection}`}>
         <div className={styles.sectionContent}>
           <div className={styles.landingTitle}>
             <span className={styles.mainTitle}>나만의 아티스트</span>
@@ -89,10 +83,14 @@ export default function Landing({ childeren, onClick }) {
             </p>
           </div>
           <div className={styles.sectionImgWrap}>
-            <img className={styles.homeImg} src={home3} alt="홈 사진3" />
             <img
-              className={styles.backgroundImg}
-              src={landing4}
+              className={styles.mobileImg}
+              src={LANDING_IMG.MOBILE3}
+              alt="홈 사진3"
+            />
+            <img
+              className={styles.sectionBGImg}
+              src={LANDING_IMG.SECTION3}
               alt="배경 사진3"
             />
           </div>
@@ -100,4 +98,6 @@ export default function Landing({ childeren, onClick }) {
       </section>
     </div>
   );
-}
+};
+
+export default Landing;

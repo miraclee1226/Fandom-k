@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-.landingView {
+.view {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -46,7 +46,7 @@
   }
 }
 
-.homeImg {
+.mobileImg {
   z-index: -1;
   width: 240px;
   height: 520px;
@@ -60,7 +60,7 @@
   }
 }
 
-.backgroundImg {
+.sectionBGImg {
   position: absolute;
   z-index: -3;
   width: 640px;
@@ -90,7 +90,7 @@
   }
 }
 
-.landingSection {
+.commonSection {
   position: relative;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -112,7 +112,7 @@
   }
 }
 
-.landingSection1 {
+.thumbnail {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -139,11 +139,11 @@
     }
   }
 
-  .spanWord {
+  .highlight {
     color: var(--txt-orange);
   }
 
-  .landingLogo {
+  .thumbnailLogo {
     margin-bottom: 451px;
     width: 237px;
     height: 45px;
@@ -159,7 +159,7 @@
     }
   }
 
-  .landingBackground {
+  .thumbnailBackground {
     position: absolute;
     top: 241px;
     z-index: -1;
@@ -178,9 +178,10 @@
     }
   }
 
-  .backgroundLinear {
+  .thumbnailLinear {
     position: absolute;
     top: 178px;
+    z-index: -1;
     width: 456px;
     height: 456px;
     background: linear-gradient(
@@ -204,7 +205,7 @@
     }
   }
 
-  .landingButton {
+  .startButton {
     width: 230px;
     height: 48px;
     font-weight: 400;
@@ -215,7 +216,7 @@
   }
 }
 
-.landingSection2 {
+.firstSection {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -223,7 +224,7 @@
   min-height: 812px;
 }
 
-.landingSection3 {
+.secondSection {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -252,7 +253,7 @@
   }
 }
 
-.landingSection4 {
+.thirdSection {
   display: flex;
   align-items: center;
   flex-direction: column;
