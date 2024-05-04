@@ -1,7 +1,6 @@
 import { useState } from "react";
 // Component
-import VoteButton from "components/Button/Button";
-import BorderButton from "components/Button/BorderButton";
+import Button from "components/Button";
 import Tab from "components/Tab";
 import ChartItem from "components/ChartItem";
 // Design
@@ -27,10 +26,10 @@ export default function ChartSection() {
       <div className={styles.sectionContainer}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>이달의 차트</h2>
-          <VoteButton className={styles.voteButton}>
+          <Button.Round className={styles.voteButton}>
             <ChartIcon />
             차트 투표하기
-          </VoteButton>
+          </Button.Round>
         </div>
         <div className={styles.sectionDetail}>
           <div className={styles.tab}>
@@ -41,7 +40,7 @@ export default function ChartSection() {
               <ChartItem key={data.id} data={data} />
             ))}
           </ul>
-          <BorderButton className={styles.borderButton}>더보기</BorderButton>
+          <Button.Border className={styles.borderButton}>더보기</Button.Border>
         </div>
       </div>
     </section>
