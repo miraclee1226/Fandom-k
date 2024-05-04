@@ -1,3 +1,5 @@
+@import "/src/styles/mixin_var.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -8,13 +10,10 @@
   justify-content: space-between;
   padding: 18px 23px 5px;
   width: 100%;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: $tablet) {
     padding: 29px 24px;
   }
-  @media screen and (min-width: 1000px) {
-    padding: 27px 200px;
-  }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: $desktop) {
     padding: 24px 360px;
   }
   div {
@@ -23,15 +22,11 @@
   .navbarLogo {
     width: 108px;
     height: 21px;
-    @media screen and (min-width: 744px) {
+    @media screen and (min-width: $tablet) {
       width: 120px;
       height: 23px;
     }
-    @media screen and (min-width: 1000px) {
-      width: 144px;
-      height: 27px;
-    }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: $desktop) {
       width: 168px;
       height: 32px;
     }
