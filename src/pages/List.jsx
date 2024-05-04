@@ -32,7 +32,7 @@ function CreditSection() {
         <div className={styles.leftContent}>
           <span>내 크레딧</span>
           <div className={styles.credit}>
-            <img src={creditIcon} alt="credit" />
+            <img src={CreditIcon} alt="credit" />
             <span>{(36000).toLocaleString()}</span>
           </div>
         </div>

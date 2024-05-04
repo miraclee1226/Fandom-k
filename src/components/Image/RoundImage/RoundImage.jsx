@@ -1,6 +1,6 @@
-import styles from "components/Image/RoundImage/RoundImage.module.scss";
-import IdolImg from "assets/Image_Idol.png";
 import classNames from "classnames/bind";
+import styles from "components/Image/Image.module.scss";
+import IdolImg from "assets/Image_Idol.png";
 
 const cn = classNames.bind(styles);
 

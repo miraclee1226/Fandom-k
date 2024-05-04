@@ -1,16 +1,16 @@
-@import "../../styles/mixin_var.scss";
+@import "/src/styles/mixin_var.scss";
 
 .chartItemContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 327px;
+  width: 100%;
   height: 70px;
   @media screen and (min-width: $tablet) {
-    width: 700px;
+    width: 100%;
   }
   @media screen and (min-width: $desktop) {
-    width: 588px
+    width: 588px;
   }
   .content {
     display: flex;

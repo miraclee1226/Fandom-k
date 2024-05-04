@@ -1,6 +1,6 @@
-import IdolImg from "assets/Image_Idol.png";
-import styles from "components/Image/RectangleImage/RectangleImage.module.scss";
 import classNames from "classnames/bind";
+import styles from "components/Image/Image.module.scss";
+import IdolImg from "assets/Image_Idol.png";
 
 const cn = classNames.bind(styles);
 
