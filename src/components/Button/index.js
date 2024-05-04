@@ -6,7 +6,7 @@ import RadioButton from "./RadioButton";
 import RoundButton from "./RoundButton";
 import TextButton from "./TextButton";
 
-const Button = Object.assign({
+const Button = Object.assign(DefaultButton, {
   Border: BorderButton,
   Arrow: ArrowButton,
   Round: RoundButton,
