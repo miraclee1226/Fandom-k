@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { ReactComponent as RadioIcon } from "assets/icons/radio.svg";
 import styles from "../Button.module.scss";
-import { ReactComponent as RadioIcon } from "../../../assets/icons/radio.svg";
 
 const DEFAULT_FILL = "#8C92AB";
 

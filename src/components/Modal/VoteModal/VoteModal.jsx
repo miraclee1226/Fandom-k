@@ -1,10 +1,10 @@
 import { useState } from "react";
+import classNames from "classnames/bind";
+import Button from "components/Button";
+import Image from "components/Image";
 import { addCommas } from "utils/commas";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
-import Button from "components/Button";
-import RoundImage from "components/Image/RoundImage/RoundImage";
 import femaleData from "mockData/femaleData";
-import classNames from "classnames/bind";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 
@@ -74,7 +74,7 @@ function VoteItem({ data, checkedValue, handleRadioChange }) {
     <div className={styles.voteItem}>
       <div className={styles.content}>
         <div className={profileClasses}>
-          <RoundImage size="sm" />
+          <Image.Round size="sm" />
         </div>
         <span className={styles.rank}>{data.rank}</span>
         <span className={styles.name}>

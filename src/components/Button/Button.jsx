@@ -8,7 +8,7 @@ export default function DefaultButton({
   onClick,
   size = "md",
   disabled = false,
-  className,
+  className = "",
 }) {
   const buttonClasses = cn({
     [styles.defaultButton]: true,

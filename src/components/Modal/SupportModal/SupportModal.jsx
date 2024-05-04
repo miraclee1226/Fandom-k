@@ -1,8 +1,8 @@
 import { useState } from "react";
+import Button from "components/Button";
+import { addCommas, removeCommas } from "utils/commas";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
-import { addCommas, removeCommas } from "utils/commas";
-import Button from "components/Button";
 import idolImg from "assets/Image_Idol.png";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";

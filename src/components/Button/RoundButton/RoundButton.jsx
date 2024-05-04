@@ -1,6 +1,6 @@
 import styles from "../Button.module.scss";
 
-export default function RoundButton({ children, onClick, className }) {
+export default function RoundButton({ children, onClick, className = "" }) {
   return (
     <>
       <button
