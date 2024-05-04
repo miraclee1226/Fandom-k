@@ -76,7 +76,7 @@ function NumberInput({ placeholder, handleInputChange, className }) {
     if (value === "") setFormatteNumber("");
     else setFormatteNumber(addCommas(+value));
 
-    handleInputChange(Number(removeCommas(value)));
+    handleInputChange(+removeCommas(value));
   };
 
   return (

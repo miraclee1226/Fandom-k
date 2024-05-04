@@ -3,60 +3,12 @@ import { addCommas } from "utils/commas";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
 import Button from "components/Button";
 import RoundImage from "components/Image/RoundImage/RoundImage";
+import femaleData from "mockData/femaleData";
 import classNames from "classnames/bind";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 
-const MOCK_DATA = [
-  {
-    id: 0,
-    name: "장원영1",
-    group: "아이브1",
-    profilePicture: "https://example.com/profile.jpg",
-    totalVotes: 10000,
-    rank: 1,
-  },
-  {
-    id: 1,
-    name: "장원영2",
-    group: "아이브2",
-    profilePicture: "https://example.com/profile.jpg",
-    totalVotes: 9000,
-    rank: 2,
-  },
-  {
-    id: 2,
-    name: "장원영3",
-    group: "아이브3",
-    profilePicture: "https://example.com/profile.jpg",
-    totalVotes: 8000,
-    rank: 3,
-  },
-  {
-    id: 3,
-    name: "장원영4",
-    group: "아이브4",
-    profilePicture: "https://example.com/profile.jpg",
-    totalVotes: 7000,
-    rank: 4,
-  },
-  {
-    id: 4,
-    name: "장원영5",
-    group: "아이브5",
-    profilePicture: "https://example.com/profile.jpg",
-    totalVotes: 6000,
-    rank: 5,
-  },
-  {
-    id: 5,
-    name: "장원영6",
-    group: "아이브6",
-    profilePicture: "https://example.com/profile.jpg",
-    totalVotes: 5000,
-    rank: 6,
-  },
-];
+const MOCK_DATA = femaleData.slice(0, 6);
 
 const cn = classNames.bind(styles);
 
