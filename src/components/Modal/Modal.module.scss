@@ -1,0 +1,293 @@
+* {
+  box-sizing: border-box;
+}
+
+.xIcon {
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    opacity: 0.3;
+  }
+}
+
+/* Credit Warning Modal */
+
+.creditWarningModal {
+  padding: 24px;
+  padding-bottom: 32px;
+  width: 343px;
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    span {
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 2.6rem;
+
+      & > span {
+        color: var(--brand-orange);
+      }
+    }
+  }
+
+  .footer {
+    margin-top: 31px;
+  }
+}
+
+/* Credit Charge Modal */
+
+.creditChargeModal {
+  padding: 24px 16px 32px;
+  width: 327px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .main {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    margin-top: 24px;
+  }
+
+  .footer {
+    margin-top: 24px;
+  }
+}
+
+.chargeItem {
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
+  background-color: black;
+  border-radius: 8px;
+
+  &.isChecked {
+    border: 1px solid var(--brand-orange);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--brand-orange);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid rgba($color: #f1eef9, $alpha: 1);
+  }
+
+  span {
+    flex-grow: 1;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2.6rem;
+    user-select: none;
+  }
+}
+
+.supportModal {
+  padding: 24px 16px 32px;
+  width: 327px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 24px;
+
+    img {
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .titleContainer {
+      display: flex;
+      gap: 6px;
+      flex-direction: column;
+      margin-top: 10px;
+      width: 158px;
+      text-align: left;
+
+      .title {
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1.8rem;
+        color: rgba($color: white, $alpha: 0.5);
+      }
+
+      .subTitle {
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+    }
+
+    .inputContainer {
+      margin-top: 24px;
+      position: relative;
+
+      input {
+        display: block;
+        padding: 16px;
+        border: 1px solid white;
+        outline: none;
+        width: 100%;
+        background-color: #272f3d;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 2.6rem;
+        color: white;
+        border-radius: 8px;
+
+        &.error {
+          border: 1px solid #ff3b3b;
+        }
+      }
+
+      .creditIcon {
+        position: absolute;
+        right: 14px;
+        bottom: 15px;
+      }
+    }
+
+    .error {
+      margin-top: 6px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #ff2626;
+    }
+  }
+
+  .footer {
+    margin-top: 24px;
+  }
+}
+
+/* Vote Modal */
+
+.voteModal {
+  padding: 24px 24px 12px;
+  width: 525px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  .main {
+    margin-top: 19px;
+  }
+
+  .footer {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .voteBtn {
+      height: 42px;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 500;
+      span {
+        color: var(--brand-orange);
+      }
+    }
+  }
+}
+
+.voteItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(white, 0.1);
+
+  .content {
+    display: grid;
+    grid-template-columns: 70px repeat(2, max-content);
+    grid-template-rows: repeat(2, 35px);
+
+    .profile {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      position: relative;
+    }
+
+    .profile.isChecked::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      background:
+        url("../../assets/icons/Checkmark.svg") no-repeat center,
+        linear-gradient(
+          271.36deg,
+          rgba(249, 110, 104, 0.5) -9.84%,
+          rgba(254, 87, 143, 0.5) 107.18%
+        );
+      background-size: 45.45% 45.45%;
+    }
+
+    .rank {
+      align-self: center;
+      padding: 0 12px;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: rgba($color: #f96d69, $alpha: 0.6);
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      justify-self: center;
+    }
+
+    .name {
+      align-self: end;
+      margin-bottom: 2px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .votes {
+      align-self: start;
+      margin-top: 2px;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: rgba($color: white, $alpha: 0.6);
+      grid-column: 3;
+      grid-row: 2;
+    }
+  }
+}

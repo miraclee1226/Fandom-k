@@ -2,17 +2,20 @@
 
 /* list page 공통 */
 .section {
+  padding: 0 24px;
   @media screen and (min-width: $desktop) {
     margin: 0 auto;
     min-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
   }
   .sectionTitle {
     margin-bottom: 16px;
-    padding: 0 24px;
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 2.6rem;
     color: var(--txt-white);
+
     @media screen and (min-width: $desktop) {
       margin-bottom: 24px;
       font-size: 2.4rem;
@@ -24,6 +27,9 @@
 /* supportSection */
 .slideContainer {
   position: relative;
+  @media screen and (min-width: $desktop) {
+    max-width: $desktop;
+  }
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -32,16 +38,23 @@
   .supportLists {
     display: flex;
     gap: 8px;
-    padding: 0 24px 10px;
-    overflow-x: scroll;
     width: 100%;
-    box-sizing: border-box;
+    overflow-x: scroll;
+    padding: 0 0 10px;
     @media screen and (min-width: $tablet) {
       gap: 16px;
     }
     @media screen and (min-width: $desktop) {
       gap: 24px;
-      padding-bottom: 10px;
+    }
+    .supportList {
+      flex: 1 0 calc(50% - (24px * 3 / 4));
+      @media screen and (min-width: $tablet) {
+        flex: 1 0 calc(40% - (24px * 3 / 4));
+      }
+      @media screen and (min-width: $desktop) {
+        flex: 1 0 calc(25% - (24px * 3 / 4));
+      }
     }
     &::-webkit-scrollbar {
       display: none;
@@ -148,21 +161,20 @@
   }
 }
 
-
 /* Credit Section */
 
 .creditSection {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 36px 64px;
+  padding: 20px;
   border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
   background-color: black;
   color: white;
   border-radius: 8px;
 
-  @media screen and (max-width: $tablet) {
-    padding: 20px;
+  @media screen and (min-width: $tablet) {
+    padding: 36px 64px;
   }
 
   .leftContent {
@@ -171,13 +183,13 @@
     flex-direction: column;
 
     & > span {
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       font-weight: 400;
       color: rgba($color: white, $alpha: 0.6);
       user-select: none;
 
-      @media screen and (max-width: $tablet) {
-        font-size: 1.2rem;
+      @media screen and (min-width: $tablet) {
+        font-size: 1.6rem;
       }
     }
 
@@ -186,26 +198,26 @@
       align-items: center;
 
       span {
-        font-size: 2.4rem;
+        font-size: 2rem;
         font-weight: 700;
-        line-height: 26px;
+        line-height: 2.6rem;
         user-select: none;
 
-        @media screen and (max-width: $tablet) {
-          font-size: 2rem;
+        @media screen and (min-width: $tablet) {
+          font-size: 2.4rem;
         }
       }
     }
   }
 
   .rightContent {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    line-height: 26px;
+    line-height: 2.6rem;
     letter-spacing: 0.5px;
 
-    @media screen and (max-width: $tablet) {
-      font-size: 1.3rem;
+    @media screen and (min-width: $tablet) {
+      font-size: 1.6rem;
     }
   }
 }
