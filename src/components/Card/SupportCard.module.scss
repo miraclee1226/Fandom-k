@@ -1,11 +1,6 @@
 @import "../../styles/mixin_var.scss";
 
 .supportCard {
-  width: 158px;
-
-  @media screen and (min-width: $tablet) {
-    width: 282px;
-  }
   .content {
     position: relative;
     width: 100%;
@@ -85,4 +80,8 @@
       color: var(--txt-white);
     }
   }
+}
+
+.lineGraph {
+  width: 100%;
 }

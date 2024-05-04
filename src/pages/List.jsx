@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import donationMockData from "mockData/donations.json";
 import Navbar from "components/Navbar/Navbar";
 import Layout from "components/Layout/Layout";
 import Button from "components/Button";
@@ -8,7 +9,6 @@ import creditIcon from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
 
 export default function List() {
-
   return (
     <>
       <Layout>
@@ -42,6 +42,7 @@ function CreditSection() {
 }
 
 function SupportSection() {
+  const [donations, setDonations] = useState(donationMockData);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
@@ -84,18 +85,13 @@ function SupportSection() {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              <li className={styles.supportList}>
-                <SupportCard />
-              </li>
-              <li className={styles.supportList}>
-                <SupportCard />
-              </li>
-              <li className={styles.supportList}>
-                <SupportCard />
-              </li>
-              <li className={styles.supportList}>
-                <SupportCard />
-              </li>
+              {donations.map((donation) => {
+                return (
+                  <li key={donation.idolId} className={styles.supportList}>
+                    <SupportCard donation={donation} />
+                  </li>
+                );
+              })}
             </ul>
             <div className={styles.sliderBtn}>
               <Button.Arrow direction="right" />

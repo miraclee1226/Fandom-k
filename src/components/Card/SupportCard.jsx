@@ -1,9 +1,8 @@
 import styles from "./SupportCard.module.scss";
 import creditImg from "../../assets/credit.png";
 import DefaultButton from "../Button/Button";
-import LineGraph from "./LineGraph";
 
-export default function SupportCard() {
+export default function SupportCard({ donation }) {
   return (
     <div className={styles.supportCard}>
       <div className={styles.content}>
@@ -14,10 +13,8 @@ export default function SupportCard() {
         <DefaultButton>후원하기</DefaultButton>
       </div>
       <div className={styles.header}>
-        <strong className={styles.category}>강남역 광고</strong>
-        <h3 className={styles.title}>
-          뉴진스 민지 지하철 광고 뉴진스 민지 지하철 광고
-        </h3>
+        <strong className={styles.category}>{donation.subtitle}</strong>
+        <h3 className={styles.title}>{donation.title}</h3>
       </div>
       <div className={styles.creditWrap}>
         <div className={styles.creditInfo}>
@@ -25,12 +22,59 @@ export default function SupportCard() {
             <img src={creditImg} alt="필요 크레딧" width="12" />
             <span>6,000</span>
           </strong>
-          <p className={styles.date}>5일 남음</p>
+          <p className={styles.date}>{timeCounter(donation.deadline)}일 남음</p>
         </div>
         <div>
-          <LineGraph width="282" percent="50" />
+          <LineGraph
+            width="282"
+            targetDonation={donation.targetDonation}
+            credit={5000}
+          />
         </div>
       </div>
     </div>
+  );
+}
+
+function timeCounter(time) {
+  const now = new Date().getTime();
+  const endTime = new Date(time).getTime();
+
+  return Math.ceil((endTime - now) / 1000 / 60 / 60 / 24);
+}
+
+function LineGraph({ width, targetDonation, credit }) {
+  const graphLength = (credit / targetDonation) * width;
+
+  return (
+    <svg
+      width={width}
+      height="1"
+      viewBox={`0 0 ${width} 1`}
+      className={styles.lineGraph}
+    >
+      <line
+        x1="0"
+        y1="1"
+        x2={width}
+        y2="1"
+        fill="none"
+        strokeWidth="1"
+        stroke="#fff"
+        strokeLinecap="round"
+      />
+      <line
+        x1="0"
+        y1="1"
+        x2={graphLength}
+        y2="1"
+        fill="none"
+        strokeWidth="1"
+        stroke="#FC4D04"
+        strokeDasharray={width}
+        strokeDashoffset="dashOffsetLine"
+        strokeLinecap="round"
+      />
+    </svg>
   );
 }
