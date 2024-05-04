@@ -2,17 +2,19 @@
 
 /*list page 공통*/
 .section {
+  padding: 0 24px;
   @media screen and (min-width: $desktop) {
     min-width: 1200px;
     margin: 0 auto;
+    padding: 0;
   }
   .sectionTitle {
     margin-bottom: 16px;
-    padding: 0 24px;
     font-size: 1.6rem;
     line-height: 2.6rem;
     font-weight: 700;
     color: var(--txt-white);
+
     @media screen and (min-width: $desktop) {
       margin-bottom: 24px;
       font-size: 2.4rem;
@@ -69,24 +71,17 @@
 /* ChartSection */
 
 .sectionContainer {
-  width: 327px;
   margin-bottom: 59px;
   @media screen and (min-width: $tablet) {
     margin-bottom: 330px;
   }
   @media screen and (min-width: $desktop) {
+    width: 1200px;
     margin-bottom: 243px;
   }
   .sectionHeader {
     display: flex;
     justify-content: space-between;
-    width: 351px;
-    @media screen and (min-width: $tablet) {
-      width: 722px;
-    }
-    @media screen and (min-width: $desktop) {
-      width: 1224px;
-    }
     .voteButton {
       display: flex;
       align-items: center;
@@ -96,35 +91,20 @@
       height: 32px;
       border-radius: 3px;
       font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 26rem;
       letter-spacing: 0.02rem;
-      color: var(--white);
-      @media screen and (min-width: $desktop) {
-        margin-right: 0px;
-      }
     }
   }
   .sectionDetail {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 375px;
-    @media screen and (min-width: $tablet) {
-      width: 744px;
-    }
-    @media screen and (min-width: $desktop) {
-      width: 1248px;
-    }
     .tab {
-      width: 327px;
+      width: 100%;
       margin-bottom: 16px;
       @media screen and (min-width: $tablet) {
-        width: 696px;
         margin-bottom: 24px;
       }
       @media screen and (min-width: $desktop) {
-        width: 1200px;
         margin-bottom: 24px;
       }
     }
@@ -133,7 +113,6 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 17px;
-      padding: 0 24px;
       margin-bottom: 33px;
       @media screen and (min-width: $tablet) {
         margin-bottom: 27px;
