@@ -13,6 +13,7 @@
   line-height: 26px;
   color: white;
   border-radius: 3px;
+  user-select: none;
 
   &.sm {
     padding: 2.5px 14px;
@@ -24,7 +25,7 @@
     width: 100%;
   }
 
-  :disabled {
+  &:disabled {
     background-color: var(--btn-disabled);
     background-image: none;
 

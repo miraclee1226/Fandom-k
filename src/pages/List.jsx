@@ -5,7 +5,7 @@ import Layout from "components/Layout/Layout";
 import Button from "components/Button";
 import Card from "components/Card";
 import ChartSection from "pages/ListPage/ChartSection";
-import creditIcon from "assets/icons/credit.svg";
+import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
 
 export default function List() {
