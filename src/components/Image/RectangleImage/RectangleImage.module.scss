@@ -12,11 +12,11 @@
     width: 282px;
     height: 293px;
   }
-  &:after {
-    content: "";
+  &::after {
     position: absolute;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58.9%, #000 100%);
+    content: "";
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58.9%, #000000 100%);
   }
   img {
     width: 100%;

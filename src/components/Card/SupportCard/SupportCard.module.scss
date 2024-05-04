@@ -1,39 +1,36 @@
-@import "../../styles/mixin_var.scss";
+@import "styles/mixin_var.scss";
 
 .supportCard {
-  width: 158px;
-
-  @media screen and (min-width: $tablet) {
-    width: 282px;
-  }
   .content {
+    overflow: hidden;
     position: relative;
     width: 100%;
-    height: 206px;
+    padding-bottom: 130%;
     border-radius: 8px;
-    overflow: hidden;
     @media screen and (min-width: $tablet) {
-      height: 293px;
+      padding-bottom: 104%;
     }
-    &:after {
-      content: "";
+    &::after {
       position: absolute;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58.9%, #000 100%);
+      content: "";
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58.9%, #000000 100%);
     }
     img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     button {
+      padding: 3px 0;
       position: absolute;
-      z-index: 1;
+      right: 24px;
       bottom: 20px;
       left: 24px;
-      right: 24px;
+      z-index: 1;
       width: auto;
-      padding: 3px 0;
       @media screen and (min-width: $tablet) {
         padding: 10px 0;
       }
@@ -41,8 +38,8 @@
   }
   .header {
     display: flex;
-    flex-direction: column;
     gap: 6px;
+    flex-direction: column;
     padding: 10px 0 20px;
     @media screen and (min-width: $tablet) {
       gap: 8px;
@@ -71,8 +68,8 @@
   .creditWrap {
     .creditInfo {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       font-size: 1.2rem;
       line-height: 1.8rem;
     }
@@ -85,4 +82,8 @@
       color: var(--txt-white);
     }
   }
+}
+
+.lineGraph {
+  width: 100%;
 }

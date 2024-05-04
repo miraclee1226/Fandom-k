@@ -3,10 +3,10 @@
 .tabContainer {
   display: flex;
   align-items: center;
-  color: var(--btn-disabled);
-  background-color: #02000e;
   width: inherit;
   height: 42px;
+  background-color: #02000e;
+  color: var(--btn-disabled);
   .tab {
     display: flex;
     align-items: center;

@@ -14,7 +14,6 @@ export default function DefaultButton({
     [styles.defaultButton]: true,
     [styles.sm]: size === "sm",
     [styles.md]: size === "md",
-    [styles.disabled]: disabled,
   });
 
   return (
