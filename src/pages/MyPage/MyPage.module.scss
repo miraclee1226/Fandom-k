@@ -52,7 +52,11 @@
     @media screen and (min-width: $tablet) {
       display: block;
     }
-    @media screen and (min-width: $desktop) {
+    @media screen and (min-width: $desktop) and (max-width: calc($desktop + 29px * 2 + 64px - 1px)) {
+      display: none;
+    }
+    @media screen and (min-width: calc($desktop + 29px * 2 + 64px)) {
+      display: block;
       position: absolute;
       top: 50%;
     }
