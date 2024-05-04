@@ -83,23 +83,12 @@
 
 .sectionContainer {
   margin-bottom: 59px;
-  width: 327px;
-  @media screen and (min-width: $tablet) {
-    margin-bottom: 330px;
-  }
   @media screen and (min-width: $desktop) {
-    margin-bottom: 243px;
+    max-width: $desktop;
   }
   .sectionHeader {
     display: flex;
     justify-content: space-between;
-    width: 351px;
-    @media screen and (min-width: $tablet) {
-      width: 722px;
-    }
-    @media screen and (min-width: $desktop) {
-      width: 1224px;
-    }
     .voteButton {
       display: flex;
       gap: 5px;
@@ -113,32 +102,23 @@
       color: var(--white);
       letter-spacing: 0.02rem;
       border-radius: 3px;
-      @media screen and (min-width: $desktop) {
-        margin-right: 0;
-      }
+
     }
   }
   .sectionDetail {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 375px;
-    @media screen and (min-width: $tablet) {
-      width: 744px;
-    }
-    @media screen and (min-width: $desktop) {
-      width: 1248px;
-    }
     .tab {
       margin-bottom: 16px;
-      width: 327px;
+      width: 100%;
       @media screen and (min-width: $tablet) {
         margin-bottom: 24px;
-        width: 696px;
+        width: 100%;
       }
       @media screen and (min-width: $desktop) {
         margin-bottom: 24px;
-        width: 1200px;
+        width: 100%;
       }
     }
     .chartList {
@@ -152,6 +132,7 @@
         margin-bottom: 27px;
       }
       @media screen and (min-width: $desktop) {
+        padding: 0;
         margin-bottom: 51px;
       }
     }
