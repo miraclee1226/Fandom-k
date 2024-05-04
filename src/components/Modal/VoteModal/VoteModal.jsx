@@ -83,7 +83,11 @@ export default function VoteModal({ isOpen, handleModalOpen }) {
         </div>
 
         <div className={styles.footer}>
-          <Button className={styles.voteBtn} onClick={handleVote} disabled={!isSelected} >
+          <Button
+            className={styles.voteBtn}
+            onClick={handleVote}
+            disabled={!isSelected}
+          >
             투표하기
           </Button>
           <span>
