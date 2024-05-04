@@ -1,0 +1,30 @@
+[
+  {
+    "deadline": "2024-05-14T02:57:41.505Z",
+    "targetDonation": 100000,
+    "subtitle": "강남역 광고",
+    "title": "뉴진스 지하철역 광고",
+    "idolId": 0
+  },
+  {
+    "deadline": "2024-05-12T02:57:41.505Z",
+    "targetDonation": 150000,
+    "subtitle": "수원역 광고",
+    "title": "아이브 지하철역 광고",
+    "idolId": 1
+  },
+  {
+    "deadline": "2024-05-11T02:57:41.505Z",
+    "targetDonation": 200000,
+    "subtitle": "신도림역 광고",
+    "title": "르세라핌 지하철역 광고",
+    "idolId": 2
+  },
+  {
+    "deadline": "2024-05-15T02:57:41.505Z",
+    "targetDonation": 100000,
+    "subtitle": "신도림역 광고",
+    "title": "르세라핌 지하철역 광고",
+    "idolId": 3
+  }
+]
