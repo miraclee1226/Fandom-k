@@ -14,9 +14,9 @@
   }
   &::after {
     position: absolute;
-    inset: 0;
-    content: "";
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58.9%, #000 100%);
+    content: "";
+    inset: 0;
   }
   img {
     width: 100%;

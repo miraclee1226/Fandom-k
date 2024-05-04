@@ -1,22 +1,22 @@
 @import "/src/styles/mixin_var.scss";
 
 * {
-  box-sizing: border-box;
   color: white;
+  box-sizing: border-box;
 }
 
 .landingView {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 }
 
 .landingTitle {
   display: flex;
-  flex-direction: column;
   gap: 8px;
-  min-width: 311px;
+  flex-direction: column;
   margin-bottom: 67px;
+  min-width: 311px;
   @media screen and (min-width: $tablet) {
     align-items: center;
     padding-bottom: 39px;
@@ -68,8 +68,6 @@
   opacity: 0.7;
   &::before {
     position: absolute;
-    inset: 0;
-    content: "";
     background: linear-gradient(
       90deg,
       rgba(217, 217, 217, 0) 0%,
@@ -78,6 +76,8 @@
       rgba(217, 217, 217, 0.4) 71.87%,
       rgba(217, 217, 217, 0) 100%
     );
+    content: "";
+    inset: 0;
     opacity: 0.05;
   }
   @media screen and (min-width: $tablet) {
@@ -104,19 +104,19 @@
     }
   }
   .sectionImgWrap {
-    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    position: relative;
   }
 }
 
 .landingSection1 {
-  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  position: relative;
   width: 100%;
   min-height: 812px;
   @media screen and (min-width: $tablet) {
@@ -144,18 +144,18 @@
   }
 
   .landingLogo {
+    margin-bottom: 451px;
     width: 237px;
     height: 45px;
-    margin-bottom: 451px;
     @media screen and (min-width: $tablet) {
+      margin-bottom: 770px;
       width: 325px;
       height: 62px;
-      margin-bottom: 770px;
     }
     @media screen and (min-width: $desktop) {
+      margin-bottom: 584px;
       width: 509px;
       height: 97px;
-      margin-bottom: 584px;
     }
   }
 
@@ -217,26 +217,26 @@
 
 .landingSection2 {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   min-height: 812px;
 }
 
 .landingSection3 {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   min-height: 812px;
 
   .landingRightTitle {
     display: flex;
-    flex-direction: column;
     gap: 8px;
     align-items: flex-end;
-    min-width: 311px;
+    flex-direction: column;
     margin-bottom: 67px;
+    min-width: 311px;
     text-align: right;
     @media screen and (min-width: $tablet) {
       align-items: center;
@@ -254,8 +254,8 @@
 
 .landingSection4 {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   min-height: 812px;
 }

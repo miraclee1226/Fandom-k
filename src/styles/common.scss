@@ -18,6 +18,7 @@
   --tab-focused: #ffffff1a;
   --white: #fff;
 
+  background: #02000e;
   font-family:
     Pretendard,
     system-ui,
@@ -32,7 +33,6 @@
     "Helvetica Neue",
     sans-serif;
   font-size: 62.5%;
-  background: #02000e;
   // font-size rem으로 통일 : root 10px
   // 12px == 1.2rem / 15px == 1.5rem
 }

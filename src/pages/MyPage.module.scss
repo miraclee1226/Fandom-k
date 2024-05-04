@@ -2,8 +2,8 @@
 
 /* mypage 공통 */
 .section {
-  padding: 32px 0;
   margin: 0 24px;
+  padding: 32px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   &:first-child {
     margin-top: 8px;
@@ -13,12 +13,12 @@
     }
   }
   @media screen and (min-width: $tablet) {
-    padding: 40px 0;
     margin: 0 24px;
+    padding: 40px 0;
   }
   @media screen and (min-width: $desktop) {
-    max-width: 1200px;
     margin: 0 auto;
+    max-width: 1200px;
   }
   .sectionTitle {
     margin-bottom: 16px;
@@ -35,9 +35,9 @@
 
 /* AddFavoriteSection */
 .AddFavorite {
-  position: relative;
   display: flex;
   align-items: center;
+  position: relative;
   @media screen and (min-width: $tablet) {
     gap: 27px;
     padding-top: 33px;
@@ -75,25 +75,23 @@
 
   .gridContainer {
     display: grid;
+    gap: 24px 17px;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px 17px;
     @media screen and (min-width: $tablet) {
+      gap: 24px;
       grid-template-rows: repeat(2, 1fr);
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
     }
     @media screen and (min-width: $desktop) {
+      gap: 32px 24px;
       grid-template-rows: repeat(2, 1fr);
       grid-template-columns: repeat(8, 1fr);
-      gap: 32px 24px;
     }
     .chkItem {
       display: none;
       &:checked + .labelItem::after {
         position: absolute;
-        inset: 5px;
-        content: "";
         background:
           url("../assets/icons/Checkmark.svg") no-repeat center,
           linear-gradient(
@@ -102,6 +100,8 @@
             rgba(254, 87, 143, 0.5) 107.18%
           );
         background-size: 45.45% 45.45%;
+        content: "";
+        inset: 5px;
         border-radius: 50%;
       }
     }
@@ -110,12 +110,12 @@
       cursor: pointer;
     }
     .imgWrap {
+      padding-bottom: 100%;
       position: relative;
       width: 100%;
-      padding-bottom: 100%;
       @media screen and (min-width: $desktop) {
-        width: 128px;
         padding-bottom: 128px;
+        width: 128px;
       }
       > div {
         position: absolute;
@@ -125,9 +125,9 @@
     }
     .itemInfo {
       display: flex;
-      flex-direction: column;
       gap: 2px;
       align-items: center;
+      flex-direction: column;
       margin-top: 8px;
       .itemTitle {
         font-size: 1.6rem;

@@ -88,12 +88,12 @@ time,
 mark,
 audio,
 video {
-  padding: 0;
   margin: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
+  padding: 0;
   border: 0;
+  vertical-align: baseline;
+  font-size: 100%;
+  font: inherit;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -135,11 +135,11 @@ table {
 
 button {
   padding: 0;
-  overflow: visible;
-  cursor: pointer;
-  background: inherit;
   border: none;
-  border-radius: 0;
   outline: none;
   box-shadow: none;
+  overflow: visible;
+  background: inherit;
+  cursor: pointer;
+  border-radius: 0;
 }

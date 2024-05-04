@@ -2,8 +2,8 @@
 
 .roundImage {
   padding: 5px;
-  overflow: hidden;
   border: 1px solid var(--brand-orange);
+  overflow: hidden;
   border-radius: 50%;
   &.sm {
     width: 70px;
