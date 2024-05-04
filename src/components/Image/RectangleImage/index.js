@@ -1,1 +1,1 @@
-export { default } from './RectangleImage';
+export { default } from "./RectangleImage";
