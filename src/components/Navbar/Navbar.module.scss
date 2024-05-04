@@ -3,10 +3,10 @@
 }
 
 .navbar {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding: 18px 23px;
   @media screen and (min-width: 768px) {
     padding: 29px 24px;

@@ -1,17 +1,17 @@
 @import "/src/styles/mixin_var.scss";
 
-/*list page 공통*/
+/* list page 공통 */
 .section {
   @media screen and (min-width: $desktop) {
     min-width: 1200px;
     margin: 0 auto;
   }
   .sectionTitle {
-    margin-bottom: 16px;
     padding: 0 24px;
+    margin-bottom: 16px;
     font-size: 1.6rem;
-    line-height: 2.6rem;
     font-weight: 700;
+    line-height: 2.6rem;
     color: var(--txt-white);
     @media screen and (min-width: $desktop) {
       margin-bottom: 24px;
@@ -21,7 +21,7 @@
   }
 }
 
-/*supportSection*/
+/* supportSection */
 .slideContainer {
   position: relative;
   cursor: default;
@@ -34,8 +34,8 @@
     display: flex;
     gap: 8px;
     width: 100%;
-    overflow-x: scroll;
     padding: 0 24px 10px;
+    overflow-x: scroll;
     @media screen and (min-width: $tablet) {
       gap: 16px;
     }
@@ -51,9 +51,9 @@
   .sliderBtn {
     display: none;
     @media screen and (min-width: $desktop) {
-      display: block;
       position: absolute;
       top: 50%;
+      display: block;
     }
     &:first-child {
       left: -40px;
@@ -89,19 +89,19 @@
     }
     .voteButton {
       display: flex;
+      gap: 5px;
       align-items: center;
       justify-content: center;
-      gap: 5px;
       width: 128px;
       height: 32px;
-      border-radius: 3px;
       font-size: 1.3rem;
       font-weight: 700;
       line-height: 26rem;
-      letter-spacing: 0.02rem;
       color: var(--white);
+      letter-spacing: 0.02rem;
+      border-radius: 3px;
       @media screen and (min-width: $desktop) {
-        margin-right: 0px;
+        margin-right: 0;
       }
     }
   }
@@ -130,9 +130,9 @@
     }
     .chartList {
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
       gap: 17px;
+      justify-content: space-between;
       padding: 0 24px;
       margin-bottom: 33px;
       @media screen and (min-width: $tablet) {
@@ -156,9 +156,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 36px 64px;
-  border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
-  background-color: black;
   color: white;
+  background-color: black;
+  border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
   border-radius: 8px;
 
   @media screen and (max-width: $tablet) {
@@ -167,8 +167,8 @@
 
   .leftContent {
     display: flex;
-    gap: 8px;
     flex-direction: column;
+    gap: 8px;
 
     & > span {
       font-size: 1.6rem;

@@ -3,10 +3,10 @@
 .tabContainer {
   display: flex;
   align-items: center;
-  color: var(--btn-disabled);
-  background-color: #02000e;
   width: inherit;
   height: 42px;
+  color: var(--btn-disabled);
+  background-color: #02000e;
   .tab {
     display: flex;
     align-items: center;
@@ -25,9 +25,9 @@
     }
   }
   .tabFocused {
-    border-bottom: 1px solid var(--txt-white);
-    background-color: var(--tab-focused);
     color: var(--txt-white);
     cursor: pointer;
+    background-color: var(--tab-focused);
+    border-bottom: 1px solid var(--txt-white);
   }
 }

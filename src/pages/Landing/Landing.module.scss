@@ -1,22 +1,22 @@
 @import "/src/styles/mixin_var.scss";
 
 * {
-  color: white;
   box-sizing: border-box;
+  color: white;
 }
 
 .landingView {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 
 .landingTitle {
   display: flex;
-  gap: 8px;
   flex-direction: column;
-  margin-bottom: 67px;
+  gap: 8px;
   min-width: 311px;
+  margin-bottom: 67px;
   @media screen and (min-width: $tablet) {
     align-items: center;
     padding-bottom: 39px;
@@ -68,6 +68,8 @@
   opacity: 0.7;
   &::before {
     position: absolute;
+    inset: 0;
+    content: "";
     background: linear-gradient(
       90deg,
       rgba(217, 217, 217, 0) 0%,
@@ -76,8 +78,6 @@
       rgba(217, 217, 217, 0.4) 71.87%,
       rgba(217, 217, 217, 0) 100%
     );
-    content: "";
-    inset: 0;
     opacity: 0.05;
   }
   @media screen and (min-width: $tablet) {
@@ -95,28 +95,28 @@
   background-repeat: no-repeat;
   background-position: 50%;
   .sectionContent {
-    padding: 76px 0px;
+    padding: 76px 0;
     @media screen and (min-width: $tablet) {
-      padding: 74px 0px;
+      padding: 74px 0;
     }
     @media screen and (min-width: $desktop) {
-      padding: 160px 0px;
+      padding: 160px 0;
     }
   }
   .sectionImgWrap {
+    position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    position: relative;
   }
 }
 
 .landingSection1 {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   min-height: 812px;
   @media screen and (min-width: $tablet) {
@@ -126,15 +126,15 @@
     min-height: 1080px;
   }
   & > h2 {
-    padding: 100px 0px 20px;
+    padding: 100px 0 20px;
     font-size: 2rem;
     font-weight: 400;
     @media screen and (min-width: $tablet) {
-      padding: 120px 0px 32px;
+      padding: 120px 0 32px;
       font-weight: 700;
     }
     @media screen and (min-width: $desktop) {
-      padding: 140px 0px 29px;
+      padding: 140px 0 29px;
       font-size: 2.6rem;
     }
   }
@@ -144,18 +144,18 @@
   }
 
   .landingLogo {
-    margin-bottom: 451px;
     width: 237px;
     height: 45px;
+    margin-bottom: 451px;
     @media screen and (min-width: $tablet) {
-      margin-bottom: 770px;
       width: 325px;
       height: 62px;
+      margin-bottom: 770px;
     }
     @media screen and (min-width: $desktop) {
-      margin-bottom: 584px;
       width: 509px;
       height: 97px;
+      margin-bottom: 584px;
     }
   }
 
@@ -198,7 +198,7 @@
       height: 827px;
     }
     @media screen and (min-width: $desktop) {
-      top: 0px;
+      top: 0;
       width: 1080px;
       height: 1080px;
     }
@@ -217,36 +217,36 @@
 
 .landingSection2 {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   min-height: 812px;
 }
 
 .landingSection3 {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   min-height: 812px;
 
   .landingRightTitle {
     display: flex;
+    flex-direction: column;
     gap: 8px;
     align-items: flex-end;
-    flex-direction: column;
-    margin-bottom: 67px;
     min-width: 311px;
+    margin-bottom: 67px;
     text-align: right;
     @media screen and (min-width: $tablet) {
       align-items: center;
-      padding: 0px 0px 39px;
+      padding: 0 0 39px;
       text-align: center;
     }
 
     @media screen and (min-width: $desktop) {
       align-items: center;
-      padding: 0px 0px 60px;
+      padding: 0 0 60px;
       text-align: center;
     }
   }
@@ -254,8 +254,8 @@
 
 .landingSection4 {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   min-height: 812px;
 }
