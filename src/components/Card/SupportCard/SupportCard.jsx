@@ -8,8 +8,8 @@ export default function SupportCard({ donation }) {
     <div className={styles.supportCard}>
       <div className={styles.content}>
         <img
-          src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMThfMjAz%2FMDAxNjczOTcwNzQ3NDg2._l8C4TNMoXLMhftgGxhdy1rFRmHPug997-_GIsMKZOcg.VDaJ72QJarXLOAzrR6CwEc8iuT365WmOj2s1ny6SJ0gg.JPEG.nevergetold%2FFmoSb0bWIAIE7S5.jpg&type=sc960_832"
-          alt="뉴진스 민지 이미지"
+          src={donation.idol.profilePicture}
+          alt={`${donation.idol.gorup} ${donation.idol.name} 이미지`}
         />
         <DefaultButton>후원하기</DefaultButton>
       </div>
