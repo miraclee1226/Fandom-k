@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
+import arrowLeft from "assets/icons/arrow-left.svg";
+import arrowRight from "assets/icons/arrow-right.svg";
 import styles from "../Button.module.scss";
-import arrowLeft from "../../../assets/icons/arrow-left.svg";
-import arrowRight from "../../../assets/icons/arrow-right.svg";
 
 const cn = classNames.bind(styles);
 

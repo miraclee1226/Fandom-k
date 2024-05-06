@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ReactComponent as DeleteIcon } from "assets/icons/round_x_icon.svg";
 import Image from "components/Image";
-import mockData from "mockData/maleData.json";
-import styles from "pages/MyPage.module.scss";
 import TouchArea from "components/TouchArea";
+import { ReactComponent as DeleteIcon } from "assets/icons/round_x_icon.svg";
+import mockData from "mockData/maleData.json";
+import styles from "./MyPage.module.scss";
 
 export default function AddedFavoriteSection() {
   const [idolsData, setIdolsData] = useState(mockData);

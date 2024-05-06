@@ -1,28 +1,19 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "assets/logo.png";
 import profile from "assets/profile.png";
-import styles from "components/Navbar/Navbar.module.scss";
+import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
   return (
     <nav className={styles.navbar}>
       <div></div>
-      <img
-        className={styles.navbarLogo}
-        onClick={() => {
-          navigate("/list");
-        }}
-        src={logo}
-        alt="로고"
-      />
-      <img
-        className={styles.navbarProfile}
-        onClick={() => navigate("/mypage")}
-        src={profile}
-        alt="프로필"
-      />
+      <Link to="/list">
+        <img className={styles.navbarLogo} src={logo} alt="로고" />
+      </Link>
+
+      <Link to="/mypage">
+        <img className={styles.navbarProfile} src={profile} alt="프로필" />
+      </Link>
     </nav>
   );
 };

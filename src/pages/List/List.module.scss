@@ -5,9 +5,8 @@
   padding: 0 24px;
   @media screen and (min-width: $desktop) {
     margin: 0 auto;
-    min-width: 1200px;
-    margin: 0 auto;
     padding: 0;
+    min-width: 1200px;
   }
   .sectionTitle {
     margin-bottom: 16px;
@@ -27,20 +26,22 @@
 /* supportSection */
 .slideContainer {
   position: relative;
-  @media screen and (min-width: $desktop) {
-    max-width: $desktop;
-  }
+  margin: 0 auto;
+
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  @media screen and (min-width: $desktop) {
+    max-width: $desktop;
+  }
   .supportLists {
     display: flex;
     gap: 8px;
-    width: 100%;
-    overflow-x: scroll;
     padding: 0 0 10px;
+    overflow-x: scroll;
+    width: 100%;
     @media screen and (min-width: $tablet) {
       gap: 16px;
     }
@@ -63,7 +64,7 @@
 
   .sliderBtn {
     display: none;
-    @media screen and (min-width: $desktop) {
+    @media screen and (min-width: calc($desktop + 78px * 2 + 80px)) {
       display: block;
       position: absolute;
       top: 50%;
@@ -102,7 +103,6 @@
       color: var(--white);
       letter-spacing: 0.02rem;
       border-radius: 3px;
-
     }
   }
   .sectionDetail {
@@ -131,8 +131,8 @@
         margin-bottom: 27px;
       }
       @media screen and (min-width: $desktop) {
-        padding: 0;
         margin-bottom: 51px;
+        padding: 0;
       }
     }
     .borderButton {
@@ -147,6 +147,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 16px;
   padding: 20px;
   border: 1px solid rgba($color: #f1eef9, $alpha: 0.8);
   background-color: black;
@@ -154,6 +155,7 @@
   border-radius: 8px;
 
   @media screen and (min-width: $tablet) {
+    margin-top: 12px;
     padding: 36px 64px;
   }
 
@@ -161,6 +163,10 @@
     display: flex;
     gap: 8px;
     flex-direction: column;
+
+    @media screen and (min-width: $tablet) {
+      gap: 14px;
+    }
 
     & > span {
       font-size: 1.2rem;

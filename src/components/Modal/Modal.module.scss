@@ -246,10 +246,7 @@
     }
 
     .profile.isChecked::after {
-      content: "";
       position: absolute;
-      inset: 5px;
-      border-radius: 50%;
       background:
         url("../../assets/icons/Checkmark.svg") no-repeat center,
         linear-gradient(
@@ -258,6 +255,9 @@
           rgba(254, 87, 143, 0.5) 107.18%
         );
       background-size: 45.45% 45.45%;
+      content: "";
+      inset: 5px;
+      border-radius: 50%;
     }
 
     .rank {

@@ -1,6 +1,6 @@
+import Button from "components/Button";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
-import Button from "components/Button";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 

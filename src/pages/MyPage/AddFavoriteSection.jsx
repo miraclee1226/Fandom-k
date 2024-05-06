@@ -1,29 +1,9 @@
-import AddedFavoriteSection from "pages/ListPage/AddedFavoriteSection";
-import styles from "pages/MyPage.module.scss";
-import Navbar from "components/Navbar";
-import Layout from "components/Layout/Layout";
 import Button from "components/Button";
-import RoundImage from "components/Image/RoundImage/RoundImage";
 import Image from "components/Image";
-import { useState } from "react";
 import icoPlus from "assets/icons/plus.svg";
-import mockData from "mockData/femaleData.json";
+import styles from "./MyPage.module.scss";
 
-export default function MyPage() {
-  const [idols, setIdols] = useState(mockData);
-
-  return (
-    <>
-      <Navbar />
-      <Layout page="myPage">
-        <AddedFavoriteSection />
-        <AddFavoriteSection idols={idols} />
-      </Layout>
-    </>
-  );
-}
-
-function AddFavoriteSection({ idols }) {
+export default function AddFavoriteSection({ idols }) {
   return (
     <>
       <section className={styles.section}>
@@ -48,7 +28,7 @@ function AddFavoriteSection({ idols }) {
                         />
                         <label htmlFor={idol.id} className={styles.labelItem}>
                           <div className={styles.imgWrap}>
-                            <RoundImage />
+                            <Image.Round />
                           </div>
                         </label>
                         <span className={styles.itemInfo}>

@@ -1,7 +1,7 @@
-import creditImg from "assets/credit.png";
 import DefaultButton from "components/Button/Button";
 import timeCounter from "utils/timeCounter";
-import styles from "./SupportCard.module.scss";
+import creditImg from "assets/credit.png";
+import styles from "../SupportCard.module.scss";
 
 export default function SupportCard({ donation }) {
   return (

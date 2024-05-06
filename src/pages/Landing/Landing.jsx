@@ -1,7 +1,7 @@
 import Button from "components/Button";
 import logo from "assets/logo.png";
 import LANDING_IMG from "assets/landing-img";
-import styles from "pages/Landing/Landing.module.scss";
+import styles from "./Landing.module.scss";
 
 const Landing = () => {
   return (

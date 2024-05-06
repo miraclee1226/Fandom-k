@@ -1,5 +1,5 @@
-import styles from "components/Image/Image.module.scss";
 import IdolImg from "assets/Image_Idol.png";
+import styles from "../Image.module.scss";
 
 export default function RectangleImage() {
   return (
