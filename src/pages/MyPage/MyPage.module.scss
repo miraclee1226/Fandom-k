@@ -3,18 +3,16 @@
 /* mypage 공통 */
 .section {
   margin: 0 24px;
-  padding: 32px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   &:first-child {
-    margin-top: 8px;
     border-top: none;
-    @media screen and (min-width: $tablet) {
-      margin-top: 36px;
+    @media screen and (min-width: $desktop) {
+      margin-top: 76px;
     }
   }
   @media screen and (min-width: $tablet) {
     margin: 0 24px;
-    padding: 40px 0;
+    padding: 0;
   }
   @media screen and (min-width: $desktop) {
     margin: 0 auto;
@@ -32,6 +30,74 @@
     }
   }
 }
+
+/* AddedFavoriteSection */
+.addedSlider {
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .addedFavorite {
+    .list {
+      display: flex;
+      gap: 32px;
+      @media screen and (min-width: $tablet) {
+        gap: 24px;
+      }
+      .item {
+        position: relative;
+        .touchArea {
+          position: absolute;
+          top: -15px;
+          left: 38px;
+          cursor: pointer;
+          @media screen and (min-width: $tablet) {
+            top: -12px;
+            left: 60px;
+          }
+          .deleteIcon {
+            width: 22px;
+            height: 22px;
+            @media screen and (min-width: $tablet) {
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+        .roundImage {
+          width: 70px;
+          height: 70px;
+          @media screen and (min-width: $tablet) {
+            width: 100px;
+            height: 100px;
+          }
+          }
+        // AddFavoriteSection 과 스타일 중복 (itemInfo, itemTitle, itemCategory)
+        .itemInfo {
+          display: flex;
+          gap: 2px;
+          align-items: center;
+          flex-direction: column;
+          margin-top: 8px;
+          .itemTitle {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 2.6rem;
+            color: #f4efef;
+          }
+          .itemCategory {
+            font-size: 1.4rem;
+            line-height: 1.67rem;
+            color: rgba(255, 255, 255, 0.6);
+          }
+        }
+      }
+    }
+  }
+}
+
 
 /* AddFavoriteSection */
 .AddFavorite {

@@ -3,6 +3,7 @@ import Navbar from "components/Navbar";
 import Layout from "components/Layout";
 import mockData from "mockData/femaleData.json";
 import AddFavoriteSection from "./AddFavoriteSection";
+import AddedFavoriteSection from "./AddedFavoriteSection";
 
 export default function MyPage() {
   const [idols, setIdols] = useState(mockData);
@@ -10,7 +11,8 @@ export default function MyPage() {
   return (
     <>
       <Navbar />
-      <Layout>
+      <Layout page="myPage">
+        <AddedFavoriteSection />
         <AddFavoriteSection idols={idols} />
       </Layout>
     </>

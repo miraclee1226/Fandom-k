@@ -1,0 +1,13 @@
+.touchArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.md {
+    width: 52px;
+    height: 52px;
+  }
+  &.lg {
+    width: 62px;
+    height: 62px;
+  }
+}
