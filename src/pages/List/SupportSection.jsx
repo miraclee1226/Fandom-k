@@ -1,11 +1,12 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 import Card from "components/Card";
 import Button from "components/Button";
-import donationMockData from "mockData/donations.json";
 import styles from "./List.module.scss";
 
 export default function SupportSection() {
-  const [donations, setDonations] = useState(donationMockData);
+  const [donations, setDonations] = useState([]);
+  const [cursor, setCursor] = useState(0);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
@@ -31,6 +32,30 @@ export default function SupportSection() {
     slider.current.scrollLeft = scrollLeft - walk;
   };
 
+  const handleLoad = async (nextCursor) => {
+    const instance = axios.create({
+      baseURL: "https://fandom-k-api.vercel.app/6-4",
+      timeout: 10000,
+    });
+
+    const response = await instance.get(
+      `/donations?pageSize=4&cursor=${nextCursor}`,
+    );
+
+    setDonations(response.data.list);
+    setCursor(response.data.nextCursor);
+  };
+
+  const handlePrevBtn = () => {};
+
+  const handleNextBtn = () => {
+    handleLoad(cursor);
+  };
+
+  useEffect(() => {
+    handleLoad(cursor);
+  }, []);
+
   return (
     <>
       <section className={styles.section}>
@@ -38,7 +63,7 @@ export default function SupportSection() {
         <div className={styles.sectionContent}>
           <div className={styles.slideContainer}>
             <div className={styles.sliderBtn}>
-              <Button.Arrow direction="left" />
+              <Button.Arrow direction="left" onClick={handlePrevBtn} />
             </div>
             <ul
               className={styles.supportLists}
@@ -57,7 +82,7 @@ export default function SupportSection() {
               })}
             </ul>
             <div className={styles.sliderBtn}>
-              <Button.Arrow direction="right" />
+              <Button.Arrow direction="right" onClick={handleNextBtn} />
             </div>
           </div>
         </div>
