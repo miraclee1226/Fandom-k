@@ -8,11 +8,11 @@ const axiosInstance = axios.create({
   },
 });
 
-const fetch = async (options) => {
+const dispatcher = async (options) => {
   const client = axiosInstance({ ...options });
 
   await client;
   return client;
 };
 
-export default fetch;
+export default dispatcher;
