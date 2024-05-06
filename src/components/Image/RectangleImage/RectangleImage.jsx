@@ -6,5 +6,15 @@ export default function RectangleImage() {
     <div className={styles.rectangleImage}>
       <img src={IdolImg} alt="채원 이미지" />
     </div>
+
+    // SupportCard img 변경 후 주석 해제
+    // <div className={styles.rectangleImage}>
+    // {lazyMode ? (
+    //   <WebpLoader.Lazy src={src} webpSrc={src} />
+    // ) : (
+    //   <WebpLoader src={src} webpSrc={src} />
+    // )}
+    // </div>
   );
 }
+

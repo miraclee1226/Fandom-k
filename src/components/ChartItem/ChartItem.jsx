@@ -6,7 +6,7 @@ export default function ChartItem({ data }) {
     <div className={styles.chartItemContainer}>
       <div className={styles.content}>
         <div className={styles.image}>
-          <Image.Round />
+          <Image.Round src={data.profilePicture} lazyMode={true} />
         </div>
         <span className={styles.ranking}>{data.rank}</span>
         <strong className={styles.name}>{data.name}</strong>
