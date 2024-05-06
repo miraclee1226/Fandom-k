@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export default function useRequest({ requestFunc, deps = [] }) {
-  const [data, setData] = useState(null);
+export default function useRequest(requestFunc, deps = []) {
+  const [response, setResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -11,15 +11,16 @@ export default function useRequest({ requestFunc, deps = [] }) {
       setError(null);
 
       try {
-        const data = await requestFunc();
-        setData(data);
-      } catch (error) {
-        setError(error);
+        const res = await requestFunc();
+
+        setResponse(res);
+      } catch (err) {
+        setError(err);
       } finally {
         setIsLoading(false);
       }
     })();
   }, deps);
 
-  return { data, isLoading, error };
+  return { response, isLoading, error };
 }
