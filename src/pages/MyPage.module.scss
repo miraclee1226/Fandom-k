@@ -104,16 +104,19 @@
 
 /* AddFavoriteSection */
 .AddFavorite {
-  display: flex;
-  align-items: center;
-  position: relative;
-  @media screen and (min-width: $tablet) {
-    gap: 27px;
-    padding-top: 33px;
-  }
-  @media screen and (min-width: $desktop) {
-    gap: 32px;
-    padding-top: 8px;
+  margin-bottom: 80px;
+  .sliderWrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+    @media screen and (min-width: $tablet) {
+      gap: 27px;
+      padding-top: 33px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 32px;
+      padding-top: 8px;
+    }
   }
   .sliderBtn {
     display: none;
