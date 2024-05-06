@@ -73,7 +73,7 @@
             width: 100px;
             height: 100px;
           }
-          }
+        }
         // AddFavoriteSection 과 스타일 중복 (itemInfo, itemTitle, itemCategory)
         .itemInfo {
           display: flex;
@@ -98,7 +98,6 @@
   }
 }
 
-
 /* AddFavoriteSection */
 .AddFavorite {
   display: flex;
@@ -118,10 +117,10 @@
     @media screen and (min-width: $tablet) {
       display: block;
     }
-    @media screen and (min-width: $desktop) and (max-width: calc($desktop + 29px * 2 + 64px - 1px)) {
+    @media screen and (min-width: $desktop) and (max-width: calc($desktop + 199px)) {
       display: none;
     }
-    @media screen and (min-width: calc($desktop + 29px * 2 + 64px)) {
+    @media screen and (min-width: calc($desktop + 200px)) {
       display: block;
       position: absolute;
       top: 50%;
