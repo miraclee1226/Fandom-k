@@ -1,8 +1,10 @@
+import AddedFavoriteSection from "pages/ListPage/AddedFavoriteSection";
 import styles from "pages/MyPage.module.scss";
 import Navbar from "components/Navbar";
 import Layout from "components/Layout/Layout";
 import Button from "components/Button";
 import RoundImage from "components/Image/RoundImage/RoundImage";
+import Image from "components/Image";
 import { useState } from "react";
 import icoPlus from "assets/icons/plus.svg";
 import mockData from "mockData/femaleData.json";
@@ -13,7 +15,8 @@ export default function MyPage() {
   return (
     <>
       <Navbar />
-      <Layout>
+      <Layout page="myPage">
+        <AddedFavoriteSection />
         <AddFavoriteSection idols={idols} />
       </Layout>
     </>
@@ -36,7 +39,7 @@ function AddFavoriteSection({ idols }) {
               <ul className={styles.gridContainer}>
                 {idols.map((idol) => {
                   return (
-                    <li className={styles.gridItem}>
+                    <li key={idol.id} className={styles.gridItem}>
                       <input
                         type="checkbox"
                         id={idol.id}

@@ -16,6 +16,10 @@
     display: flex;
     gap: 12px;
     align-items: center;
+    .image {
+      width: 70px;
+      height: 70px;
+    }
     .ranking {
       font-size: 1.6rem;
       font-weight: 400;
