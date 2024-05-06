@@ -7,6 +7,7 @@ const defaultInstance = axios.create({
 
 const fetch = async (options) => {
   const client = defaultInstance({ ...options });
+  
   await client;
   return client;
 };
