@@ -10,7 +10,7 @@ export default function WebpLoader({ src, webpSrc }) {
 }
 
 function LazyModeWebpLoader({ src, webpSrc }) {
-  const { imgRef, imgSrc } = useLazyImageObserver({ src: webpSrc && src });
+  const { imgRef, imgSrc } = useLazyImageObserver({ src: webpSrc || src });
   
   return (
     <picture>
