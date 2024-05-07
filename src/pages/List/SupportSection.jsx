@@ -7,10 +7,9 @@ import styles from "./List.module.scss";
 
 export default function SupportSection() {
   const [donations, setDonations] = useState([]);
+  const [nextCursor, setNextCursor] = useState(0);
   const [cursorArr, setCursorArr] = useState([0]);
   const [page, setPage] = useState(0);
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(false);
-  const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
   const [isPC, isTablet, isMobile] = useResponsive();
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
@@ -37,36 +36,31 @@ export default function SupportSection() {
     slider.current.scrollLeft = scrollLeft - walk;
   };
 
-  const handleLoad = async (nextCursor = 0) => {
+  const handleLoad = async (cursor) => {
     const instance = axios.create({
       baseURL: "https://fandom-k-api.vercel.app/6-4",
       timeout: 10000,
     });
 
     const response = await instance.get(
-      `/donations?${isPC ? "pageSize=4" : ""}&cursor=${nextCursor}`,
+      `/donations?${isPC ? "pageSize=4" : ""}&cursor=${cursor}`,
     );
 
+    if (isPC) {
+      setNextCursor(response.data.nextCursor);
+      setPagination(response.data.nextCursor);
+    } else {
+      setNextCursor(0);
+      setPage(0);
+    }
     setDonations(response.data.list);
-    if (
-      !cursorArr.includes(response.data.nextCursor) &&
-      response.data.nextCursor !== null
-    ) {
-      setCursorArr((prevArr) => [...prevArr, response.data.nextCursor]);
-    }
-
-    if (page === 0) {
-      setPrevBtnDisabled(true);
-    } else {
-      setPrevBtnDisabled(false);
-    }
-    if (response.data.nextCursor === null) {
-      setNextBtnDisabled(true);
-    } else {
-      setNextBtnDisabled(false);
-    }
   };
 
+  const setPagination = (cursor) => {
+    if (!cursorArr.includes(cursor) && cursor !== null) {
+      setCursorArr((prevArr) => [...prevArr, cursor]);
+    }
+  };
   const handlePrevBtn = () => {
     if (donations.length < 4 && page === 0) {
       setPage((prevValue) => prevValue);
@@ -97,7 +91,7 @@ export default function SupportSection() {
               <Button.Arrow
                 direction="left"
                 onClick={handlePrevBtn}
-                disabled={prevBtnDisabled}
+                disabled={page === 0}
               />
             </div>
             <ul
@@ -120,7 +114,7 @@ export default function SupportSection() {
               <Button.Arrow
                 direction="right"
                 onClick={handleNextBtn}
-                disabled={nextBtnDisabled}
+                disabled={nextCursor === null}
               />
             </div>
           </div>
