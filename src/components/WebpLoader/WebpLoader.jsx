@@ -4,7 +4,7 @@ export default function WebpLoader({ src, webpSrc }) {
   return (
     <picture>
       {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
-      <img src={src} />
+      <img src={src} alt="jpg" />
     </picture>
   );
 }
@@ -15,7 +15,7 @@ function LazyModeWebpLoader({ src, webpSrc }) {
   return (
     <picture>
       {webpSrc && <source srcSet={imgSrc} type="image/webp" />}
-      <img ref={imgRef} src={imgSrc} />
+      <img ref={imgRef} src={imgSrc} alt="jpg" />
     </picture>
   );
 }
