@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import useResponsive from "hooks/useResponsive";
 import axios from "axios";
 import Card from "components/Card";
 import Button from "components/Button";
@@ -10,6 +11,7 @@ export default function SupportSection() {
   const [page, setPage] = useState(0);
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(false);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
+  const [isPC, isTablet, isMobile] = useResponsive();
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
@@ -42,7 +44,7 @@ export default function SupportSection() {
     });
 
     const response = await instance.get(
-      `/donations?pageSize=4&cursor=${nextCursor}`,
+      `/donations?${isPC ? "pageSize=4" : ""}&cursor=${nextCursor}`,
     );
 
     setDonations(response.data.list);
@@ -83,7 +85,7 @@ export default function SupportSection() {
 
   useEffect(() => {
     handleLoad(cursorArr[page]);
-  }, [page, prevBtnDisabled, nextBtnDisabled]);
+  }, [page, isPC]);
 
   return (
     <>

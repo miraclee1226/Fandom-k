@@ -27,7 +27,6 @@
 .slideContainer {
   position: relative;
   margin: 0 auto;
-
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -66,7 +65,7 @@
 
   .sliderBtn {
     display: none;
-    @media screen and (min-width: $tablet) {
+    @media screen and (min-width: calc($desktop + 78px * 2 + 80px)) {
       display: block;
       position: absolute;
       top: 50%;
