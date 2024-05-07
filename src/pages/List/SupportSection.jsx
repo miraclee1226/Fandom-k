@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useResponsive from "hooks/useResponsive";
+import useRequest from "hooks/useRequest";
 import axios from "axios";
 import Card from "components/Card";
 import Button from "components/Button";
@@ -15,6 +16,23 @@ export default function SupportSection() {
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
   const slider = useRef();
+
+  const {
+    data,
+    isLoading,
+    error,
+    requestFunc: getDonationsData,
+  } = useRequest({
+    skip: true,
+    options: {
+      method: "get",
+      url: "/donations",
+      params: {
+        pageSize: isPC ? 4 : null,
+        cursor: cursorArr[page],
+      },
+    },
+  });
 
   const handleMouseDown = (e) => {
     setIsDown(true);
@@ -36,15 +54,8 @@ export default function SupportSection() {
     slider.current.scrollLeft = scrollLeft - walk;
   };
 
-  const handleLoad = async (cursor) => {
-    const instance = axios.create({
-      baseURL: "https://fandom-k-api.vercel.app/6-4",
-      timeout: 10000,
-    });
-
-    const response = await instance.get(
-      `/donations?${isPC ? "pageSize=4" : ""}&cursor=${cursor}`,
-    );
+  const handleLoad = async () => {
+    const response = await getDonationsData();
 
     if (isPC) {
       setNextCursor(response.data.nextCursor);
@@ -78,7 +89,7 @@ export default function SupportSection() {
   };
 
   useEffect(() => {
-    handleLoad(cursorArr[page]);
+    handleLoad();
   }, [page, isPC]);
 
   return (
