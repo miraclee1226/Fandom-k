@@ -3,7 +3,7 @@
     "id": 0,
     "name": "장원영1",
     "group": "아이브1",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714970111849/minji.webp",
     "totalVotes": 10000,
     "rank": 1
   },
@@ -11,7 +11,7 @@
     "id": 1,
     "name": "장원영2",
     "group": "아이브2",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714969988794/hani.webp",
     "totalVotes": 9000,
     "rank": 2
   },
@@ -19,7 +19,7 @@
     "id": 2,
     "name": "장원영3",
     "group": "아이브3",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714981034611/test3.jpg",
     "totalVotes": 8000,
     "rank": 3
   },
@@ -27,7 +27,7 @@
     "id": 3,
     "name": "장원영4",
     "group": "아이브4",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714970184429/chewon.webp",
     "totalVotes": 7000,
     "rank": 4
   },
@@ -35,7 +35,7 @@
     "id": 4,
     "name": "장원영5",
     "group": "아이브5",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714964987085/limhyunsik.webp",
     "totalVotes": 6000,
     "rank": 5
   },
@@ -43,7 +43,7 @@
     "id": 5,
     "name": "장원영6",
     "group": "아이브6",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714973792799/jeonjungkook.webp",
     "totalVotes": 5000,
     "rank": 6
   },
@@ -51,7 +51,7 @@
     "id": 6,
     "name": "장원영7",
     "group": "아이브7",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714973925420/rm.webp",
     "totalVotes": 4000,
     "rank": 7
   },
@@ -59,7 +59,7 @@
     "id": 7,
     "name": "장원영8",
     "group": "아이브8",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714970271375/jenny.webp",
     "totalVotes": 3000,
     "rank": 8
   },
@@ -67,7 +67,7 @@
     "id": 8,
     "name": "장원영9",
     "group": "아이브9",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714970296656/winter.webp",
     "totalVotes": 2000,
     "rank": 9
   },
@@ -75,7 +75,7 @@
     "id": 9,
     "name": "장원영10",
     "group": "아이브10",
-    "profilePicture": "https://example.com/profile.jpg",
+    "profilePicture": "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1714970207790/karina.webp",
     "totalVotes": 1000,
     "rank": 10
   }

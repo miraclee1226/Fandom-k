@@ -1,16 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import useResponsive from "hooks/useResponsive";
 import axios from "axios";
+import getDonationsData from "api/getDonationsData";
+import useAsync from "hooks/useAsync";
 import Card from "components/Card";
 import Button from "components/Button";
 import styles from "./List.module.scss";
 
 export default function SupportSection() {
   const [donations, setDonations] = useState([]);
+  const {
+    wrappedFunc: getDonationsDataAsync,
+    pending: loading,
+    error,
+  } = useAsync(getDonationsData);
+  const [nextCursor, setNextCursor] = useState(0);
   const [cursorArr, setCursorArr] = useState([0]);
   const [page, setPage] = useState(0);
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(false);
-  const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
   const [isPC, isTablet, isMobile] = useResponsive();
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
@@ -37,33 +43,9 @@ export default function SupportSection() {
     slider.current.scrollLeft = scrollLeft - walk;
   };
 
-  const handleLoad = async (nextCursor = 0) => {
-    const instance = axios.create({
-      baseURL: "https://fandom-k-api.vercel.app/6-4",
-      timeout: 10000,
-    });
-
-    const response = await instance.get(
-      `/donations?${isPC ? "pageSize=4" : ""}&cursor=${nextCursor}`,
-    );
-
-    setDonations(response.data.list);
-    if (
-      !cursorArr.includes(response.data.nextCursor) &&
-      response.data.nextCursor !== null
-    ) {
-      setCursorArr((prevArr) => [...prevArr, response.data.nextCursor]);
-    }
-
-    if (page === 0) {
-      setPrevBtnDisabled(true);
-    } else {
-      setPrevBtnDisabled(false);
-    }
-    if (response.data.nextCursor === null) {
-      setNextBtnDisabled(true);
-    } else {
-      setNextBtnDisabled(false);
+  const setPagination = () => {
+    if (!cursorArr.includes(nextCursor) && nextCursor !== null) {
+      setCursorArr((prevArr) => [...prevArr, nextCursor]);
     }
   };
 
@@ -84,8 +66,32 @@ export default function SupportSection() {
   };
 
   useEffect(() => {
-    handleLoad(cursorArr[page]);
-  }, [page, isPC]);
+    (async () => {
+      const result = await getDonationsDataAsync({
+        pageSize: isPC ? 4 : null,
+        cursor: isPC ? cursorArr[page] : 0,
+      });
+
+      if (isPC) {
+        setNextCursor(result.data.nextCursor);
+        setPagination();
+      } else {
+        setNextCursor(0);
+        setPage(0);
+      }
+      setDonations(result.data.list);
+    })();
+  }, [donations]);
+
+  if (error)
+    return (
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
+        <div className={styles.sectionContent}>
+          리스트를 불러오는데 실패했습니다.
+        </div>
+      </section>
+    );
 
   return (
     <>
@@ -97,7 +103,7 @@ export default function SupportSection() {
               <Button.Arrow
                 direction="left"
                 onClick={handlePrevBtn}
-                disabled={prevBtnDisabled}
+                disabled={page === 0}
               />
             </div>
             <ul
@@ -120,7 +126,7 @@ export default function SupportSection() {
               <Button.Arrow
                 direction="right"
                 onClick={handleNextBtn}
-                disabled={nextBtnDisabled}
+                disabled={nextCursor === null}
               />
             </div>
           </div>

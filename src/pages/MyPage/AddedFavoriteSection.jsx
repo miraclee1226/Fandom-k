@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "components/Image";
 import TouchArea from "components/TouchArea";
 import { ReactComponent as DeleteIcon } from "assets/icons/round_x_icon.svg";
-import mockData from "mockData/maleData.json";
+import mockData from "mockData/femaleData.json";
 import styles from "./MyPage.module.scss";
 
 export default function AddedFavoriteSection() {
@@ -26,7 +26,7 @@ export default function AddedFavoriteSection() {
                       </TouchArea>
                     </div>
                     <div className={styles.roundImage}>
-                      <Image.Round />
+                      <Image.Round src={idol.profilePicture} lazyMode={true} />
                     </div>
                     <span className={styles.itemInfo}>
                       <strong className={styles.itemTitle}>{idol.name}</strong>

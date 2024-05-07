@@ -28,7 +28,7 @@ export default function AddFavoriteSection({ idols }) {
                         />
                         <label htmlFor={idol.id} className={styles.labelItem}>
                           <div className={styles.imgWrap}>
-                            <Image.Round />
+                            <Image.Round src={idol.profilePicture} lazyMode={true} />
                           </div>
                         </label>
                         <span className={styles.itemInfo}>
