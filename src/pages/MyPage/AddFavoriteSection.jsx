@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import Button from "components/Button";
 import Image from "components/Image";
 import useRequest from "hooks/useRequest";
+import useResponsive from "hooks/useResponsive";
 import icoPlus from "assets/icons/plus.svg";
 import styles from "./MyPage.module.scss";
 
 const DATA_NUM_BY_DEVICE = {
   MOBILE: 6,
   TABLET: 8,
-  DESKTOP: 16,
+  PC: 16,
 };
 
 export default function AddFavoriteSection() {
@@ -16,6 +17,7 @@ export default function AddFavoriteSection() {
   const [firstDataCursor, setFirstDataCursor] = useState(null);
   const [lastDataCursor, setLastDataCursor] = useState(null);
   const [pageSize, setPageSize] = useState(DATA_NUM_BY_DEVICE.MOBILE);
+  const [isPC, isTablet, isMobile] = useResponsive();
   const { requestFunc: getIdolsData } = useRequest({
     options: {
       method: "get",
@@ -36,12 +38,18 @@ export default function AddFavoriteSection() {
   };
 
   useEffect(() => {
+    if (isPC) setPageSize(DATA_NUM_BY_DEVICE.PC);
+    if (isTablet) setPageSize(DATA_NUM_BY_DEVICE.TABLET);
+    if (isMobile) setPageSize(DATA_NUM_BY_DEVICE.MOBILE);
+  }, [isPC, isTablet, isMobile]);
+
+  useEffect(() => {
     updateData();
   }, [pageSize, firstDataCursor, lastDataCursor]);
 
-  useEffect(() => {
-    console.log({ firstDataCursor, lastDataCursor });
-  }, [firstDataCursor, lastDataCursor]);
+  // useEffect(() => {
+  //   console.log({ firstDataCursor, lastDataCursor });
+  // }, [firstDataCursor, lastDataCursor]);
 
   const handleLeftBtnClick = () => {};
 
