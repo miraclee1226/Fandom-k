@@ -1,9 +1,52 @@
+import { useEffect, useState } from "react";
 import Button from "components/Button";
 import Image from "components/Image";
+import useRequest from "hooks/useRequest";
 import icoPlus from "assets/icons/plus.svg";
 import styles from "./MyPage.module.scss";
 
-export default function AddFavoriteSection({ idols }) {
+const DATA_NUM_BY_DEVICE = {
+  MOBILE: 6,
+  TABLET: 8,
+  DESKTOP: 16,
+};
+
+export default function AddFavoriteSection() {
+  const [idols, setIdols] = useState([]);
+  const [firstDataCursor, setFirstDataCursor] = useState(null);
+  const [lastDataCursor, setLastDataCursor] = useState(null);
+  const [pageSize, setPageSize] = useState(DATA_NUM_BY_DEVICE.MOBILE);
+  const { requestFunc: getIdolsData } = useRequest({
+    options: {
+      method: "get",
+      url: "/idols",
+      params: {
+        pageSize,
+        // cursor: lastDataCursor,
+      },
+    },
+  });
+
+  const updateData = async () => {
+    const response = await getIdolsData();
+
+    setIdols(response.data.list);
+    setLastDataCursor(response.data.nextCursor);
+    setFirstDataCursor(response.data.nextCursor - pageSize);
+  };
+
+  useEffect(() => {
+    updateData();
+  }, [pageSize, firstDataCursor, lastDataCursor]);
+
+  useEffect(() => {
+    console.log({ firstDataCursor, lastDataCursor });
+  }, [firstDataCursor, lastDataCursor]);
+
+  const handleLeftBtnClick = () => {};
+
+  const handleRightBtnClick = () => {};
+
   return (
     <>
       <section className={styles.section}>
@@ -28,7 +71,10 @@ export default function AddFavoriteSection({ idols }) {
                         />
                         <label htmlFor={idol.id} className={styles.labelItem}>
                           <div className={styles.imgWrap}>
-                            <Image.Round src={idol.profilePicture} lazyMode={true} />
+                            <Image.Round
+                              src={idol.profilePicture}
+                              lazyMode={true}
+                            />
                           </div>
                         </label>
                         <span className={styles.itemInfo}>
