@@ -37,10 +37,12 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "axios": "^1.6.8",
     "classname": "^0.0.0",
     "eslint-config-naver": "^2.1.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "3.2.5",
+    "react-responsive": "^10.0.0",
     "sass": "^1.75.0",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
