@@ -9,7 +9,7 @@ import styles from "./List.module.scss";
 
 export default function ChartSection() {
   const [gender, setGender] = useState("female");
-  const [pageSize, setPageSize] = useState(20);
+  const [pageSize, setPageSize] = useState(10);
   const [data, setData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const { requestFunc: getChartData } = useRequest({

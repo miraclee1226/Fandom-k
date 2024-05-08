@@ -19,16 +19,16 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
   const getCredit = () => {
     const storedCredit = localStorage.getItem('Credit');
 
-    return storedCredit || 100000;
+    return storedCredit;
   }
 
-  const handleVote = () => {
+  const handleVote = async () => {
     setCredit((prev) => prev - SUBTRACT_CREDIT);
     
     localStorage.setItem('Credit', credit - SUBTRACT_CREDIT);
     
     handleModalOpen(false);
-    voteIdols();
+    await voteIdols();
   };
   
   const handleRadioChange = (e) => {
