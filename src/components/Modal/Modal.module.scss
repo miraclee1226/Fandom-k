@@ -1,3 +1,5 @@
+@import "/src/styles/mixin_var.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -191,18 +193,37 @@
 /* Vote Modal */
 
 .voteModal {
-  padding: 24px 24px 12px;
-  width: 525px;
+  padding: 0 24px 12px;
+  width: 375px;
+  height: 775px;
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  @media screen and (min-width: $tablet) {
+    width: 525px;
+    height: 693px;
+  }
 
   .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
+    height: 67px;
+    padding: 0 24px;
     font-size: 1.8rem;
     font-weight: 500;
+    align-items: center;
+    background-color: var(--bg-modal);
   }
 
   .main {
-    margin-top: 19px;
+    margin-top: 68px;
   }
 
   .footer {
@@ -239,6 +260,13 @@
     grid-template-columns: 70px repeat(2, max-content);
     grid-template-rows: repeat(2, 35px);
 
+    .roundImage {
+      position: absolute;
+      z-index: -10;
+      width: 70px;
+      height: 70px;
+    }
+
     .profile {
       grid-column: 1;
       grid-row: 1 / span 2;
@@ -247,6 +275,7 @@
 
     .profile.isChecked::after {
       position: absolute;
+      z-index: -10;
       background:
         url("../../assets/icons/Checkmark.svg") no-repeat center,
         linear-gradient(
