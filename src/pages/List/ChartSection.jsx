@@ -3,8 +3,6 @@ import Tab from "components/Tab";
 import ChartItem from "components/ChartItem";
 import Button from "components/Button";
 import { ReactComponent as ChartIcon } from "assets/icons/chart.svg";
-import femaleData from "mockData/femaleData";
-import maleData from "mockData/maleData";
 import Modal from "components/Modal";
 import useRequest from "hooks/useRequest";
 import styles from "./List.module.scss";
@@ -13,6 +11,7 @@ export default function ChartSection() {
   const [gender, setGender] = useState("female");
   const [pageSize, setPageSize] = useState(20);
   const [data, setData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   const { requestFunc: getChartData } = useRequest({
     skip: true,
     options: {
@@ -24,7 +23,6 @@ export default function ChartSection() {
       },
     },
   });
-  const [isOpen, setIsOpen] = useState(false);
   
   const handleTabChange = (index) => {
     setGender(index === 0 ? "female" : "male");
