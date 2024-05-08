@@ -54,11 +54,11 @@
         position: relative;
         .touchArea {
           position: absolute;
-          top: -15px;
-          left: 38px;
+          top: -14px;
+          left: 34px;
           cursor: pointer;
           @media screen and (min-width: $tablet) {
-            top: -12px;
+            top: -10px;
             left: 60px;
           }
           .deleteIcon {
@@ -99,6 +99,14 @@
         }
       }
     }
+  }
+}
+.deleteIconSize {
+  width: 22px;
+  height: 22px;
+  @media screen and (min-width: $tablet) {
+    width: 32px;
+    height: 32px;
   }
 }
 
