@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "components/Button";
 import { addCommas, removeCommas } from "utils/commas";
+import useRequest from "hooks/useRequest";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
 import idolImg from "assets/Image_Idol.png";
@@ -9,9 +10,24 @@ import styles from "../Modal.module.scss";
 
 const ERROR_MSG = "갖고 있는 크레딧보다 더 많이 후원할 수 없어요";
 
-export default function SupportModal({ isOpen, handleModalOpen }) {
+export default function SupportModal({
+  isOpen,
+  handleModalOpen,
+  content,
+  handleUpdate,
+}) {
   const [creditAmount, setCreditAmount] = useState(0);
   const [error, setError] = useState(false);
+  const { requestFunc: supportIdol } = useRequest({
+    skip: true,
+    options: {
+      method: "put",
+      url: `/donations/${content?.id}/contribute`,
+      data: {
+        amount: creditAmount,
+      },
+    },
+  });
 
   const handleInputChange = (value) => {
     setCreditAmount(value);
@@ -19,6 +35,8 @@ export default function SupportModal({ isOpen, handleModalOpen }) {
 
   const handleSupport = () => {
     // TODO: Support 충전 핸들러
+    supportIdol();
+    handleUpdate();
     handleModalOpen(false);
   };
 
@@ -35,10 +53,15 @@ export default function SupportModal({ isOpen, handleModalOpen }) {
         </div>
 
         <div className={styles.main}>
-          <img src={idolImg} alt="main-img" width={158} height={206} />
+          <img
+            src={content?.idol?.profilePicture}
+            alt="main-img"
+            width={158}
+            height={206}
+          />
           <div className={styles.titleContainer}>
-            <span className={styles.title}>강남역 광고</span>
-            <span className={styles.subTitle}>민지 2023 첫 광고</span>
+            <span className={styles.title}>{content?.subtitle}</span>
+            <span className={styles.subtitle}>{content?.title}</span>
           </div>
           <div className={styles.inputContainer}>
             <NumberInput

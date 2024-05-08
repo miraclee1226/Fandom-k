@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import useResponsive from "hooks/useResponsive";
 import useRequest from "hooks/useRequest";
-import axios from "axios";
+import Modal from "components/Modal";
 import Card from "components/Card";
 import Button from "components/Button";
 import styles from "./List.module.scss";
@@ -12,6 +12,8 @@ export default function SupportSection() {
   const [cursorArr, setCursorArr] = useState([0]);
   const [page, setPage] = useState(0);
   const [isPC, isTablet, isMobile] = useResponsive();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({});
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
@@ -33,25 +35,13 @@ export default function SupportSection() {
       },
     },
   });
+  const handleModalOpen = (boolean, content) => {
+    setModalContent(content);
+    setIsModalOpen(boolean);
+  };
 
-  const handleMouseDown = (e) => {
-    setIsDown(true);
-    setStartX(e.pageX - slider.current.offsetLeft);
-    setScrollLeft(slider.current.scrollLeft);
-  };
-  const handleMouseLeave = () => {
-    setIsDown(false);
-  };
-  const handleMouseUp = () => {
-    setIsDown(false);
-  };
-  const handleMouseMove = (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.current.offsetLeft;
-    const walk = x - startX;
-
-    slider.current.scrollLeft = scrollLeft - walk;
+  const handleUpdate = () => {
+    handleLoad();
   };
 
   const handleLoad = async () => {
@@ -88,6 +78,26 @@ export default function SupportSection() {
     }
   };
 
+  const handleMouseDown = (e) => {
+    setIsDown(true);
+    setStartX(e.pageX - slider.current.offsetLeft);
+    setScrollLeft(slider.current.scrollLeft);
+  };
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+  const handleMouseMove = (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.current.offsetLeft;
+    const walk = x - startX;
+
+    slider.current.scrollLeft = scrollLeft - walk;
+  };
+
   useEffect(() => {
     handleLoad();
   }, [page, isPC]);
@@ -95,6 +105,12 @@ export default function SupportSection() {
   return (
     <>
       <section className={styles.section}>
+        <Modal.Support
+          isOpen={isModalOpen}
+          handleModalOpen={handleModalOpen}
+          content={modalContent}
+          handleUpdate={handleUpdate}
+        />
         <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
         <div className={styles.sectionContent}>
           <div className={styles.slideContainer}>
@@ -116,7 +132,10 @@ export default function SupportSection() {
               {donations.map((donation) => {
                 return (
                   <li key={donation.idolId} className={styles.supportList}>
-                    <Card.Support donation={donation} />
+                    <Card.Support
+                      donation={donation}
+                      handleModalOpen={handleModalOpen}
+                    />
                   </li>
                 );
               })}
