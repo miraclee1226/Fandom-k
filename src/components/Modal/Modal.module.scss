@@ -212,6 +212,7 @@
     top: 0;
     right: 0;
     left: 0;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     height: 67px;
@@ -262,7 +263,6 @@
 
     .roundImage {
       position: absolute;
-      z-index: -10;
       width: 70px;
       height: 70px;
     }
@@ -275,7 +275,6 @@
 
     .profile.isChecked::after {
       position: absolute;
-      z-index: -10;
       background:
         url("../../assets/icons/Checkmark.svg") no-repeat center,
         linear-gradient(
