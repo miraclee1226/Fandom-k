@@ -9,6 +9,7 @@ import useRequest from "hooks/useRequest";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 
+const SUBTRACT_CREDIT = 1000;
 const cn = classNames.bind(styles);
 
 export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
@@ -22,11 +23,9 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
   }
 
   const handleVote = () => {
-    const updatedCredit = credit - 1000;
-
-    setCredit(updatedCredit);
-
-    localStorage.setItem('Credit', updatedCredit);
+    setCredit((prev) => prev - SUBTRACT_CREDIT);
+    
+    localStorage.setItem('Credit', credit - SUBTRACT_CREDIT);
     
     handleModalOpen(false);
     voteIdols();
@@ -46,7 +45,6 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
       },
     }
   })
-
 
   useEffect(() => {
     setCredit(getCredit());
