@@ -18,7 +18,7 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
   const getCredit = () => {
     const storedCredit = localStorage.getItem('Credit');
 
-    return storedCredit ? JSON.parse(storedCredit) : 100000;
+    return storedCredit || 100000;
   }
 
   const handleVote = () => {
@@ -26,7 +26,7 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
 
     setCredit(updatedCredit);
 
-    localStorage.setItem('Credit', JSON.stringify(updatedCredit));
+    localStorage.setItem('Credit', updatedCredit);
     
     handleModalOpen(false);
     voteIdols();
