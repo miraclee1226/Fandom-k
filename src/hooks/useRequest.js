@@ -21,9 +21,11 @@ export default function useRequest({ options, skip = false, deps = [] }) {
     try {
       const response = await dispatcher({ ...options, ...args });
 
-      setData(response);
+      setData(() => response);
+      return response;
     } catch (err) {
-      setError(err);
+      setError(() => err);
+      return err;
     } finally {
       setIsLoading(false);
     }
@@ -36,4 +38,3 @@ export default function useRequest({ options, skip = false, deps = [] }) {
 
   return { data, isLoading, error, requestFunc };
 }
-
