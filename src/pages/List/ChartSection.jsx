@@ -12,8 +12,8 @@ import styles from "./List.module.scss";
 export default function ChartSection() {
   const [gender, setGender] = useState("female");
   const [pageSize, setPageSize] = useState(20);
-  const [sortedData, setSortedData] = useState([]);
-  const { data, requestFunc: getChartData } = useRequest({
+  const [data, setData] = useState([]);
+  const { requestFunc: getChartData } = useRequest({
     skip: true,
     options: {
       method: "get",
@@ -32,16 +32,16 @@ export default function ChartSection() {
 
   const handleButtonClick = () => setPageSize((prev) => prev + 10);
 
-  const handleModalOpen = () => {
+  const handleModalOpen = async () => {
     setIsOpen(!isOpen);
-    getChartData();
+    await getChartData();
   };
 
   useEffect(() => {
     (async () => {
       const result = await getChartData();
 
-      setSortedData(result?.data.idols);
+      setData(result?.data.idols);
     })();
   }, [gender, pageSize, isOpen]);
   
@@ -54,14 +54,14 @@ export default function ChartSection() {
             <ChartIcon />
             차트 투표하기
           </Button.Round>
-          <Modal.Vote data={data?.data?.idols} isOpen={isOpen} handleModalOpen={handleModalOpen} gender={gender} />
+          <Modal.Vote data={data} isOpen={isOpen} handleModalOpen={handleModalOpen} gender={gender} />
         </div>
         <div className={styles.sectionDetail}>
           <div className={styles.tab}>
             <Tab handleTabChange={handleTabChange} />
           </div>
           <ul className={styles.chartList}>
-            {sortedData.map((chartItem, index) => (
+            {data.map((chartItem, index) => (
               <ChartItem key={chartItem.id} data={chartItem} />
             ))}
           </ul>
