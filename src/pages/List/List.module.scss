@@ -3,6 +3,7 @@
 /* list page 공통 */
 .section {
   padding: 0 24px;
+  z-index: 0;
   @media screen and (min-width: $desktop) {
     margin: 0 auto;
     padding: 0;

@@ -74,7 +74,7 @@ function VoteItem({ data, checkedValue, handleRadioChange }) {
     <div className={styles.voteItem}>
       <div className={styles.content}>
         <div className={profileClasses}>
-          <Image.Round />
+          <Image.Round src={data.profilePicture} />
         </div>
         <span className={styles.rank}>{data.rank}</span>
         <span className={styles.name}>

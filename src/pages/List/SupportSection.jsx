@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Card from "components/Card";
 import Button from "components/Button";
+import Modal from "components/Modal";
 import donationMockData from "mockData/donations.json";
 import styles from "./List.module.scss";
 
@@ -9,7 +10,12 @@ export default function SupportSection() {
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const slider = useRef();
+
+  const handleModalOpen = (boolean) => {
+    setIsModalOpen(boolean);
+  };
 
   const handleMouseDown = (e) => {
     setIsDown(true);
@@ -34,6 +40,7 @@ export default function SupportSection() {
   return (
     <>
       <section className={styles.section}>
+        <Modal.Support isOpen={isModalOpen} handleModalOpen={handleModalOpen} />
         <h2 className={styles.sectionTitle}>후원을 기다리는 조공</h2>
         <div className={styles.sectionContent}>
           <div className={styles.slideContainer}>
@@ -51,7 +58,10 @@ export default function SupportSection() {
               {donations.map((donation) => {
                 return (
                   <li key={donation.idolId} className={styles.supportList}>
-                    <Card.Support donation={donation} />
+                    <Card.Support
+                      donation={donation}
+                      handleModalOpen={handleModalOpen}
+                    />
                   </li>
                 );
               })}

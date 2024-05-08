@@ -101,6 +101,8 @@
   }
 }
 
+/* Support Modal */
+
 .supportModal {
   padding: 24px 16px 32px;
   width: 327px;
@@ -243,6 +245,7 @@
       grid-column: 1;
       grid-row: 1 / span 2;
       position: relative;
+      height: 70px;
     }
 
     .profile.isChecked::after {
