@@ -15,26 +15,25 @@ const cn = classNames.bind(styles);
 export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
   const [checkedValue, setCheckedValue] = useState("");
   const [credit, setCredit] = useState(0);
-
   const getCredit = () => {
-    const storedCredit = localStorage.getItem('Credit');
+    const storedCredit = localStorage.getItem("Credit");
 
-    return storedCredit;
-  }
+    return storedCredit || 1000000;
+  };
 
   const handleVote = async () => {
     setCredit((prev) => prev - SUBTRACT_CREDIT);
-    
-    localStorage.setItem('Credit', credit - SUBTRACT_CREDIT);
-    
+
+    localStorage.setItem("Credit", credit - SUBTRACT_CREDIT);
+
     handleModalOpen(false);
     await voteIdols();
   };
-  
+
   const handleRadioChange = (e) => {
     setCheckedValue(e.target.value);
   };
-  
+
   const { requestFunc: voteIdols } = useRequest({
     skip: true,
     options: {
@@ -43,8 +42,8 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
       data: {
         idolId: checkedValue,
       },
-    }
-  })
+    },
+  });
 
   useEffect(() => {
     setCredit(getCredit());
