@@ -27,7 +27,7 @@ export default function ChartSection() {
     setGender(index === 0 ? "female" : "male");
   };
 
-  const handleButtonClick = async () => setPageSize(pageSize + 10);
+  const handleButtonClick = () => setPageSize((prev) => prev + 10);
 
   useEffect(() => {
     (async () => {
