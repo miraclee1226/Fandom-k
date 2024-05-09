@@ -1,34 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import Button from "components/Button";
 import Image from "components/Image";
 import { addCommas } from "utils/commas";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
 import femaleData from "mockData/femaleData";
+import useRequest from "hooks/useRequest";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 
-const MOCK_DATA = femaleData.slice(0, 6);
-
+const SUBTRACT_CREDIT = 1000;
 const cn = classNames.bind(styles);
 
-export default function VoteModal({ isOpen, handleModalOpen }) {
+export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
   const [checkedValue, setCheckedValue] = useState("");
+  const [credit, setCredit] = useState(0);
 
+  const getCredit = () => {
+    const storedCredit = localStorage.getItem('Credit');
+
+    return storedCredit;
+  }
+
+  const handleVote = async () => {
+    setCredit((prev) => prev - SUBTRACT_CREDIT);
+    
+    localStorage.setItem('Credit', credit - SUBTRACT_CREDIT);
+    
+    handleModalOpen(false);
+    await voteIdols();
+  };
+  
   const handleRadioChange = (e) => {
     setCheckedValue(e.target.value);
   };
+  
+  const { requestFunc: voteIdols } = useRequest({
+    skip: true,
+    options: {
+      method: "post",
+      url: "/votes",
+      data: {
+        idolId: checkedValue,
+      },
+    }
+  })
 
-  const handleVote = () => {
-    // TODO: 투표 기능 추가
-    handleModalOpen(false);
-  };
+  useEffect(() => {
+    setCredit(getCredit());
+  }, []);
 
   return (
     <DefaultModal isOpen={isOpen} handleModalOpen={handleModalOpen}>
       <div className={styles.voteModal}>
         <div className={styles.header}>
-          <h1>이달의 여자 아이돌</h1>
+          <h1>이달의 {gender === "female" ? "여자" : "남자"} 아이돌</h1>
           <XIcon
             className={styles.xIcon}
             opacity={0.5}
@@ -37,10 +63,10 @@ export default function VoteModal({ isOpen, handleModalOpen }) {
         </div>
 
         <div className={styles.main}>
-          {MOCK_DATA.map((data) => (
+          {data?.map((idol) => (
             <VoteItem
-              key={data.id}
-              data={data}
+              key={idol.id}
+              data={idol}
               checkedValue={checkedValue}
               handleRadioChange={handleRadioChange}
             />
@@ -74,7 +100,9 @@ function VoteItem({ data, checkedValue, handleRadioChange }) {
     <div className={styles.voteItem}>
       <div className={styles.content}>
         <div className={profileClasses}>
-          <Image.Round />
+          <div className={styles.roundImage}>
+            <Image.Round size="sm" src={data.profilePicture} lazyMode={true} />
+          </div>
         </div>
         <span className={styles.rank}>{data.rank}</span>
         <span className={styles.name}>
