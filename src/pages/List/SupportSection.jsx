@@ -1,6 +1,6 @@
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
-import { creditAtom } from "App";
+import creditAtom from "context/credit";
 import useResponsive from "hooks/useResponsive";
 import useRequest from "hooks/useRequest";
 import Modal from "components/Modal";
@@ -45,6 +45,7 @@ export default function SupportSection() {
 
   const handleUpdate = (creditAmount) => {
     setCredit((prevCredit) => prevCredit - creditAmount);
+    handleLoad();
   };
 
   const handleLoad = async () => {

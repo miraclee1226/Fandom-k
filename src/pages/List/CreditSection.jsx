@@ -1,5 +1,5 @@
-import { creditAtom } from "App";
 import { useAtom } from "jotai";
+import creditAtom from "context/credit";
 import Button from "components/Button";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
