@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { useAtom } from "jotai";
-import creditAtom from "context/credit";
 import Button from "components/Button";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
+import Modal from "components/Modal";
+import creditAtomWithPersistence from "context/jotai";
 import styles from "./List.module.scss";
 
 export default function CreditSection() {
-  const [credit, setCredit] = useAtom(creditAtom);
-  const handleChargeCredit = () => {
-    // TODO: 충전 Modal을 pop up 합니다.
+  const [isOpen, setIsOpen] = useState(false);
+  const [credit, setCredit] = useAtom(creditAtomWithPersistence);
+
+  const handleModalOpen = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -20,12 +24,10 @@ export default function CreditSection() {
             <span>{credit.toLocaleString()}</span>
           </div>
         </div>
-        <Button.Text
-          className={styles.rightContent}
-          onClick={handleChargeCredit}
-        >
+        <Button.Text className={styles.rightContent} onClick={handleModalOpen}>
           충전하기
         </Button.Text>
+        <Modal.CreditCharge isOpen={isOpen} handleModalOpen={handleModalOpen} />
       </div>
     </section>
   );
