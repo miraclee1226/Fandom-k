@@ -27,11 +27,11 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
     handleModalOpen(false);
     await voteIdols();
   };
-  
+
   const handleRadioChange = (e) => {
     setCheckedValue(e.target.value);
   };
-  
+
   const { requestFunc: voteIdols } = useRequest({
     skip: true,
     options: {
@@ -40,8 +40,8 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
       data: {
         idolId: checkedValue,
       },
-    }
-  })
+    },
+  });
 
   return (
     <DefaultModal isOpen={isOpen} handleModalOpen={handleModalOpen}>
