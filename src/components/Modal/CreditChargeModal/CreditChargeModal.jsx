@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useAtom } from "jotai";
 import classNames from "classnames/bind";
 import Button from "components/Button";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
+import creditAtomWithPersistence from "context/jotai";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 
@@ -12,13 +14,16 @@ const CHARGE_AMOUNTS = [100, 500, 1000];
 
 export default function CreditChargeModal({ isOpen, handleModalOpen }) {
   const [checkedValue, setCheckedValue] = useState("");
+  const [credit, setCredit] = useAtom(creditAtomWithPersistence);
 
   const handleRadioChange = (e) => {
     setCheckedValue(e.target.value);
   };
 
   const handleChargeCredit = () => {
-    // TODO: Credit 충전 핸들러
+    const updatedCredit = Number(credit) + Number(checkedValue);
+
+    setCredit(updatedCredit);
     handleModalOpen(false);
   };
 
