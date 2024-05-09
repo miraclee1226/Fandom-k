@@ -5,7 +5,7 @@ import Button from "components/Button";
 import Image from "components/Image";
 import useRequest from "hooks/useRequest";
 import useResponsive from "hooks/useResponsive";
-import addButtonClickedAtom from "context/favoriteIdolsObserver";
+import favoriteIdolsAtom from "context/favoriteIdols";
 import icoPlus from "assets/icons/plus.svg";
 import styles from "./MyPage.module.scss";
 
@@ -23,7 +23,7 @@ export default function AddFavoriteSection() {
   const [checkedIdols, setCheckedIdols] = useState([]);
   const checkboxesRef = useRef([]);
   const [isPC, isTablet, isMobile] = useResponsive();
-  const setAddButtonClickedAtom = useSetAtom(addButtonClickedAtom);
+  const setFavoriteIdols = useSetAtom(favoriteIdolsAtom);
 
   const { requestFunc: getIdolsData } = useRequest({
     skip: true,
@@ -69,18 +69,13 @@ export default function AddFavoriteSection() {
       ...checkedIdolsData,
     ];
 
-    localStorage.setItem(
-      "FavoriteIdols",
-      JSON.stringify(updatedFavoriteIdolsData),
-    );
+    setFavoriteIdols(updatedFavoriteIdolsData);
 
     setCheckedIdols([]);
     checkboxesRef.current.forEach((checkbox) => {
       if (!checkbox) return;
       checkbox.checked = false;
     });
-
-    setAddButtonClickedAtom(true);
   };
 
   useEffect(() => {
