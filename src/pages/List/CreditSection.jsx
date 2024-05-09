@@ -9,9 +9,9 @@ import styles from "./List.module.scss";
 export default function CreditSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [credit, setCredit] = useAtom(creditAtomWithPersistence);
-  
+
   const handleModalOpen = () => {
-    setIsOpen(!isOpen)
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -24,10 +24,7 @@ export default function CreditSection() {
             <span>{credit.toLocaleString()}</span>
           </div>
         </div>
-        <Button.Text
-          className={styles.rightContent}
-          onClick={handleModalOpen}
-        >
+        <Button.Text className={styles.rightContent} onClick={handleModalOpen}>
           충전하기
         </Button.Text>
         <Modal.CreditCharge isOpen={isOpen} handleModalOpen={handleModalOpen} />

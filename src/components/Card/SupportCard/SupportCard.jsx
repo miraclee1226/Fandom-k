@@ -1,17 +1,19 @@
-import DefaultButton from "components/Button/Button";
+import Button from "components/Button";
 import timeCounter from "utils/timeCounter";
 import creditImg from "assets/credit.png";
 import styles from "../SupportCard.module.scss";
 
-export default function SupportCard({ donation }) {
+export default function SupportCard({ donation, handleModalOpen }) {
   return (
     <div className={styles.supportCard}>
       <div className={styles.content}>
         <img
           src={donation.idol.profilePicture}
-          alt={`${donation.idol.gorup} ${donation.idol.name} 이미지`}
+          alt={`${donation.idol.group} ${donation.idol.name} 이미지`}
         />
-        <DefaultButton>후원하기</DefaultButton>
+        <Button onClick={() => handleModalOpen(true, donation)}>
+          후원하기
+        </Button>
       </div>
       <div className={styles.header}>
         <strong className={styles.category}>{donation.subtitle}</strong>
