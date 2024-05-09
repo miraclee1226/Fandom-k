@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Image from "components/Image";
-import TouchArea from "components/TouchArea";
-import { ReactComponent as DeleteIcon } from "assets/icons/round_x_icon.svg";
+import DeleteIcon from "pages/MyPage/DeleteIcon.jsx";
 import mockData from "mockData/femaleData.json";
+import useTouchArea from "hooks/useTouchArea";
 import styles from "./MyPage.module.scss";
 
 export default function AddedFavoriteSection() {
   const [idolsData, setIdolsData] = useState(mockData);
+  const { TouchArea } = useTouchArea({ component: DeleteIcon})
 
   return (
     <>
@@ -19,11 +20,7 @@ export default function AddedFavoriteSection() {
                 return (
                   <li key={idol.id} className={styles.item}>
                     <div className={styles.touchArea}>
-                      <TouchArea>
-                        <button type="button">
-                          <DeleteIcon className={styles.deleteIcon} />
-                        </button>
-                      </TouchArea>
+                      <TouchArea />
                     </div>
                     <div className={styles.roundImage}>
                       <Image.Round src={idol.profilePicture} lazyMode={true} />

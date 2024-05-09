@@ -45,6 +45,8 @@
       gap: 16px;
     }
     @media screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
     .supportList {

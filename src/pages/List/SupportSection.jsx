@@ -1,15 +1,38 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import useResponsive from "hooks/useResponsive";
+import useRequest from "hooks/useRequest";
+import axios from "axios";
 import Card from "components/Card";
 import Button from "components/Button";
-import donationMockData from "mockData/donations.json";
 import styles from "./List.module.scss";
 
 export default function SupportSection() {
-  const [donations, setDonations] = useState(donationMockData);
+  const [donations, setDonations] = useState([]);
+  const [nextCursor, setNextCursor] = useState(0);
+  const [cursorArr, setCursorArr] = useState([0]);
+  const [page, setPage] = useState(0);
+  const [isPC, isTablet, isMobile] = useResponsive();
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
   const slider = useRef();
+
+  const {
+    data,
+    isLoading,
+    error,
+    requestFunc: getDonationsData,
+  } = useRequest({
+    skip: true,
+    options: {
+      method: "get",
+      url: "/donations",
+      params: {
+        pageSize: isPC ? 4 : null,
+        cursor: cursorArr[page],
+      },
+    },
+  });
 
   const handleMouseDown = (e) => {
     setIsDown(true);
@@ -31,6 +54,44 @@ export default function SupportSection() {
     slider.current.scrollLeft = scrollLeft - walk;
   };
 
+  const handleLoad = async () => {
+    const response = await getDonationsData();
+
+    if (isPC) {
+      setNextCursor(response.data.nextCursor);
+      setPagination(response.data.nextCursor);
+    } else {
+      setNextCursor(0);
+      setPage(0);
+    }
+    setDonations(response.data.list);
+  };
+
+  const setPagination = (cursor) => {
+    if (!cursorArr.includes(cursor) && cursor !== null) {
+      setCursorArr((prevArr) => [...prevArr, cursor]);
+    }
+  };
+  const handlePrevBtn = () => {
+    if (donations.length < 4 && page === 0) {
+      setPage((prevValue) => prevValue);
+    } else if (page > 0) {
+      setPage((prevValue) => prevValue - 1);
+    }
+  };
+
+  const handleNextBtn = () => {
+    if (donations.length < 4) {
+      setPage((prevValue) => prevValue);
+    } else {
+      setPage((prevValue) => prevValue + 1);
+    }
+  };
+
+  useEffect(() => {
+    handleLoad();
+  }, [page, isPC]);
+
   return (
     <>
       <section className={styles.section}>
@@ -38,7 +99,11 @@ export default function SupportSection() {
         <div className={styles.sectionContent}>
           <div className={styles.slideContainer}>
             <div className={styles.sliderBtn}>
-              <Button.Arrow direction="left" />
+              <Button.Arrow
+                direction="left"
+                onClick={handlePrevBtn}
+                disabled={page === 0}
+              />
             </div>
             <ul
               className={styles.supportLists}
@@ -57,7 +122,11 @@ export default function SupportSection() {
               })}
             </ul>
             <div className={styles.sliderBtn}>
-              <Button.Arrow direction="right" />
+              <Button.Arrow
+                direction="right"
+                onClick={handleNextBtn}
+                disabled={nextCursor === null}
+              />
             </div>
           </div>
         </div>
