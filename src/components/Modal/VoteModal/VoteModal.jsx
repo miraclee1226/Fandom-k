@@ -1,30 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useAtom } from "jotai";
 import classNames from "classnames/bind";
 import Button from "components/Button";
 import Image from "components/Image";
 import { addCommas } from "utils/commas";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
-import femaleData from "mockData/femaleData";
 import useRequest from "hooks/useRequest";
+import Modal from "components/Modal";
+import creditAtomWithPersistence from "context/jotai";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 
-const SUBTRACT_CREDIT = 1000;
 const cn = classNames.bind(styles);
+
+const SUBTRACT_CREDIT = 1000;
 
 export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
   const [checkedValue, setCheckedValue] = useState("");
-  const [credit, setCredit] = useState(0);
-  const getCredit = () => {
-    const storedCredit = localStorage.getItem("Credit");
-
-    return storedCredit || 1000000;
-  };
-
+  const [credit, setCredit] = useAtom(creditAtomWithPersistence);
+  
   const handleVote = async () => {
-    setCredit((prev) => prev - SUBTRACT_CREDIT);
+    const updatedCredit = Number(credit) - SUBTRACT_CREDIT;
 
-    localStorage.setItem("Credit", credit - SUBTRACT_CREDIT);
+    setCredit(updatedCredit);
 
     handleModalOpen(false);
     await voteIdols();
@@ -44,10 +42,6 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
       },
     },
   });
-
-  useEffect(() => {
-    setCredit(getCredit());
-  }, []);
 
   return (
     <DefaultModal isOpen={isOpen} handleModalOpen={handleModalOpen}>
