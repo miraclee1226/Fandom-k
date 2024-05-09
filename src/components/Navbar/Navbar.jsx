@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import logo from "assets/logo.png";
-import profile from "assets/profile.png";
+import logo from "assets/logo.webp";
+import profile from "assets/profile.webp";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
