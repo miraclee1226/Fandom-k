@@ -22,11 +22,9 @@ export default function AddedFavoriteSection() {
   };
 
   useEffect(() => {
-    if (!addButtonClicked) return;
     const favoriteIdolsData = JSON.parse(localStorage.getItem("FavoriteIdols"));
 
     setIdols(favoriteIdolsData ?? []);
-
     setAddButtonClickedAtom(false);
   }, [addButtonClicked]);
 
