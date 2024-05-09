@@ -1,15 +1,15 @@
 import { useAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
-import creditAtom from "context/credit";
 import useResponsive from "hooks/useResponsive";
 import useRequest from "hooks/useRequest";
+import creditAtomWithPersistence from "context/jotai";
 import Modal from "components/Modal";
 import Card from "components/Card";
 import Button from "components/Button";
 import styles from "./List.module.scss";
 
 export default function SupportSection() {
-  const [credit, setCredit] = useAtom(creditAtom);
+  const [credit, setCredit] = useAtom(creditAtomWithPersistence);
   const [donations, setDonations] = useState([]);
   const [nextCursor, setNextCursor] = useState(0);
   const [cursorArr, setCursorArr] = useState([0]);
@@ -44,7 +44,9 @@ export default function SupportSection() {
   };
 
   const handleUpdate = (creditAmount) => {
-    setCredit((prevCredit) => prevCredit - creditAmount);
+    const updatedCredit = credit - creditAmount;
+
+    setCredit(updatedCredit);
     handleLoad();
   };
 
