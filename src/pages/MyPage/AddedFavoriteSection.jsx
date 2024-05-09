@@ -1,13 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
 import Image from "components/Image";
 import DeleteIcon from "pages/MyPage/DeleteIcon.jsx";
-import mockData from "mockData/femaleData.json";
 import useTouchArea from "hooks/useTouchArea";
+import addButtonClickedAtom from "context/favoriteIdolsObserver";
 import styles from "./MyPage.module.scss";
 
 export default function AddedFavoriteSection() {
-  const [idolsData, setIdolsData] = useState(mockData);
-  const { TouchArea } = useTouchArea({ component: DeleteIcon})
+  const [idols, setIdols] = useState([]);
+  const [addButtonClicked, setAddButtonClickedAtom] =
+    useAtom(addButtonClickedAtom);
+  const { TouchArea } = useTouchArea({ component: DeleteIcon });
+
+  const deleteIdol = (checkedId) => {
+    const updatedIdolsData = idols.filter(
+      (data) => data.checkedId !== checkedId,
+    );
+
+    setIdols(updatedIdolsData);
+    localStorage.setItem("FavoriteIdols", JSON.stringify(updatedIdolsData));
+  };
+
+  useEffect(() => {
+    if (!addButtonClicked) return;
+    const favoriteIdolsData = JSON.parse(localStorage.getItem("FavoriteIdols"));
+
+    setIdols(favoriteIdolsData ?? []);
+
+    setAddButtonClickedAtom(false);
+  }, [addButtonClicked]);
 
   return (
     <>
@@ -16,22 +37,23 @@ export default function AddedFavoriteSection() {
         <div className={styles.addedSlider}>
           <div className={styles.addedFavorite}>
             <ul className={styles.list}>
-              {idolsData.map((idol) => {
-                return (
-                  <li key={idol.id} className={styles.item}>
-                    <div className={styles.touchArea}>
-                      <TouchArea />
-                    </div>
-                    <div className={styles.roundImage}>
-                      <Image.Round src={idol.profilePicture} lazyMode={true} />
-                    </div>
-                    <span className={styles.itemInfo}>
-                      <strong className={styles.itemTitle}>{idol.name}</strong>
-                      <p className={styles.itemCategory}>{idol.group}</p>
-                    </span>
-                  </li>
-                );
-              })}
+              {idols?.map((idol) => (
+                <li key={idol.checkedId} className={styles.item}>
+                  <div
+                    className={styles.touchArea}
+                    onClick={() => deleteIdol(idol.checkedId)}
+                  >
+                    <TouchArea />
+                  </div>
+                  <div className={styles.roundImage}>
+                    <Image.Round src={idol.profilePicture} lazyMode={true} />
+                  </div>
+                  <span className={styles.itemInfo}>
+                    <strong className={styles.itemTitle}>{idol.name}</strong>
+                    <p className={styles.itemCategory}>{idol.group}</p>
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
