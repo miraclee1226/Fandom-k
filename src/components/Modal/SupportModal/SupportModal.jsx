@@ -36,8 +36,8 @@ export default function SupportModal({
   const handleSupport = () => {
     // TODO: Support 충전 핸들러
     supportIdol();
-    handleUpdate();
     handleModalOpen(false);
+    handleUpdate(creditAmount);
   };
 
   return (
