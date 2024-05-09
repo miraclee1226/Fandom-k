@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "components/Button";
 import Image from "components/Image";
 import useRequest from "hooks/useRequest";
@@ -14,46 +14,64 @@ const DATA_NUM_BY_DEVICE = {
 
 export default function AddFavoriteSection() {
   const [idols, setIdols] = useState([]);
-  const [firstDataCursor, setFirstDataCursor] = useState(null);
-  const [lastDataCursor, setLastDataCursor] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(DATA_NUM_BY_DEVICE.MOBILE);
+  const [cursorArr, setCursorArr] = useState([0]);
   const [isPC, isTablet, isMobile] = useResponsive();
+
   const { requestFunc: getIdolsData } = useRequest({
+    skip: true,
     options: {
       method: "get",
       url: "/idols",
       params: {
         pageSize,
-        // cursor: lastDataCursor,
+        cursor: cursorArr[currentPage - 1],
       },
     },
   });
 
-  const updateData = async () => {
-    const response = await getIdolsData();
+  const handleLeftBtnClick = async () => {
+    if (currentPage === 1) return;
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
 
-    setIdols(response.data.list);
-    setLastDataCursor(response.data.nextCursor);
-    setFirstDataCursor(response.data.nextCursor - pageSize);
+  const handleRightBtnClick = async () => {
+    if (currentPage >= cursorArr.length) return;
+    setCurrentPage((prevPage) => prevPage + 1);
   };
 
   useEffect(() => {
     if (isPC) setPageSize(DATA_NUM_BY_DEVICE.PC);
     if (isTablet) setPageSize(DATA_NUM_BY_DEVICE.TABLET);
     if (isMobile) setPageSize(DATA_NUM_BY_DEVICE.MOBILE);
+
+    setCurrentPage(1);
   }, [isPC, isTablet, isMobile]);
 
   useEffect(() => {
-    updateData();
-  }, [pageSize, firstDataCursor, lastDataCursor]);
+    (async () => {
+      const result = await getIdolsData();
 
-  // useEffect(() => {
-  //   console.log({ firstDataCursor, lastDataCursor });
-  // }, [firstDataCursor, lastDataCursor]);
+      setIdols(result?.data?.list);
 
-  const handleLeftBtnClick = () => {};
+      if (!result.data.nextCursor) return;
+      setCursorArr((prev) => {
+        const newArray = [...prev, result.data.nextCursor];
 
-  const handleRightBtnClick = () => {};
+        return newArray.filter((item, idx) => newArray.indexOf(item) === idx);
+      });
+    })();
+  }, [currentPage]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await getIdolsData();
+
+      setIdols(result?.data?.list);
+      setCursorArr([0, result.data.nextCursor]);
+    })();
+  }, [pageSize]);
 
   return (
     <>
@@ -65,7 +83,11 @@ export default function AddFavoriteSection() {
           <div className={styles.AddFavorite}>
             <div className={styles.sliderWrap}>
               <div className={styles.sliderBtn}>
-                <Button.Arrow direction="left" size="lg" />
+                <Button.Arrow
+                  direction="left"
+                  size="lg"
+                  onClick={() => handleLeftBtnClick()}
+                />
               </div>
               <div className={styles.slider}>
                 <ul className={styles.gridContainer}>
@@ -97,7 +119,11 @@ export default function AddFavoriteSection() {
                 </ul>
               </div>
               <div className={styles.sliderBtn}>
-                <Button.Arrow direction="right" size="lg" />
+                <Button.Arrow
+                  direction="right"
+                  size="lg"
+                  onClick={() => handleRightBtnClick()}
+                />
               </div>
             </div>
             <div className={styles.btnAddFavorite}>
