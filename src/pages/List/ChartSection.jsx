@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useAtom } from "jotai";
 import Tab from "components/Tab";
 import ChartItem from "components/ChartItem";
 import Button from "components/Button";
 import { ReactComponent as ChartIcon } from "assets/icons/chart.svg";
 import Modal from "components/Modal";
 import useRequest from "hooks/useRequest";
+import creditAtomWithPersistence from "context/jotai";
 import styles from "./List.module.scss";
 
 export default function ChartSection() {
@@ -12,6 +14,8 @@ export default function ChartSection() {
   const [pageSize, setPageSize] = useState(10);
   const [data, setData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenWarningModal, setIsOpenWarningModal] = useState(false);
+  const [credit, setCredit] = useAtom(creditAtomWithPersistence);
   const { requestFunc: getChartData } = useRequest({
     skip: true,
     options: {
@@ -23,16 +27,20 @@ export default function ChartSection() {
       },
     },
   });
-  
+
   const handleTabChange = (index) => {
     setGender(index === 0 ? "female" : "male");
   };
 
   const handleButtonClick = () => setPageSize((prev) => prev + 10);
 
-  const handleModalOpen = async () => {
-    setIsOpen(!isOpen);
-    await getChartData();
+  const handleModalOpen = async (isModalOpen) => {
+    if (Number(credit) > 999) {
+      setIsOpen(isModalOpen);
+      await getChartData();
+    } else {
+      setIsOpenWarningModal(isModalOpen);
+    }
   };
 
   useEffect(() => {
@@ -52,7 +60,8 @@ export default function ChartSection() {
             <ChartIcon />
             차트 투표하기
           </Button.Round>
-          <Modal.Vote data={data} isOpen={isOpen} handleModalOpen={handleModalOpen} gender={gender} />
+          <Modal.Vote data={data} isOpen={!!isOpen} handleModalOpen={handleModalOpen} gender={gender} />
+          <Modal.CreditWarning isOpen={!!isOpenWarningModal} handleModalOpen={handleModalOpen} />
         </div>
         <div className={styles.sectionDetail}>
           <div className={styles.tab}>
