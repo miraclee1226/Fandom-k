@@ -1,9 +1,115 @@
+import { useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useSetAtom } from "jotai";
 import Button from "components/Button";
 import Image from "components/Image";
+import useRequest from "hooks/useRequest";
+import useResponsive from "hooks/useResponsive";
+import favoriteIdolsAtom from "context/favoriteIdols";
 import icoPlus from "assets/icons/plus.svg";
 import styles from "./MyPage.module.scss";
 
-export default function AddFavoriteSection({ idols }) {
+const DATA_NUM_BY_DEVICE = {
+  MOBILE: 6,
+  TABLET: 8,
+  PC: 16,
+};
+
+export default function AddFavoriteSection() {
+  const [idols, setIdols] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(DATA_NUM_BY_DEVICE.MOBILE);
+  const [cursorArr, setCursorArr] = useState([0]);
+  const [checkedIdols, setCheckedIdols] = useState([]);
+  const checkboxesRef = useRef([]);
+  const [isPC, isTablet, isMobile] = useResponsive();
+  const setFavoriteIdols = useSetAtom(favoriteIdolsAtom);
+
+  const { requestFunc: getIdolsData } = useRequest({
+    skip: true,
+    options: {
+      method: "get",
+      url: "/idols",
+      params: {
+        pageSize,
+        cursor: cursorArr[currentPage - 1],
+      },
+    },
+  });
+
+  const handleLeftBtnClick = async () => {
+    if (currentPage === 1) return;
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleRightBtnClick = async () => {
+    if (currentPage >= cursorArr.length) return;
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handleCheckInputChange = (e, idolData) => {
+    const isChecked = e.target.checked;
+
+    if (isChecked) setCheckedIdols((prev) => [...prev, idolData]);
+    else {
+      setCheckedIdols((prev) => prev.filter((data) => data.id !== idolData.id));
+    }
+  };
+
+  const addFavoriteIdols = () => {
+    const originalFavoriteIdolsData =
+      JSON.parse(localStorage.getItem("FavoriteIdols")) ?? [];
+    const checkedIdolsData = checkedIdols.map((each) => {
+      each.checkedId = uuidv4();
+      return each;
+    });
+
+    const updatedFavoriteIdolsData = [
+      ...originalFavoriteIdolsData,
+      ...checkedIdolsData,
+    ];
+
+    setFavoriteIdols(updatedFavoriteIdolsData);
+
+    setCheckedIdols([]);
+    checkboxesRef.current.forEach((checkbox) => {
+      if (!checkbox) return;
+      checkbox.checked = false;
+    });
+  };
+
+  useEffect(() => {
+    if (isPC) setPageSize(DATA_NUM_BY_DEVICE.PC);
+    if (isTablet) setPageSize(DATA_NUM_BY_DEVICE.TABLET);
+    if (isMobile) setPageSize(DATA_NUM_BY_DEVICE.MOBILE);
+
+    setCurrentPage(1);
+  }, [isPC, isTablet, isMobile]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await getIdolsData();
+
+      setIdols(result?.data?.list);
+
+      if (!result.data.nextCursor) return;
+      setCursorArr((prev) => {
+        const newArray = [...prev, result.data.nextCursor];
+
+        return newArray.filter((item, idx) => newArray.indexOf(item) === idx);
+      });
+    })();
+  }, [currentPage]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await getIdolsData();
+
+      setIdols(result?.data?.list);
+      setCursorArr([0, result.data.nextCursor]);
+    })();
+  }, [pageSize]);
+
   return (
     <>
       <section className={styles.section}>
@@ -14,40 +120,51 @@ export default function AddFavoriteSection({ idols }) {
           <div className={styles.AddFavorite}>
             <div className={styles.sliderWrap}>
               <div className={styles.sliderBtn}>
-                <Button.Arrow direction="left" size="lg" />
+                <Button.Arrow
+                  direction="left"
+                  size="lg"
+                  onClick={() => handleLeftBtnClick()}
+                />
               </div>
               <div className={styles.slider}>
                 <ul className={styles.gridContainer}>
-                  {idols.map((idol) => {
-                    return (
-                      <li key={idol.id} className={styles.gridItem}>
-                        <input
-                          type="checkbox"
-                          id={idol.id}
-                          className={styles.chkItem}
-                        />
-                        <label htmlFor={idol.id} className={styles.labelItem}>
-                          <div className={styles.imgWrap}>
-                            <Image.Round src={idol.profilePicture} lazyMode={true} />
-                          </div>
-                        </label>
-                        <span className={styles.itemInfo}>
-                          <strong className={styles.itemTitle}>
-                            {idol.name}
-                          </strong>
-                          <p className={styles.itemCategory}>{idol.group}</p>
-                        </span>
-                      </li>
-                    );
-                  })}
+                  {idols?.map((idol) => (
+                    <li key={idol.id} className={styles.gridItem}>
+                      <input
+                        type="checkbox"
+                        id={idol.id}
+                        className={styles.chkItem}
+                        ref={(el) => checkboxesRef.current.push(el)}
+                        onChange={(e) => handleCheckInputChange(e, idol)}
+                      />
+                      <label htmlFor={idol.id} className={styles.labelItem}>
+                        <div className={styles.imgWrap}>
+                          <Image.Round
+                            src={idol.profilePicture}
+                            lazyMode={true}
+                          />
+                        </div>
+                      </label>
+                      <span className={styles.itemInfo}>
+                        <strong className={styles.itemTitle}>
+                          {idol.name}
+                        </strong>
+                        <p className={styles.itemCategory}>{idol.group}</p>
+                      </span>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className={styles.sliderBtn}>
-                <Button.Arrow direction="right" size="lg" />
+                <Button.Arrow
+                  direction="right"
+                  size="lg"
+                  onClick={() => handleRightBtnClick()}
+                />
               </div>
             </div>
             <div className={styles.btnAddFavorite}>
-              <Button.Round>
+              <Button.Round onClick={addFavoriteIdols}>
                 <img src={icoPlus} alt="icon" aria-hidden="true" />
                 <span>추가하기</span>
               </Button.Round>
