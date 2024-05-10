@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useSetAtom } from "jotai";
 import Button from "components/Button";
@@ -15,10 +15,22 @@ const DATA_NUM_BY_DEVICE = {
   PC: 16,
 };
 
+function firstDataNumByDevice() {
+  const windowWidth = window.innerWidth;
+
+  if (windowWidth < 744) {
+    return DATA_NUM_BY_DEVICE.MOBILE;
+  } else if (windowWidth >= 744 && windowWidth < 1200) {
+    return DATA_NUM_BY_DEVICE.TABLET;
+  } else {
+    return DATA_NUM_BY_DEVICE.PC;
+  }
+}
+
 export default function AddFavoriteSection() {
   const [idols, setIdols] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(DATA_NUM_BY_DEVICE.MOBILE);
+  const [pageSize, setPageSize] = useState(firstDataNumByDevice());
   const [cursorArr, setCursorArr] = useState([0]);
   const [checkedIdols, setCheckedIdols] = useState([]);
   const checkboxesRef = useRef([]);
