@@ -68,8 +68,8 @@ export default function SupportModal({
             height={206}
           />
           <div className={styles.titleContainer}>
-            <span className={styles.title}>{content?.subtitle}</span>
-            <span className={styles.subtitle}>{content?.title}</span>
+            <span className={styles.subTitle}>{content?.subtitle}</span>
+            <strong className={styles.title}>{content?.title}</strong>
           </div>
           <div className={styles.inputContainer}>
             <NumberInput
