@@ -8,7 +8,7 @@ export default function SupportCard({ donation, handleModalOpen }) {
   return (
     <div className={styles.supportCard}>
       <div className={styles.content}>
-        <div className={styles.image}>
+        <div className={styles.imgWrap}>
           <Image.Rectangle
             src={donation.idol.profilePicture}
             alt={`${donation.idol.group} ${donation.idol.name} 이미지`}
