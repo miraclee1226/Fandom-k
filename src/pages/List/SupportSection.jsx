@@ -162,7 +162,7 @@ export default function SupportSection() {
               <Button.Arrow
                 direction="right"
                 onClick={handleNextBtn}
-                disabled={nextCursor === null}
+                disabled={nextCursor === null || !donations}
               />
             </div>
           </div>
