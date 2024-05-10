@@ -1,20 +1,22 @@
-import IdolImg from "assets/Image_Idol.png";
+// import IdolImg from "assets/Image_Idol.png";
+import WebpLoader from "components/WebpLoader";
 import styles from "../Image.module.scss";
 
-export default function RectangleImage() {
+export default function RectangleImage({ src, alt, lazyMode = false }) {
+  let webpSrc = null;
+  
+  if (src.endsWith(".webp")) {
+    webpSrc = src;
+  }
+  
   return (
     <div className={styles.rectangleImage}>
-      <img src={IdolImg} alt="채원 이미지" />
+    {lazyMode ? (
+      <WebpLoader.Lazy src={src} webpSrc={src} alt={alt} />
+    ) : (
+      <WebpLoader src={src} webpSrc={src} alt={alt} />
+    )}
     </div>
-
-    // SupportCard img 변경 후 주석 해제
-    // <div className={styles.rectangleImage}>
-    // {lazyMode ? (
-    //   <WebpLoader.Lazy src={src} webpSrc={src} />
-    // ) : (
-    //   <WebpLoader src={src} webpSrc={src} />
-    // )}
-    // </div>
   );
 }
 
