@@ -47,7 +47,7 @@ export default function ChartSection() {
     (async () => {
       const result = await getChartData();
 
-      setData(result?.data.idols);
+      setData(result?.data?.idols);
     })();
   }, [gender, pageSize, isOpen]);
   
@@ -68,7 +68,7 @@ export default function ChartSection() {
             <Tab handleTabChange={handleTabChange} />
           </div>
           <ul className={styles.chartList}>
-            {data.map((chartItem, index) => (
+            {data?.map((chartItem, index) => (
               <ChartItem key={chartItem.id} data={chartItem} />
             ))}
           </ul>
