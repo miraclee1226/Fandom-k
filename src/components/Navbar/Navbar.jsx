@@ -4,17 +4,23 @@ import profile from "assets/profile.webp";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const reload = () => window.location.reload();
+  const reload = () => {
+    if (window.location.pathname === "/list") {
+      window.location.reload();
+    }
+  };
 
   return (
     <nav className={styles.navbar}>
       <div></div>
-      <img
-        onClick={reload}
-        className={styles.navbarLogo}
-        src={logo}
-        alt="로고"
-      />
+      <Link to="/list">
+        <img
+          onClick={reload}
+          className={styles.navbarLogo}
+          src={logo}
+          alt="로고"
+        />
+      </Link>
 
       <Link to="/mypage">
         <img className={styles.navbarProfile} src={profile} alt="프로필" />
