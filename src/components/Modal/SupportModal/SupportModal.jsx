@@ -48,8 +48,17 @@ export default function SupportModal({
     handleUpdate(creditAmount);
   };
 
+  const handleModalClose = () => {
+    setCreditAmount(0);
+    setError(false);
+  };
+
   return (
-    <DefaultModal isOpen={isOpen} handleModalOpen={handleModalOpen}>
+    <DefaultModal
+      isOpen={isOpen}
+      handleModalOpen={handleModalOpen}
+      handleModalClose={handleModalClose}
+    >
       <div className={styles.supportModal}>
         <div className={styles.header}>
           후원하기
