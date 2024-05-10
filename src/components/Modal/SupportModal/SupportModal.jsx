@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAtom } from "jotai";
+import creditAtomWithPersistence from "context/jotai";
 import Button from "components/Button";
 import { addCommas, removeCommas } from "utils/commas";
 import useRequest from "hooks/useRequest";
@@ -16,6 +18,7 @@ export default function SupportModal({
   content,
   handleUpdate,
 }) {
+  const [credit, setCredit] = useAtom(creditAtomWithPersistence);
   const [creditAmount, setCreditAmount] = useState(0);
   const [error, setError] = useState(false);
   const { requestFunc: supportIdol } = useRequest({
@@ -79,7 +82,7 @@ export default function SupportModal({
           <Button
             className={styles.confirmBtn}
             onClick={handleSupport}
-            disabled={error || !creditAmount}
+            disabled={error || !(creditAmount && creditAmount <= credit)}
           >
             후원하기
           </Button>
