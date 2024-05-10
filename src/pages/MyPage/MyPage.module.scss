@@ -43,6 +43,9 @@
   ::-webkit-scrollbar {
     display: none;
   }
+  @media screen and (min-width: $desktop) {
+    min-width: 1200px;
+  }
   .addedFavorite {
     .list {
       display: flex;
