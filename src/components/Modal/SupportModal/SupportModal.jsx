@@ -33,7 +33,12 @@ export default function SupportModal({
   });
 
   const handleInputChange = (value) => {
-    setCreditAmount(value);
+    if (value > credit) {
+      setError(true);
+    } else {
+      setError(false);
+      setCreditAmount(value);
+    }
   };
 
   const handleSupport = () => {
