@@ -15,7 +15,8 @@ export default function SupportSection() {
   const [cursorArr, setCursorArr] = useState([0]);
   const [page, setPage] = useState(0);
   const [isPC, isTablet, isMobile] = useResponsive();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isWarningModalOpen, setIsWarningModalOpen] = useState(false);
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
@@ -39,8 +40,12 @@ export default function SupportSection() {
     },
   });
   const handleModalOpen = (boolean, content) => {
-    setModalContent(content);
-    setIsModalOpen(boolean);
+    if (Number(credit) > 999) {
+      setModalContent(content);
+      setIsSupportModalOpen(boolean);
+    } else {
+      setIsWarningModalOpen(boolean);
+    }
   };
 
   const handleUpdate = (creditAmount) => {
@@ -111,8 +116,12 @@ export default function SupportSection() {
   return (
     <>
       <section className={styles.section}>
+        <Modal.CreditWarning
+          isOpen={isWarningModalOpen}
+          handleModalOpen={handleModalOpen}
+        />
         <Modal.Support
-          isOpen={isModalOpen}
+          isOpen={isSupportModalOpen}
           handleModalOpen={handleModalOpen}
           content={modalContent}
           handleUpdate={handleUpdate}
