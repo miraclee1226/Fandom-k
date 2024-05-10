@@ -44,11 +44,13 @@ export default function ChartSection() {
   };
 
   useEffect(() => {
-    (async () => {
-      const result = await getChartData();
+  
+      setTimeout(async () => {
+        const result = await getChartData();
 
-      setData(result?.data?.idols);
-    })();
+        setData(result?.data?.idols);
+      }, 100);
+ 
   }, [gender, pageSize, isOpen]);
 
   return (
@@ -92,3 +94,4 @@ export default function ChartSection() {
     </section>
   );
 }
+

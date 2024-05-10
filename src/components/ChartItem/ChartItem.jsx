@@ -1,4 +1,5 @@
 import Image from "components/Image";
+import { addCommas } from "utils/commas";
 import styles from "./ChartItem.module.scss";
 
 export default function ChartItem({ data }) {
@@ -11,7 +12,7 @@ export default function ChartItem({ data }) {
         <span className={styles.ranking}>{data.rank}</span>
         <strong className={styles.name}>{data.name}</strong>
       </div>
-      <span className={styles.votes}>{data.totalVotes.toLocaleString()}</span>
+      <span className={styles.votes}>{addCommas(data.totalVotes)}표</span>
     </div>
   );
 }
