@@ -1,9 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Button from "components/Button";
-import logo from "assets/logo.png";
+import logo from "assets/logo.webp";
 import LANDING_IMG from "assets/landing-img";
 import styles from "./Landing.module.scss";
 
 const Landing = () => {
+  const navigate = useNavigate();
+
+  const resetOnClick = () => localStorage.clear();
+
   return (
     <div className={styles.view}>
       <div className={styles.centerLine}></div>
@@ -13,14 +18,23 @@ const Landing = () => {
           <br />
           가장 <span className={styles.highlight}>쉽게 덕질</span> 하는 방법
         </h2>
-        <img className={styles.thumbnailLogo} src={logo} alt="로고" />
+        <img
+          onClick={() => navigate("/list")}
+          className={styles.thumbnailLogo}
+          src={logo}
+          alt="로고"
+        />
         <img
           className={styles.thumbnailBackground}
           src={LANDING_IMG.THUMBNAIL}
           alt="배경 이미지"
         />
         <div className={styles.thumbnailLinear}></div>
-        <Button.Link className={styles.startButton} to={"/list"}>
+        <Button.Link
+          onClick={resetOnClick}
+          className={styles.startButton}
+          to={"/list"}
+        >
           지금 시작하기
         </Button.Link>
       </section>

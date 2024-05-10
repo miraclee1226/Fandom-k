@@ -1,10 +1,10 @@
-import thumbnail from "./thumbnail.png";
-import section1 from "./section1.png";
-import section2 from "./section2.png";
-import section3 from "./section3.png";
-import mobile1 from "./mobile1.png";
-import mobile2 from "./mobile2.png";
-import mobile3 from "./mobile3.png";
+import thumbnail from "./thumbnail.webp";
+import section1 from "./section1.webp";
+import section2 from "./section2.webp";
+import section3 from "./section3.webp";
+import mobile1 from "./mobile1.webp";
+import mobile2 from "./mobile2.webp";
+import mobile3 from "./mobile3.webp";
 
 const LANDING_IMG = {
   THUMBNAIL: thumbnail,
