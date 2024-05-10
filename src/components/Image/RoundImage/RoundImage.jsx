@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "components/Image/Image.module.scss";
 import WebpLoader from "components/WebpLoader";
 
-export default function RoundImage({ src, lazyMode = false }) {
+export default function RoundImage({ src, alt, lazyMode = false }) {
   let webpSrc = null;
 
   if (src.endsWith(".webp")) {
@@ -12,9 +12,9 @@ export default function RoundImage({ src, lazyMode = false }) {
   return (
     <div className={styles.roundImage}>
       {lazyMode ? (
-        <WebpLoader.Lazy src={src} webpSrc={webpSrc} />
+        <WebpLoader.Lazy src={src} webpSrc={webpSrc} alt={alt} />
       ) : (
-        <WebpLoader src={src} webpSrc={webpSrc} />
+        <WebpLoader src={src} webpSrc={webpSrc} alt={alt} />
       )}
     </div>
   );

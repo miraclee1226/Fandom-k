@@ -1,16 +1,20 @@
 import Button from "components/Button";
 import timeCounter from "utils/timeCounter";
 import creditImg from "assets/credit.png";
+import Image from "components/Image";
 import styles from "../SupportCard.module.scss";
 
 export default function SupportCard({ donation, handleModalOpen }) {
   return (
     <div className={styles.supportCard}>
       <div className={styles.content}>
-        <img
-          src={donation.idol.profilePicture}
-          alt={`${donation.idol.group} ${donation.idol.name} 이미지`}
-        />
+        <div className={styles.imgWrap}>
+          <Image.Rectangle
+            src={donation.idol.profilePicture}
+            alt={`${donation.idol.group} ${donation.idol.name} 이미지`}
+            lazyMode={true}
+          />
+        </div>
         <Button onClick={() => handleModalOpen(true, donation)}>
           후원하기
         </Button>
