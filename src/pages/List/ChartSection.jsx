@@ -47,10 +47,10 @@ export default function ChartSection() {
     (async () => {
       const result = await getChartData();
 
-      setData(result?.data.idols);
+      setData(result?.data?.idols);
     })();
   }, [gender, pageSize, isOpen]);
-  
+
   return (
     <section className={styles.section}>
       <div className={styles.sectionContainer}>
@@ -60,17 +60,26 @@ export default function ChartSection() {
             <ChartIcon />
             차트 투표하기
           </Button.Round>
-          <Modal.Vote data={data} isOpen={!!isOpen} handleModalOpen={handleModalOpen} gender={gender} />
-          <Modal.CreditWarning isOpen={!!isOpenWarningModal} handleModalOpen={handleModalOpen} />
+          <Modal.Vote
+            data={data}
+            isOpen={!!isOpen}
+            handleModalOpen={handleModalOpen}
+            gender={gender}
+          />
+          <Modal.CreditWarning
+            isOpen={!!isOpenWarningModal}
+            handleModalOpen={handleModalOpen}
+          />
         </div>
         <div className={styles.sectionDetail}>
           <div className={styles.tab}>
             <Tab handleTabChange={handleTabChange} />
           </div>
           <ul className={styles.chartList}>
-            {data.map((chartItem, index) => (
-              <ChartItem key={chartItem.id} data={chartItem} />
-            ))}
+            {data &&
+              data.map((chartItem, index) => (
+                <ChartItem key={chartItem.id} data={chartItem} />
+              ))}
           </ul>
           <Button.Border
             onClick={handleButtonClick}

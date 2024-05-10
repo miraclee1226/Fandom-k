@@ -22,6 +22,7 @@ export default function SupportSection() {
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
   const slider = useRef();
+  const ERROR_MSG = "리스트를 불러오는데 실패했습니다.";
 
   const {
     data,
@@ -59,13 +60,13 @@ export default function SupportSection() {
     const response = await getDonationsData();
 
     if (isPC) {
-      setNextCursor(response.data.nextCursor);
-      setPagination(response.data.nextCursor);
+      setNextCursor(response?.data?.nextCursor);
+      setPagination(response?.data?.nextCursor);
     } else {
       setNextCursor(0);
       setPage(0);
     }
-    setDonations(response.data.list);
+    setDonations(response?.data?.list);
   };
 
   const setPagination = (cursor) => {
@@ -136,6 +137,7 @@ export default function SupportSection() {
                 disabled={page === 0}
               />
             </div>
+            {error && <div className={styles.error}>{ERROR_MSG}</div>}
             <ul
               className={styles.supportLists}
               ref={slider}
@@ -144,16 +146,17 @@ export default function SupportSection() {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              {donations.map((donation) => {
-                return (
-                  <li key={donation.idolId} className={styles.supportList}>
-                    <Card.Support
-                      donation={donation}
-                      handleModalOpen={handleModalOpen}
-                    />
-                  </li>
-                );
-              })}
+              {donations &&
+                donations.map((donation) => {
+                  return (
+                    <li key={donation.idolId} className={styles.supportList}>
+                      <Card.Support
+                        donation={donation}
+                        handleModalOpen={handleModalOpen}
+                      />
+                    </li>
+                  );
+                })}
             </ul>
             <div className={styles.sliderBtn}>
               <Button.Arrow
