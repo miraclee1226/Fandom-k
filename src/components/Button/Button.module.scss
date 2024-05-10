@@ -81,6 +81,9 @@
   &:hover {
     background-color: #131313;
   }
+  &:disabled {
+    display: none;
+  }
 }
 
 /* Round Button */

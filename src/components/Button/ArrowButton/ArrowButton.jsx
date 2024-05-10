@@ -5,7 +5,12 @@ import styles from "../Button.module.scss";
 
 const cn = classNames.bind(styles);
 
-export default function ArrowButton({ direction, onClick, size = "md" }) {
+export default function ArrowButton({
+  direction,
+  onClick,
+  disabled,
+  size = "md",
+}) {
   const buttonClasses = cn({
     [styles.arrowButton]: true,
     [styles.md]: size === "md",
@@ -13,7 +18,7 @@ export default function ArrowButton({ direction, onClick, size = "md" }) {
   });
 
   return (
-    <button className={buttonClasses} onClick={onClick}>
+    <button className={buttonClasses} onClick={onClick} disabled={disabled}>
       {direction === "left" ? (
         <img src={arrowLeft} alt="arrow-left" />
       ) : (
