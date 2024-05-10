@@ -15,12 +15,14 @@ export default function SupportSection() {
   const [cursorArr, setCursorArr] = useState([0]);
   const [page, setPage] = useState(0);
   const [isPC, isTablet, isMobile] = useResponsive();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isWarningModalOpen, setIsWarningModalOpen] = useState(false);
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(null);
   const [scrollLeft, setScrollLeft] = useState(null);
   const slider = useRef();
+  const ERROR_MSG = "리스트를 불러오는데 실패했습니다.";
 
   const {
     data,
@@ -39,8 +41,12 @@ export default function SupportSection() {
     },
   });
   const handleModalOpen = (boolean, content) => {
-    setModalContent(content);
-    setIsModalOpen(boolean);
+    if (Number(credit) > 999) {
+      setModalContent(content);
+      setIsSupportModalOpen(boolean);
+    } else {
+      setIsWarningModalOpen(boolean);
+    }
   };
 
   const handleUpdate = (creditAmount) => {
@@ -54,13 +60,13 @@ export default function SupportSection() {
     const response = await getDonationsData();
 
     if (isPC) {
-      setNextCursor(response.data.nextCursor);
-      setPagination(response.data.nextCursor);
+      setNextCursor(response?.data?.nextCursor);
+      setPagination(response?.data?.nextCursor);
     } else {
       setNextCursor(0);
       setPage(0);
     }
-    setDonations(response.data.list);
+    setDonations(response?.data?.list);
   };
 
   const setPagination = (cursor) => {
@@ -111,8 +117,12 @@ export default function SupportSection() {
   return (
     <>
       <section className={styles.section}>
+        <Modal.CreditWarning
+          isOpen={isWarningModalOpen}
+          handleModalOpen={handleModalOpen}
+        />
         <Modal.Support
-          isOpen={isModalOpen}
+          isOpen={isSupportModalOpen}
           handleModalOpen={handleModalOpen}
           content={modalContent}
           handleUpdate={handleUpdate}
@@ -127,6 +137,7 @@ export default function SupportSection() {
                 disabled={page === 0}
               />
             </div>
+            {error && <div className={styles.error}>{ERROR_MSG}</div>}
             <ul
               className={styles.supportLists}
               ref={slider}
@@ -135,22 +146,23 @@ export default function SupportSection() {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              {donations.map((donation) => {
-                return (
-                  <li key={donation.idolId} className={styles.supportList}>
-                    <Card.Support
-                      donation={donation}
-                      handleModalOpen={handleModalOpen}
-                    />
-                  </li>
-                );
-              })}
+              {donations &&
+                donations.map((donation) => {
+                  return (
+                    <li key={donation.idolId} className={styles.supportList}>
+                      <Card.Support
+                        donation={donation}
+                        handleModalOpen={handleModalOpen}
+                      />
+                    </li>
+                  );
+                })}
             </ul>
             <div className={styles.sliderBtn}>
               <Button.Arrow
                 direction="right"
                 onClick={handleNextBtn}
-                disabled={nextCursor === null}
+                disabled={nextCursor === null || !donations}
               />
             </div>
           </div>

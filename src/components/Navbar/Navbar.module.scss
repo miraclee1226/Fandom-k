@@ -14,7 +14,9 @@
     padding: 29px 24px;
   }
   @media screen and (min-width: $desktop) {
-    padding: 24px 360px;
+    max-width: 1200px;
+    padding: 24px 0;
+    margin: 0 auto;
   }
   div {
     width: 32px;

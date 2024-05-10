@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAtom } from "jotai";
+import creditAtomWithPersistence from "context/jotai";
 import Button from "components/Button";
 import { addCommas, removeCommas } from "utils/commas";
 import useRequest from "hooks/useRequest";
@@ -16,6 +18,7 @@ export default function SupportModal({
   content,
   handleUpdate,
 }) {
+  const [credit, setCredit] = useAtom(creditAtomWithPersistence);
   const [creditAmount, setCreditAmount] = useState(0);
   const [error, setError] = useState(false);
   const { requestFunc: supportIdol } = useRequest({
@@ -30,7 +33,12 @@ export default function SupportModal({
   });
 
   const handleInputChange = (value) => {
-    setCreditAmount(value);
+    if (value > credit) {
+      setError(true);
+    } else {
+      setError(false);
+      setCreditAmount(value);
+    }
   };
 
   const handleSupport = () => {
@@ -40,8 +48,17 @@ export default function SupportModal({
     handleUpdate(creditAmount);
   };
 
+  const handleModalClose = () => {
+    setCreditAmount(0);
+    setError(false);
+  };
+
   return (
-    <DefaultModal isOpen={isOpen} handleModalOpen={handleModalOpen}>
+    <DefaultModal
+      isOpen={isOpen}
+      handleModalOpen={handleModalOpen}
+      handleModalClose={handleModalClose}
+    >
       <div className={styles.supportModal}>
         <div className={styles.header}>
           후원하기
@@ -60,8 +77,8 @@ export default function SupportModal({
             height={206}
           />
           <div className={styles.titleContainer}>
-            <span className={styles.title}>{content?.subtitle}</span>
-            <span className={styles.subtitle}>{content?.title}</span>
+            <span className={styles.subTitle}>{content?.subtitle}</span>
+            <strong className={styles.title}>{content?.title}</strong>
           </div>
           <div className={styles.inputContainer}>
             <NumberInput
@@ -79,7 +96,7 @@ export default function SupportModal({
           <Button
             className={styles.confirmBtn}
             onClick={handleSupport}
-            disabled={error || !creditAmount}
+            disabled={error || !(creditAmount && creditAmount <= credit)}
           >
             후원하기
           </Button>

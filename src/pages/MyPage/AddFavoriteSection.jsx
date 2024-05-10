@@ -104,9 +104,9 @@ export default function AddFavoriteSection() {
 
       setIdols(result?.data?.list);
 
-      if (!result.data.nextCursor) return;
+      if (!result?.data?.nextCursor) return;
       setCursorArr((prev) => {
-        const newArray = [...prev, result.data.nextCursor];
+        const newArray = [...prev, result?.data?.nextCursor];
 
         return newArray.filter((item, idx) => newArray.indexOf(item) === idx);
       });
@@ -118,7 +118,7 @@ export default function AddFavoriteSection() {
       const result = await getIdolsData();
 
       setIdols(result?.data?.list);
-      setCursorArr([0, result.data.nextCursor]);
+      setCursorArr([0, result?.data?.nextCursor]);
     })();
   }, [pageSize]);
 
