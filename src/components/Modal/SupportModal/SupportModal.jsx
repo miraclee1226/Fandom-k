@@ -37,7 +37,11 @@ export default function SupportModal({
       setError(true);
     } else {
       setError(false);
-      setCreditAmount(value);
+      setCreditAmount(
+        value > content.targetDonation - content.receivedDonations
+          ? content.targetDonation - content.receivedDonations
+          : value,
+      );
     }
   };
 

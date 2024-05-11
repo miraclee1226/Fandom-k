@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Button from "components/Button";
 import timeCounter from "utils/timeCounter";
 import creditImg from "assets/credit.png";
@@ -71,8 +70,6 @@ function LineGraph({ targetDonation, credit }) {
         fill="none"
         strokeWidth="1"
         stroke="#FC4D04"
-        strokeDasharray={`${graphLength}%`}
-        strokeDashoffset="dashOffsetLine"
         strokeLinecap="round"
       />
     </svg>
