@@ -3,28 +3,33 @@
 }
 
 .slider {
-  overflow-x: scroll;
   display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* 파이어폭스 */
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   .content {
     display: flex;
-    flex-shrink: 0;
     width: max-content;
-  }
 
-  .sentinel {
-    margin-left: 10vh;
-    min-width: 50px;
-    background-color: red;
+    .sentinel {
+      margin-left: 10vh;
+      min-width: 50px;
+      background-color: red;
+    }
   }
 }
 
 .idolGrid {
   display: grid;
+  margin: 0 40px;
+  scroll-snap-align: start;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  // min-width: 100%;
-  margin: 0 40px;
 
   img {
     width: 150px;

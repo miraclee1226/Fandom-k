@@ -23,15 +23,11 @@ export default function Test() {
   });
 
   useEffect(() => {
-    console.log(isIntersection);
-  }, [isIntersection]);
-
-  useEffect(() => {
     (async () => {
+      if (!isIntersection) return;
       const result = await getIdolsData();
 
-      if (!result?.data?.nextCursor || nextCursor === result?.data?.nextCursor)
-        return;
+      if (!result?.data?.nextCursor) return;
 
       setIdolsDataArr((prev) => [...prev, result?.data?.list]);
       setNextCursor(result?.data?.nextCursor);
