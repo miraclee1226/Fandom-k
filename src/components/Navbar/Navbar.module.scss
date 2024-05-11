@@ -24,6 +24,7 @@
   .navbarLogo {
     width: 108px;
     height: 21px;
+    cursor: pointer;
     @media screen and (min-width: $tablet) {
       width: 120px;
       height: 23px;
