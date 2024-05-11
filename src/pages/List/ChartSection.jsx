@@ -61,7 +61,6 @@ export default function ChartSection() {
             차트 투표하기
           </Button.Round>
           <Modal.Vote
-            data={data}
             isOpen={!!isOpen}
             handleModalOpen={handleModalOpen}
             gender={gender}
