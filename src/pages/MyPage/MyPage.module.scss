@@ -116,6 +116,9 @@
 /* AddFavoriteSection */
 .AddFavorite {
   margin-bottom: 80px;
+  @media screen and (min-width: $desktop) {
+    min-width: 1200px;
+  }
   .sliderWrap {
     display: flex;
     align-items: center;

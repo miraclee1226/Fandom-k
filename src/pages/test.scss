@@ -1,0 +1,33 @@
+.body {
+  margin: 10vh 10vh 0;
+}
+
+.slider {
+  overflow-x: scroll;
+  display: flex;
+
+  .content {
+    display: flex;
+    flex-shrink: 0;
+    width: max-content;
+  }
+
+  .sentinel {
+    margin-left: 10vh;
+    min-width: 50px;
+    background-color: red;
+  }
+}
+
+.idolGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  // min-width: 100%;
+  margin: 0 40px;
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
