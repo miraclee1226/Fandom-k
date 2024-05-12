@@ -11,21 +11,23 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={styles.navbar}>
-      <div></div>
-      <Link to="/list">
-        <img
-          onClick={reload}
-          className={styles.navbarLogo}
-          src={logo}
-          alt="로고"
-        />
-      </Link>
+    <div className={styles.wrapper}>
+      <nav className={styles.navbar}>
+        <div></div>
+        <Link to="/list">
+          <img
+            onClick={reload}
+            className={styles.navbarLogo}
+            src={logo}
+            alt="로고"
+          />
+        </Link>
 
-      <Link to="/mypage">
-        <img className={styles.navbarProfile} src={profile} alt="프로필" />
-      </Link>
-    </nav>
+        <Link to="/mypage">
+          <img className={styles.navbarProfile} src={profile} alt="프로필" />
+        </Link>
+      </nav>
+    </div>
   );
 };
 

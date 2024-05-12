@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+.wrapper {
+  background-color: #02000E;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -39,3 +47,4 @@
     height: 32px;
   }
 }
+

@@ -3,6 +3,7 @@
   display: flex;
   gap: 40px;
   flex-direction: column;
+  padding-top: 92px;
   @media screen and (min-width: $tablet) {
     gap: 80px;
   }
