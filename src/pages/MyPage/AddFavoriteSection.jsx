@@ -5,6 +5,7 @@ import Button from "components/Button";
 import Image from "components/Image";
 import useRequest from "hooks/useRequest";
 import useResponsive from "hooks/useResponsive";
+import useIntersectionObserver from "hooks/useIntersectionObserver";
 import favoriteIdolsAtom from "context/favoriteIdols";
 import icoPlus from "assets/icons/plus.svg";
 import styles from "./MyPage.module.scss";
@@ -130,51 +131,59 @@ export default function AddFavoriteSection() {
         </h2>
         <div className={styles.sectionContent}>
           <div className={styles.AddFavorite}>
-            <div className={styles.sliderWrap}>
-              <div className={styles.sliderBtn}>
-                <Button.Arrow
-                  direction="left"
-                  size="lg"
-                  onClick={() => handleLeftBtnClick()}
-                />
+            {isMobile ? (
+              <MobileSlider
+                checkboxesRef={checkboxesRef}
+                handleCheckInputChange={handleCheckInputChange}
+              />
+            ) : (
+              <div className={styles.sliderWrap}>
+                <div className={styles.sliderBtn}>
+                  <Button.Arrow
+                    direction="left"
+                    size="lg"
+                    onClick={() => handleLeftBtnClick()}
+                  />
+                </div>
+                <div className={styles.slider}>
+                  <ul className={styles.gridContainer}>
+                    {idols?.map((idol) => (
+                      <li key={idol.id} className={styles.gridItem}>
+                        <input
+                          type="checkbox"
+                          id={idol.id}
+                          className={styles.chkItem}
+                          ref={(el) => checkboxesRef.current.push(el)}
+                          onChange={(e) => handleCheckInputChange(e, idol)}
+                        />
+                        <label htmlFor={idol.id} className={styles.labelItem}>
+                          <div className={styles.imgWrap}>
+                            <Image.Round
+                              src={idol.profilePicture}
+                              lazyMode={true}
+                            />
+                          </div>
+                        </label>
+                        <span className={styles.itemInfo}>
+                          <strong className={styles.itemTitle}>
+                            {idol.name}
+                          </strong>
+                          <p className={styles.itemCategory}>{idol.group}</p>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={styles.sliderBtn}>
+                  <Button.Arrow
+                    direction="right"
+                    size="lg"
+                    onClick={() => handleRightBtnClick()}
+                  />
+                </div>
               </div>
-              <div className={styles.slider}>
-                <ul className={styles.gridContainer}>
-                  {idols?.map((idol) => (
-                    <li key={idol.id} className={styles.gridItem}>
-                      <input
-                        type="checkbox"
-                        id={idol.id}
-                        className={styles.chkItem}
-                        ref={(el) => checkboxesRef.current.push(el)}
-                        onChange={(e) => handleCheckInputChange(e, idol)}
-                      />
-                      <label htmlFor={idol.id} className={styles.labelItem}>
-                        <div className={styles.imgWrap}>
-                          <Image.Round
-                            src={idol.profilePicture}
-                            lazyMode={true}
-                          />
-                        </div>
-                      </label>
-                      <span className={styles.itemInfo}>
-                        <strong className={styles.itemTitle}>
-                          {idol.name}
-                        </strong>
-                        <p className={styles.itemCategory}>{idol.group}</p>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className={styles.sliderBtn}>
-                <Button.Arrow
-                  direction="right"
-                  size="lg"
-                  onClick={() => handleRightBtnClick()}
-                />
-              </div>
-            </div>
+            )}
+
             <div className={styles.btnAddFavorite}>
               <Button.Round onClick={addFavoriteIdols}>
                 <img src={icoPlus} alt="icon" aria-hidden="true" />
@@ -185,5 +194,113 @@ export default function AddFavoriteSection() {
         </div>
       </section>
     </>
+  );
+}
+
+function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
+  const [idolsDataArr, setIdolsDataArr] = useState([]);
+  const [nextCursor, setNextCursor] = useState(0);
+  const sentinelRef = useRef(null);
+  const isIntersection = useIntersectionObserver(sentinelRef);
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(null);
+  const [scrollLeft, setScrollLeft] = useState(null);
+  const slider = useRef();
+
+  const { requestFunc: getIdolsData } = useRequest({
+    skip: true,
+    options: {
+      method: "get",
+      url: "/idols",
+      params: {
+        pageSize: DATA_NUM_BY_DEVICE.MOBILE,
+        cursor: nextCursor,
+      },
+    },
+  });
+
+  const handleMouseDown = (e) => {
+    setIsDown(true);
+    setStartX(e.pageX - slider.current.offsetLeft);
+    setScrollLeft(slider.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.current.offsetLeft;
+    const walk = x - startX;
+
+    slider.current.scrollLeft = scrollLeft - walk;
+  };
+
+  useEffect(() => {
+    (async () => {
+      if (!isIntersection) return;
+      const result = await getIdolsData();
+
+      if (!result?.data?.nextCursor) return;
+
+      setIdolsDataArr((prev) => [...prev, result?.data?.list]);
+      setNextCursor(result?.data?.nextCursor);
+    })();
+  }, [isIntersection]);
+
+  return (
+    <div
+      className={styles.mobileSlider}
+      ref={slider}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className={styles.content}>
+        {idolsDataArr.map((idols, idx) => (
+          <MobileIdolGrid
+            key={idx}
+            idols={idols}
+            checkboxesRef={checkboxesRef}
+            handleCheckInputChange={handleCheckInputChange}
+          />
+        ))}
+        <div className={styles.sentinel} ref={sentinelRef} />
+      </div>
+    </div>
+  );
+}
+
+function MobileIdolGrid({ idols, checkboxesRef, handleCheckInputChange }) {
+  return (
+    <ul className={styles.idolGrid}>
+      {idols?.map((idol) => (
+        <li key={idol.id} className={styles.gridItem}>
+          <input
+            type="checkbox"
+            id={idol.id}
+            className={styles.chkItem}
+            ref={(el) => checkboxesRef.current.push(el)}
+            onChange={(e) => handleCheckInputChange(e, idol)}
+          />
+          <label htmlFor={idol.id} className={styles.labelItem}>
+            <div className={styles.imgWrap}>
+              <Image.Round src={idol.profilePicture} lazyMode={true} />
+            </div>
+          </label>
+          <span className={styles.itemInfo}>
+            <strong className={styles.itemTitle}>{idol.name}</strong>
+            <p className={styles.itemCategory}>{idol.group}</p>
+          </span>
+        </li>
+      ))}
+    </ul>
   );
 }

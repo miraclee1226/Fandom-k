@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 
 const dispatcher = async (options) => {
   const client = axiosInstance({ ...options });
-  
+
   await client;
   return client;
 };
