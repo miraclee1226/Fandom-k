@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import Button from "components/Button";
 import Image from "components/Image";
 import Skeleton from "components/Skeleton";
@@ -40,7 +40,7 @@ export default function AddFavoriteSection() {
   const [checkedIdols, setCheckedIdols] = useState([]);
   const checkboxesRef = useRef([]);
   const [isPC, isTablet, isMobile] = useResponsive();
-  const [favoriteIdols, setFavoriteIdols] = useAtom(favoriteIdolsAtom);
+  const setFavoriteIdols = useSetAtom(favoriteIdolsAtom);
 
   const {
     isLoading,
