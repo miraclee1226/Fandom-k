@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import creditAtomWithPersistence from "context/jotai";
 import Button from "components/Button";
@@ -37,7 +37,11 @@ export default function SupportModal({
       setError(true);
     } else {
       setError(false);
-      setCreditAmount(value);
+      setCreditAmount(
+        value > content.targetDonation - content.receivedDonations
+          ? content.targetDonation - content.receivedDonations
+          : value,
+      );
     }
   };
 
@@ -48,17 +52,14 @@ export default function SupportModal({
     handleUpdate(creditAmount);
   };
 
-  const handleModalClose = () => {
-    setCreditAmount(0);
-    setError(false);
-  };
-
+  useEffect(() => {
+    if (!isOpen) {
+      setCreditAmount(0);
+      setError(false);
+    }
+  }, [isOpen]);
   return (
-    <DefaultModal
-      isOpen={isOpen}
-      handleModalOpen={handleModalOpen}
-      handleModalClose={handleModalClose}
-    >
+    <DefaultModal isOpen={isOpen} handleModalOpen={handleModalOpen}>
       <div className={styles.supportModal}>
         <div className={styles.header}>
           후원하기

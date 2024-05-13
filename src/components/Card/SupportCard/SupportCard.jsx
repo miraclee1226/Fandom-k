@@ -15,8 +15,13 @@ export default function SupportCard({ donation, handleModalOpen }) {
             lazyMode={true}
           />
         </div>
-        <Button onClick={() => handleModalOpen(true, donation)}>
-          후원하기
+        <Button
+          onClick={() => handleModalOpen(true, donation)}
+          disabled={donation.receivedDonations >= donation.targetDonation}
+        >
+          {donation.receivedDonations >= donation.targetDonation
+            ? "후원 종료"
+            : "후원하기"}
         </Button>
       </div>
       <div className={styles.header}>
@@ -65,8 +70,6 @@ function LineGraph({ targetDonation, credit }) {
         fill="none"
         strokeWidth="1"
         stroke="#FC4D04"
-        strokeDasharray="100%"
-        strokeDashoffset="dashOffsetLine"
         strokeLinecap="round"
       />
     </svg>
