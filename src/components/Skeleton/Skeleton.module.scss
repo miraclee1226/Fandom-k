@@ -1,0 +1,48 @@
+/* AddFavoriteSkeleton */
+
+.addFavoriteSkeleton {
+  min-width: 100%;
+
+  .mobile {
+    display: grid;
+    gap: 24px 17px;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    scroll-snap-align: start;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+
+    .idol {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .profile {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background-color: darkgray;
+        background-clip: content-box;
+        padding: 5px;
+        border: 1px solid darkgray;
+      }
+
+      .name {
+        width: 35%;
+        height: 16px;
+        background-color: darkgray;
+        margin-top: 8px;
+      }
+
+      .group {
+        margin-top: 4px;
+        width: 50%;
+        background-color: darkgray;
+        height: 14px;
+      }
+    }
+  }
+}

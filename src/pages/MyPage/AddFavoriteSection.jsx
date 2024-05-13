@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useSetAtom } from "jotai";
 import Button from "components/Button";
 import Image from "components/Image";
+import Skeleton from "components/Skeleton";
 import useRequest from "hooks/useRequest";
 import useSlider from "hooks/useSlider";
 import useResponsive from "hooks/useResponsive";
@@ -191,6 +192,7 @@ export default function AddFavoriteSection() {
                 <span>추가하기</span>
               </Button.Round>
             </div>
+            <Skeleton.AddFavorite isMobile={true} />
           </div>
         </div>
       </section>
@@ -205,7 +207,7 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
   const isIntersection = useIntersectionObserver(sentinelRef);
   const [sliderRef, sliderHandler] = useSlider();
 
-  const { requestFunc: getIdolsData } = useRequest({
+  const { isLoading, requestFunc: getIdolsData } = useRequest({
     skip: true,
     options: {
       method: "get",
@@ -247,6 +249,7 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
             handleCheckInputChange={handleCheckInputChange}
           />
         ))}
+        {isLoading && <Skeleton.AddFavorite isMobile={true} />}
         <div className={styles.sentinel} ref={sentinelRef} />
       </div>
     </div>
