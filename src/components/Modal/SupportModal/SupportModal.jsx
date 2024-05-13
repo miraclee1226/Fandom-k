@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAtom } from "jotai";
-import creditAtomWithPersistence from "context/jotai";
+import creditAtomWithPersistence from "context/Credit";
 import Button from "components/Button";
 import { addCommas, removeCommas } from "utils/commas";
 import useRequest from "hooks/useRequest";

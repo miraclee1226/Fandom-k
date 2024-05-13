@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 import Button from "components/Button";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
-import creditAtomWithPersistence from "context/jotai";
+import creditAtomWithPersistence from "context/Credit";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 

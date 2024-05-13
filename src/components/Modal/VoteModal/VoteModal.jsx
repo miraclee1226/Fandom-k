@@ -7,15 +7,16 @@ import { addCommas } from "utils/commas";
 import { ReactComponent as XIcon } from "assets/icons/x_icon.svg";
 import useRequest from "hooks/useRequest";
 import Modal from "components/Modal";
-import creditAtomWithPersistence from "context/jotai";
+import creditAtomWithPersistence from "context/Credit";
 import DefaultModal from "../Modal";
 import styles from "../Modal.module.scss";
 
 const cn = classNames.bind(styles);
 
 const SUBTRACT_CREDIT = 1000;
+const ERROR_MSG = "리스트를 불러오는데 실패했습니다.";
 
-export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
+export default function VoteModal({ data, error, isOpen, handleModalOpen, gender }) {
   const [checkedValue, setCheckedValue] = useState("");
   const [credit, setCredit] = useAtom(creditAtomWithPersistence);
   
@@ -54,7 +55,7 @@ export default function VoteModal({ data, isOpen, handleModalOpen, gender }) {
             onClick={() => handleModalOpen(false)}
           />
         </div>
-
+        {error && <div className={styles.error}>{ERROR_MSG}</div>}
         <div className={styles.main}>
           {data?.map((idol) => (
             <VoteItem

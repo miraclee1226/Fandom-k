@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 import { addCommas } from "utils/commas";
 import Button from "components/Button";
 import Modal from "components/Modal";
-import creditAtomWithPersistence from "context/jotai";
+import creditAtomWithPersistence from "context/Credit";
 import { ReactComponent as CreditIcon } from "assets/icons/credit.svg";
 import styles from "./List.module.scss";
 

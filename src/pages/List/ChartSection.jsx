@@ -6,8 +6,10 @@ import Button from "components/Button";
 import { ReactComponent as ChartIcon } from "assets/icons/chart.svg";
 import Modal from "components/Modal";
 import useRequest from "hooks/useRequest";
-import creditAtomWithPersistence from "context/jotai";
+import creditAtomWithPersistence from "context/Credit";
 import styles from "./List.module.scss";
+
+const ERROR_MSG = "리스트를 불러오는데 실패했습니다.";
 
 export default function ChartSection() {
   const [gender, setGender] = useState("female");
@@ -16,7 +18,7 @@ export default function ChartSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenWarningModal, setIsOpenWarningModal] = useState(false);
   const [credit, setCredit] = useAtom(creditAtomWithPersistence);
-  const { requestFunc: getChartData } = useRequest({
+  const { error, requestFunc: getChartData } = useRequest({
     skip: true,
     options: {
       method: "get",
@@ -62,19 +64,21 @@ export default function ChartSection() {
           </Button.Round>
           <Modal.Vote
             data={data}
+            error={error}
             isOpen={!!isOpen}
             handleModalOpen={handleModalOpen}
             gender={gender}
-          />
+            />
           <Modal.CreditWarning
             isOpen={!!isOpenWarningModal}
             handleModalOpen={handleModalOpen}
-          />
+            />
         </div>
         <div className={styles.sectionDetail}>
           <div className={styles.tab}>
             <Tab handleTabChange={handleTabChange} />
           </div>
+          {error && <div className={styles.error}>{ERROR_MSG}</div>}
           <ul className={styles.chartList}>
             {data &&
               data.map((chartItem, index) => (
@@ -92,4 +96,3 @@ export default function ChartSection() {
     </section>
   );
 }
-
