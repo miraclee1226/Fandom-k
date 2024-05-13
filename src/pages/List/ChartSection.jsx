@@ -18,6 +18,7 @@ export default function ChartSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenWarningModal, setIsOpenWarningModal] = useState(false);
   const [credit, setCredit] = useAtom(creditAtomWithPersistence);
+  const [moreButton, setMoreButton] = useState(true);
   const { error, requestFunc: getChartData } = useRequest({
     skip: true,
     options: {
@@ -32,6 +33,8 @@ export default function ChartSection() {
 
   const handleTabChange = (index) => {
     setGender(index === 0 ? "female" : "male");
+    setPageSize(10);
+    setMoreButton(true);
   };
 
   const handleButtonClick = () => setPageSize((prev) => prev + 10);
@@ -48,6 +51,8 @@ export default function ChartSection() {
   useEffect(() => {
     setTimeout(async () => {
       const result = await getChartData();
+
+      if (!result?.data?.nextCursor) setMoreButton(false);
 
       setData(result?.data?.idols);
     }, 100);
@@ -85,12 +90,16 @@ export default function ChartSection() {
                 <ChartItem key={chartItem.id} data={chartItem} />
               ))}
           </ul>
-          <Button.Border
-            onClick={handleButtonClick}
-            className={styles.borderButton}
-          >
-            더보기
-          </Button.Border>
+          {moreButton ? (
+            <Button.Border
+              onClick={handleButtonClick}
+              className={styles.borderButton}
+            >
+              더보기
+            </Button.Border>
+          ) : (
+            <h1 className={styles.noData}>더 불러올 데이터가 없습니다.</h1>
+          )}
         </div>
       </div>
     </section>
