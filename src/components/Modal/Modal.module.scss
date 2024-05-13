@@ -193,6 +193,7 @@
 /* Vote Modal */
 
 .voteModal {
+  position: relative;
   padding: 0 24px 12px;
   width: 375px;
   height: 775px;
@@ -221,6 +222,14 @@
     font-weight: 500;
     align-items: center;
     background-color: var(--bg-modal);
+  }
+
+  .error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
   }
 
   .main {

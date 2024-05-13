@@ -2,7 +2,7 @@ import { useAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
 import useResponsive from "hooks/useResponsive";
 import useRequest from "hooks/useRequest";
-import creditAtomWithPersistence from "context/jotai";
+import creditAtomWithPersistence from "context/Credit";
 import Modal from "components/Modal";
 import Card from "components/Card";
 import Button from "components/Button";
