@@ -1,0 +1,127 @@
+@import "/src/styles/mixin_var.scss";
+
+@mixin loading-animation($width) {
+  @keyframes loading {
+    0% {
+      transform: translateX(0);
+    }
+    50%,
+    100% {
+      transform: translateX(#{$width});
+    }
+  }
+
+  & {
+    overflow: hidden;
+    position: relative;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to right, #bfbdbd, #bdbdbd, #bfbdbd);
+    animation: loading 2s infinite linear;
+  }
+}
+
+/* AddFavoriteSkeleton */
+
+.addFavoriteSkeleton {
+  min-width: 100%;
+  scroll-snap-align: start;
+
+  .mobile {
+    display: grid;
+    gap: 24px 17px;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+
+    .idol {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .profile {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background-color: darkgray;
+        background-clip: content-box;
+        padding: 5px;
+        border: 1px solid darkgray;
+      }
+
+      .name {
+        width: 35%;
+        height: 16px;
+        background-color: darkgray;
+        margin-top: 8px;
+        @include loading-animation(480px);
+      }
+
+      .group {
+        margin-top: 4px;
+        width: 50%;
+        background-color: darkgray;
+        height: 14px;
+        @include loading-animation(480px);
+      }
+    }
+  }
+
+  .notMobile {
+    display: grid;
+    @media screen and (min-width: $tablet) {
+      gap: 24px;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 32px 24px;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    .idol {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .profile {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background-color: darkgray;
+        background-clip: content-box;
+        padding: 5px;
+        border: 1px solid darkgray;
+      }
+
+      .name {
+        width: 35%;
+        height: 16px;
+        background-color: darkgray;
+        margin-top: 8px;
+        @include loading-animation(480px);
+      }
+
+      .group {
+        margin-top: 12px;
+        width: 50%;
+        background-color: darkgray;
+        height: 14px;
+        @include loading-animation(480px);
+      }
+    }
+  }
+}
