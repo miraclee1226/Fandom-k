@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import classNames from "classnames/bind";
 import Button from "components/Button";
@@ -16,10 +16,28 @@ const cn = classNames.bind(styles);
 const SUBTRACT_CREDIT = 1000;
 const ERROR_MSG = "리스트를 불러오는데 실패했습니다.";
 
-export default function VoteModal({ data, error, isOpen, handleModalOpen, gender }) {
+export default function VoteModal({ error, isOpen, handleModalOpen, gender }) {
   const [checkedValue, setCheckedValue] = useState("");
+  const [data, setData] = useState([]);
   const [credit, setCredit] = useAtom(creditAtomWithPersistence);
-  
+  const { requestFunc: getChartData } = useRequest({
+    skip: true,
+    options: {
+      method: "get",
+      url: `/charts/${gender}`,
+      params: {
+        gender,
+        pageSize: 100,
+      },
+    },
+  });
+
+  const handleLoad = async () => {
+    const response = await getChartData();
+
+    setData(response?.data?.idols);
+  };
+
   const handleVote = async () => {
     const updatedCredit = Number(credit) - SUBTRACT_CREDIT;
 
@@ -43,6 +61,10 @@ export default function VoteModal({ data, error, isOpen, handleModalOpen, gender
       },
     },
   });
+
+  useEffect(() => {
+    handleLoad();
+  }, [gender]);
 
   return (
     <DefaultModal isOpen={isOpen} handleModalOpen={handleModalOpen}>

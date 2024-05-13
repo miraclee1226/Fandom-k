@@ -22,19 +22,13 @@ const customStyles = {
   },
 };
 
-export default function DefaultModal({
-  children,
-  isOpen,
-  handleModalOpen,
-  handleModalClose,
-}) {
+export default function DefaultModal({ children, isOpen, handleModalOpen }) {
   return (
     <>
       <ReactModal
         isOpen={isOpen}
         onRequestClose={() => {
           handleModalOpen(false);
-          handleModalClose();
         }}
         style={customStyles}
         contentLabel="modal"
