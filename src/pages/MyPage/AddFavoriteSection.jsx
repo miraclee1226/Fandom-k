@@ -1,9 +1,10 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useSetAtom } from "jotai";
 import Button from "components/Button";
 import Image from "components/Image";
 import useRequest from "hooks/useRequest";
+import useSlider from "hooks/useSlider";
 import useResponsive from "hooks/useResponsive";
 import useIntersectionObserver from "hooks/useIntersectionObserver";
 import favoriteIdolsAtom from "context/favoriteIdols";
@@ -202,10 +203,7 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
   const [nextCursor, setNextCursor] = useState(0);
   const sentinelRef = useRef(null);
   const isIntersection = useIntersectionObserver(sentinelRef);
-  const [isDown, setIsDown] = useState(false);
-  const [startX, setStartX] = useState(null);
-  const [scrollLeft, setScrollLeft] = useState(null);
-  const slider = useRef();
+  const [sliderRef, sliderHandler] = useSlider();
 
   const { requestFunc: getIdolsData } = useRequest({
     skip: true,
@@ -218,29 +216,6 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
       },
     },
   });
-
-  const handleMouseDown = (e) => {
-    setIsDown(true);
-    setStartX(e.pageX - slider.current.offsetLeft);
-    setScrollLeft(slider.current.scrollLeft);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDown(false);
-  };
-
-  const handleMouseUp = () => {
-    setIsDown(false);
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.current.offsetLeft;
-    const walk = x - startX;
-
-    slider.current.scrollLeft = scrollLeft - walk;
-  };
 
   useEffect(() => {
     (async () => {
@@ -257,11 +232,11 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
   return (
     <div
       className={styles.mobileSlider}
-      ref={slider}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      ref={sliderRef}
+      onMouseDown={sliderHandler.mouseDown}
+      onMouseUp={sliderHandler.mouseUp}
+      onMouseMove={sliderHandler.mouseMove}
+      onMouseLeave={sliderHandler.mouseLeave}
     >
       <div className={styles.content}>
         {idolsDataArr.map((idols, idx) => (
@@ -304,3 +279,4 @@ function MobileIdolGrid({ idols, checkboxesRef, handleCheckInputChange }) {
     </ul>
   );
 }
+
