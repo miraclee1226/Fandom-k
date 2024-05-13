@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import Button from "components/Button";
 import Image from "components/Image";
 import Skeleton from "components/Skeleton";
@@ -40,7 +40,7 @@ export default function AddFavoriteSection() {
   const [checkedIdols, setCheckedIdols] = useState([]);
   const checkboxesRef = useRef([]);
   const [isPC, isTablet, isMobile] = useResponsive();
-  const setFavoriteIdols = useSetAtom(favoriteIdolsAtom);
+  const [favoriteIdols, setFavoriteIdols] = useAtom(favoriteIdolsAtom);
 
   const {
     isLoading,
@@ -197,7 +197,10 @@ export default function AddFavoriteSection() {
               </div>
             )}
             <div className={styles.btnAddFavorite}>
-              <Button.Round onClick={addFavoriteIdols}>
+              <Button.Round
+                onClick={addFavoriteIdols}
+                disabled={checkedIdols.length === 0}
+              >
                 <img src={icoPlus} alt="icon" aria-hidden="true" />
                 <span>추가하기</span>
               </Button.Round>

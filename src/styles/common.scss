@@ -37,6 +37,15 @@
   // 12px == 1.2rem / 15px == 1.5rem
 }
 
+// html {
+//   -ms-overflow-style: none; /* 인터넷 익스플로러 */
+//   scrollbar-width: none; /* 파이어폭스 */
+//   overflow: scroll;
+//   ::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
+
 body {
   background-image: url("../assets/linear.webp");
   background-repeat: no-repeat;
@@ -61,3 +70,4 @@ textarea {
     "Helvetica Neue",
     sans-serif;
 }
+
