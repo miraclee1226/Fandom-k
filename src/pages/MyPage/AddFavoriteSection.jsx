@@ -18,6 +18,8 @@ const DATA_NUM_BY_DEVICE = {
   PC: 16,
 };
 
+const ERROR_MSG = "데이터를 불러오는데 실패했습니다.";
+
 function firstDataNumByDevice() {
   const windowWidth = window.innerWidth;
 
@@ -40,7 +42,11 @@ export default function AddFavoriteSection() {
   const [isPC, isTablet, isMobile] = useResponsive();
   const setFavoriteIdols = useSetAtom(favoriteIdolsAtom);
 
-  const { requestFunc: getIdolsData } = useRequest({
+  const {
+    isLoading,
+    error,
+    requestFunc: getIdolsData,
+  } = useRequest({
     skip: true,
     options: {
       method: "get",
@@ -148,33 +154,38 @@ export default function AddFavoriteSection() {
                   />
                 </div>
                 <div className={styles.slider}>
-                  <ul className={styles.gridContainer}>
-                    {idols?.map((idol) => (
-                      <li key={idol.id} className={styles.gridItem}>
-                        <input
-                          type="checkbox"
-                          id={idol.id}
-                          className={styles.chkItem}
-                          ref={(el) => checkboxesRef.current.push(el)}
-                          onChange={(e) => handleCheckInputChange(e, idol)}
-                        />
-                        <label htmlFor={idol.id} className={styles.labelItem}>
-                          <div className={styles.imgWrap}>
-                            <Image.Round
-                              src={idol.profilePicture}
-                              lazyMode={true}
-                            />
-                          </div>
-                        </label>
-                        <span className={styles.itemInfo}>
-                          <strong className={styles.itemTitle}>
-                            {idol.name}
-                          </strong>
-                          <p className={styles.itemCategory}>{idol.group}</p>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  {error && <h1 className={styles.error}>{ERROR_MSG}</h1>}
+                  {isLoading ? (
+                    <Skeleton.AddFavorite />
+                  ) : (
+                    <ul className={styles.gridContainer}>
+                      {idols?.map((idol) => (
+                        <li key={idol.id} className={styles.gridItem}>
+                          <input
+                            type="checkbox"
+                            id={idol.id}
+                            className={styles.chkItem}
+                            ref={(el) => checkboxesRef.current.push(el)}
+                            onChange={(e) => handleCheckInputChange(e, idol)}
+                          />
+                          <label htmlFor={idol.id} className={styles.labelItem}>
+                            <div className={styles.imgWrap}>
+                              <Image.Round
+                                src={idol.profilePicture}
+                                lazyMode={true}
+                              />
+                            </div>
+                          </label>
+                          <span className={styles.itemInfo}>
+                            <strong className={styles.itemTitle}>
+                              {idol.name}
+                            </strong>
+                            <p className={styles.itemCategory}>{idol.group}</p>
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 <div className={styles.sliderBtn}>
                   <Button.Arrow
@@ -205,7 +216,11 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
   const isIntersection = useIntersectionObserver(sentinelRef);
   const [sliderRef, sliderHandler] = useSlider();
 
-  const { isLoading, requestFunc: getIdolsData } = useRequest({
+  const {
+    isLoading,
+    error,
+    requestFunc: getIdolsData,
+  } = useRequest({
     skip: true,
     options: {
       method: "get",
@@ -233,27 +248,33 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
   }, [isIntersection]);
 
   return (
-    <div
-      className={styles.mobileSlider}
-      ref={sliderRef}
-      onMouseDown={sliderHandler.mouseDown}
-      onMouseUp={sliderHandler.mouseUp}
-      onMouseMove={sliderHandler.mouseMove}
-      onMouseLeave={sliderHandler.mouseLeave}
-    >
-      <div className={styles.content}>
-        {idolsDataArr.map((idols, idx) => (
-          <MobileIdolGrid
-            key={idx}
-            idols={idols}
-            checkboxesRef={checkboxesRef}
-            handleCheckInputChange={handleCheckInputChange}
-          />
-        ))}
-        {isLoading && <Skeleton.AddFavorite isMobile />}
-        <div className={styles.sentinel} ref={sentinelRef} />
-      </div>
-    </div>
+    <>
+      {error ? (
+        <h1 className={styles.error}>{ERROR_MSG}</h1>
+      ) : (
+        <div
+          className={styles.mobileSlider}
+          ref={sliderRef}
+          onMouseDown={sliderHandler.mouseDown}
+          onMouseUp={sliderHandler.mouseUp}
+          onMouseMove={sliderHandler.mouseMove}
+          onMouseLeave={sliderHandler.mouseLeave}
+        >
+          <div className={styles.content}>
+            {idolsDataArr.map((idols, idx) => (
+              <MobileIdolGrid
+                key={idx}
+                idols={idols}
+                checkboxesRef={checkboxesRef}
+                handleCheckInputChange={handleCheckInputChange}
+              />
+            ))}
+            {isLoading && <Skeleton.AddFavorite isMobile />}
+            <div className={styles.sentinel} ref={sentinelRef} />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
