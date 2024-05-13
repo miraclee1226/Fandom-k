@@ -185,14 +185,12 @@ export default function AddFavoriteSection() {
                 </div>
               </div>
             )}
-
             <div className={styles.btnAddFavorite}>
               <Button.Round onClick={addFavoriteIdols}>
                 <img src={icoPlus} alt="icon" aria-hidden="true" />
                 <span>추가하기</span>
               </Button.Round>
             </div>
-            <Skeleton.AddFavorite isMobile={true} />
           </div>
         </div>
       </section>
@@ -221,10 +219,13 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
 
   useEffect(() => {
     (async () => {
-      if (!isIntersection) return;
+      if (!isIntersection || nextCursor === null) return;
       const result = await getIdolsData();
 
-      if (!result?.data?.nextCursor) return;
+      if (!result?.data?.nextCursor) {
+        setNextCursor(result?.data?.nextCursor);
+        return;
+      }
 
       setIdolsDataArr((prev) => [...prev, result?.data?.list]);
       setNextCursor(result?.data?.nextCursor);
@@ -249,7 +250,7 @@ function MobileSlider({ checkboxesRef, handleCheckInputChange }) {
             handleCheckInputChange={handleCheckInputChange}
           />
         ))}
-        {isLoading && <Skeleton.AddFavorite isMobile={true} />}
+        {isLoading && <Skeleton.AddFavorite isMobile />}
         <div className={styles.sentinel} ref={sentinelRef} />
       </div>
     </div>
