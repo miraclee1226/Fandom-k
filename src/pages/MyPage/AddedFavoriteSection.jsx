@@ -1,13 +1,13 @@
 import { useAtom } from "jotai";
 import Image from "components/Image";
-import useTouchArea from "hooks/useTouchArea";
+import { useTouchArea } from "context/TouchAreaProvider";
 import favoriteIdolsAtom from "context/favoriteIdols";
 import DeleteIcon from "pages/MyPage/DeleteIcon.jsx";
 import styles from "./MyPage.module.scss";
 
 export default function AddedFavoriteSection() {
   const [favoriteIdols, setFavoriteIdols] = useAtom(favoriteIdolsAtom);
-  const { TouchArea } = useTouchArea({ component: DeleteIcon });
+  const { TouchArea } = useTouchArea();
 
   const deleteIdol = (checkedId) => {
     setFavoriteIdols((prev) =>
@@ -28,7 +28,8 @@ export default function AddedFavoriteSection() {
                     className={styles.touchArea}
                     onClick={() => deleteIdol(idol.checkedId)}
                   >
-                    <TouchArea />
+                    {/* TouchAreaProvider로 감싸진 부분에서 TouchArea를 사용할 수 있습니다. */}
+                    <TouchArea component={DeleteIcon} />
                   </div>
                   <div className={styles.roundImage}>
                     <Image.Round src={idol.profilePicture} lazyMode={true} />
