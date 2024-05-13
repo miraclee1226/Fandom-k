@@ -9,6 +9,33 @@ export default function Test() {
   const [nextCursor, setNextCursor] = useState(0);
   const sentinelRef = useRef(null);
   const isIntersection = useIntersectionObserver(sentinelRef);
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(null);
+  const [scrollLeft, setScrollLeft] = useState(null);
+  const slider = useRef();
+
+  const handleMouseDown = (e) => {
+    setIsDown(true);
+    setStartX(e.pageX - slider.current.offsetLeft);
+    setScrollLeft(slider.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.current.offsetLeft;
+    const walk = x - startX;
+
+    slider.current.scrollLeft = scrollLeft - walk;
+  };
 
   const { requestFunc: getIdolsData } = useRequest({
     skip: true,
@@ -36,7 +63,14 @@ export default function Test() {
 
   return (
     <div className="body">
-      <div className="slider">
+      <div
+        className="slider"
+        ref={slider}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="content">
           {idolsDataArr.map((idols, idx) => (
             <MobileIdolGrid key={idx} idols={idols} />

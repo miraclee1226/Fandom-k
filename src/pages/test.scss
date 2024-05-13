@@ -5,9 +5,10 @@
 .slider {
   display: flex;
   overflow-x: scroll;
-  scroll-snap-type: x mandatory;
+  // scroll-snap-type: x mandatory;
   scrollbar-width: none; /* 파이어폭스 */
   -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  padding: 40px;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -27,12 +28,13 @@
 .idolGrid {
   display: grid;
   margin: 0 40px;
-  scroll-snap-align: start;
+  // scroll-snap-align: start;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
 
   img {
     width: 150px;
     height: 150px;
+    user-select: none;
   }
 }

@@ -232,6 +232,96 @@
       }
     }
   }
+  .mobileSlider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* 파이어폭스 */
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .content {
+      display: flex;
+      gap: 17px;
+      width: 100%;
+
+      .sentinel {
+        margin-left: 10vh;
+        min-width: 50px;
+        opacity: 0;
+      }
+    }
+
+    .idolGrid {
+      min-width: 100%;
+      display: grid;
+      gap: 24px 17px;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      scroll-snap-align: start;
+      flex-grow: 1;
+      flex-shrink: 0;
+      cursor: pointer;
+      user-select: none;
+
+      .chkItem {
+        display: none;
+        &:checked + .labelItem::after {
+          position: absolute;
+          background:
+            url("../../assets/icons/Checkmark.svg") no-repeat center,
+            linear-gradient(
+              271.36deg,
+              rgba(249, 110, 104, 0.5) -9.84%,
+              rgba(254, 87, 143, 0.5) 107.18%
+            );
+          background-size: 45.45% 45.45%;
+          content: "";
+          inset: 5px;
+          border-radius: 50%;
+        }
+      }
+      .labelItem {
+        position: relative;
+        cursor: pointer;
+      }
+      .imgWrap {
+        padding-bottom: 100%;
+        position: relative;
+        width: 100%;
+        @media screen and (min-width: $desktop) {
+          padding-bottom: 128px;
+          width: 128px;
+        }
+        > div {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .itemInfo {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 8px;
+        .itemTitle {
+          font-size: 1.6rem;
+          font-weight: 700;
+          line-height: 2.6rem;
+          color: #f4efef;
+        }
+        .itemCategory {
+          font-size: 1.4rem;
+          line-height: 1.67rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+  }
 }
 .btnAddFavorite {
   display: flex;
