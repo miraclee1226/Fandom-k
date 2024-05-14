@@ -132,7 +132,10 @@
     }
     .error {
       padding: 40px 0;
+      font-size: 1.6rem;
       text-align: center;
+    }
+    .noData {
       font-size: 1.6rem;
     }
     .chartList {
@@ -154,7 +157,6 @@
     }
   }
 }
-
 /* Credit Section */
 
 .creditSection {
@@ -221,3 +223,4 @@
     }
   }
 }
+
