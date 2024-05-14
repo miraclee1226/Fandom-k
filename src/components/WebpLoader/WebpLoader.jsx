@@ -1,4 +1,5 @@
 import useLazyImageObserver from "hooks/useLazyImageObserver";
+import defaultImg from "assets/default_image.png";
 
 export default function WebpLoader({ src, webpSrc, alt }) {
   return (
@@ -11,11 +12,15 @@ export default function WebpLoader({ src, webpSrc, alt }) {
 
 function LazyModeWebpLoader({ src, webpSrc, alt }) {
   const { imgRef, imgSrc } = useLazyImageObserver({ src: webpSrc || src });
-  
+
+  const handleImgError = (e) => {
+    e.target.src = defaultImg;
+  };
+
   return (
     <picture>
       {webpSrc && <source srcSet={imgSrc} type="image/webp" alt={alt} />}
-      <img ref={imgRef} src={imgSrc} alt={alt} />
+      <img ref={imgRef} src={imgSrc} alt={alt} onError={handleImgError} />
     </picture>
   );
 }
