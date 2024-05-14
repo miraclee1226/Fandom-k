@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import ReactModal from "react-modal";
+import style from "./Modal.module.scss";
 
 const customStyles = {
   overlay: {
@@ -23,6 +25,20 @@ const customStyles = {
 };
 
 export default function DefaultModal({ children, isOpen, handleModalOpen }) {
+  useEffect(() => {
+    const body = document.body;
+    
+    if (isOpen) {
+      body.classList.add(style.preventScroll);
+    } else {
+      body.classList.remove(style.preventScroll);
+    }
+    
+    return () => {
+      body.classList.remove(style.preventScroll);
+    };
+  }, [isOpen]);
+  
   return (
     <>
       <ReactModal

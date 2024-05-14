@@ -13,6 +13,16 @@
   }
 }
 
+/* Default Modal */
+
+.preventScroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 /* Credit Warning Modal */
 
 .creditWarningModal {
