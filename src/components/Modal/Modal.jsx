@@ -35,7 +35,7 @@ export default function DefaultModal({ children, isOpen, handleModalOpen }) {
     }
     
     return () => {
-      body.classList.remove(style.preventScroll); // Clean up on unmount
+      body.classList.remove(style.preventScroll);
     };
   }, [isOpen]);
   
