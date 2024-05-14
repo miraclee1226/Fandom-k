@@ -6,6 +6,7 @@ import creditAtomWithPersistence from "context/Credit";
 import Modal from "components/Modal";
 import Card from "components/Card";
 import Button from "components/Button";
+import Skeleton from "components/Skeleton";
 import styles from "./List.module.scss";
 
 export default function SupportSection() {
@@ -137,6 +138,7 @@ export default function SupportSection() {
                 disabled={page === 0}
               />
             </div>
+            {isLoading && <Skeleton.Support />}
             {error && <div className={styles.error}>{ERROR_MSG}</div>}
             <ul
               className={styles.supportLists}
