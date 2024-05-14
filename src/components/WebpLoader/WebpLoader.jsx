@@ -5,7 +5,14 @@ export default function WebpLoader({ src, webpSrc, alt }) {
   return (
     <picture>
       {webpSrc && <source srcSet={webpSrc} type="image/webp" alt={alt} />}
-      <img src={src} alt={alt} />
+      <img
+        src={src}
+        alt={alt}
+        onError={(event) => {
+          event.target.src = "https://via.placeholder.com/200/cccccc/cccccc";
+          event.onerror = null;
+        }}
+      />
     </picture>
   );
 }
