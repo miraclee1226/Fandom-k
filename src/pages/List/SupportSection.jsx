@@ -138,28 +138,31 @@ export default function SupportSection() {
                 disabled={page === 0}
               />
             </div>
-            {isLoading && <Skeleton.Support />}
             {error && <div className={styles.error}>{ERROR_MSG}</div>}
-            <ul
-              className={styles.supportLists}
-              ref={slider}
-              onMouseDown={handleMouseDown}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              {donations &&
-                donations.map((donation) => {
-                  return (
-                    <li key={donation.idolId} className={styles.supportList}>
-                      <Card.Support
-                        donation={donation}
-                        handleModalOpen={handleModalOpen}
-                      />
-                    </li>
-                  );
-                })}
-            </ul>
+            {isLoading ? (
+              <Skeleton.Support />
+            ) : (
+              <ul
+                className={styles.supportLists}
+                ref={slider}
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+              >
+                {donations &&
+                  donations.map((donation) => {
+                    return (
+                      <li key={donation.idolId} className={styles.supportList}>
+                        <Card.Support
+                          donation={donation}
+                          handleModalOpen={handleModalOpen}
+                        />
+                      </li>
+                    );
+                  })}
+              </ul>
+            )}
             <div className={styles.sliderBtn}>
               <Button.Arrow
                 direction="right"
