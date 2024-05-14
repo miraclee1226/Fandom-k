@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
 import dispatcher from "api/dispatcher";
 
+// @ts-check
+
 /**
- * Data Fetching Hook
- *
- * @param {options} options - axios instance에 전달할 options
- * @param {skip} skip - true: 마운트될 때 data fetching 금지
- * @param {deps} deps - useEffect 의존성 배열
+ * RequestConfig
+ * @typedef {Object} RequestConfig
+ * @property {AxiosRequestConfig} options - axios instance에 전달할 options
+ * @property {boolean} skip - true: 마운트될 때 data fetching 금지
+ * @property {any[]} deps - useEffect 의존성 배열
+ */
+
+/**
+ * @param {RequestConfig} params
  * @returns {Object} Object - { data, isLoading, error, requestFunc  }
  */
+
 export default function useRequest({ options, skip = false, deps = [] }) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,4 +45,3 @@ export default function useRequest({ options, skip = false, deps = [] }) {
 
   return { data, isLoading, error, requestFunc };
 }
-
