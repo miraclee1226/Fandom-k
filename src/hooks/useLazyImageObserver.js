@@ -13,7 +13,7 @@ export default function useLazyImageObserver({ src }) {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               setImgSrc(src);
-              observer.unobserve(imgRef.current);
+              if (imgRef.current) observer.unobserve(imgRef.current);
             }
           });
         },
