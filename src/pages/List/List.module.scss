@@ -68,18 +68,36 @@
 
   .sliderBtn {
     display: none;
-    @media screen and (min-width: calc($desktop + 78px * 2 + 80px)) {
+    @media screen and (min-width: $desktop) {
       display: block;
       position: absolute;
       top: 50%;
+      z-index: 2;
     }
+
     &:first-child {
       left: -40px;
       transform: translate(-100%, -50%);
+      @media screen and (max-width: calc($desktop + 78px * 2 + 80px)) {
+        left: 0;
+        transform: translate(0, -50%);
+        opacity: 0.7;
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
     &:last-child {
       right: -40px;
       transform: translate(100%, -50%);
+      @media screen and (max-width: calc($desktop + 78px * 2 + 80px)) {
+        right: 0;
+        transform: translate(0, -50%);
+        opacity: 0.7;
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
   }
   .error {

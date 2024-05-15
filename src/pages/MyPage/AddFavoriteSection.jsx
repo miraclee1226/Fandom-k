@@ -38,6 +38,7 @@ export default function AddFavoriteSection() {
   const [pageSize, setPageSize] = useState(firstDataNumByDevice());
   const [cursorArr, setCursorArr] = useState([0]);
   const [checkedIdols, setCheckedIdols] = useState([]);
+  const [nextCursor, setNextCursor] = useState(null);
   const checkboxesRef = useRef([]);
   const [isPC, isTablet, isMobile] = useResponsive();
   const setFavoriteIdols = useSetAtom(favoriteIdolsAtom);
@@ -112,14 +113,20 @@ export default function AddFavoriteSection() {
       const result = await getIdolsData();
 
       setIdols(result?.data?.list);
+      setNextCursor(result?.data?.nextCursor);
 
       if (!result?.data?.nextCursor) return;
+
       setCursorArr((prev) => {
         const newArray = [...prev, result?.data?.nextCursor];
 
         return newArray.filter((item, idx) => newArray.indexOf(item) === idx);
       });
     })();
+  }, [currentPage]);
+
+  useEffect(() => {
+    setCheckedIdols([]);
   }, [currentPage]);
 
   useEffect(() => {
@@ -151,6 +158,7 @@ export default function AddFavoriteSection() {
                     direction="left"
                     size="lg"
                     onClick={() => handleLeftBtnClick()}
+                    disabled={currentPage === 1}
                   />
                 </div>
                 <div className={styles.slider}>
@@ -192,6 +200,7 @@ export default function AddFavoriteSection() {
                     direction="right"
                     size="lg"
                     onClick={() => handleRightBtnClick()}
+                    disabled={!nextCursor}
                   />
                 </div>
               </div>
