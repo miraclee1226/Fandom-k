@@ -1,0 +1,340 @@
+@import "/src/styles/mixin_var.scss";
+
+/* mypage 공통 */
+.section {
+  padding-top: 32px;
+  margin: 0 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  @media screen and (min-width: $desktop) {
+    padding-top: 40px;
+  }
+  &:first-child {
+    padding-top: 0;
+    border-top: none;
+    @media screen and (min-width: $desktop) {
+      margin-top: 76px;
+    }
+  }
+  @media screen and (min-width: $tablet) {
+    margin: 0 24px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  .sectionTitle {
+    margin-bottom: 16px;
+    font-size: 2rem;
+    line-height: 2.6rem;
+    color: var(--txt-white);
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 24px;
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+  }
+}
+
+/* AddedFavoriteSection */
+.addedSlider {
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  @media screen and (min-width: $desktop) {
+    min-width: 1200px;
+  }
+  .addedFavorite {
+    .list {
+      display: flex;
+      gap: 32px;
+      @media screen and (min-width: $tablet) {
+        gap: 24px;
+      }
+      .item {
+        position: relative;
+        .touchArea {
+          position: absolute;
+          top: -14px;
+          left: 34px;
+          cursor: pointer;
+          @media screen and (min-width: $tablet) {
+            top: -10px;
+            left: 60px;
+          }
+        }
+        .roundImage {
+          width: 70px;
+          height: 70px;
+          @media screen and (min-width: $tablet) {
+            width: 100px;
+            height: 100px;
+          }
+        }
+        // AddFavoriteSection 과 스타일 중복 (itemInfo, itemTitle, itemCategory)
+        .itemInfo {
+          display: flex;
+          gap: 2px;
+          align-items: center;
+          flex-direction: column;
+          margin-top: 8px;
+          .itemTitle {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 2.6rem;
+            color: #f4efef;
+          }
+          .itemCategory {
+            font-size: 1.4rem;
+            line-height: 1.67rem;
+            color: rgba(255, 255, 255, 0.6);
+          }
+        }
+      }
+    }
+  }
+}
+.deleteIconSize {
+  width: 22px;
+  height: 22px;
+  @media screen and (min-width: $tablet) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* AddFavoriteSection */
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  height: 400px;
+}
+
+.AddFavorite {
+  margin-bottom: 80px;
+  @media screen and (min-width: $desktop) {
+    min-width: 1200px;
+  }
+  .sliderWrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+    @media screen and (min-width: $tablet) {
+      gap: 27px;
+      padding-top: 33px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 32px;
+      padding-top: 8px;
+    }
+  }
+  .sliderBtn {
+    display: none;
+
+    @media screen and (min-width: $tablet) {
+      display: block;
+    }
+    @media screen and (min-width: $desktop) and (max-width: calc($desktop + 199px)) {
+      display: none;
+    }
+    @media screen and (min-width: calc($desktop + 200px)) {
+      display: block;
+      position: absolute;
+      top: 50%;
+    }
+    &:first-child {
+      @media screen and (min-width: $desktop) {
+        left: -32px;
+        transform: translate(-100%, -50%);
+      }
+    }
+    &:last-child {
+      @media screen and (min-width: $desktop) {
+        right: -32px;
+        transform: translate(100%, -50%);
+      }
+    }
+  }
+  .slider {
+    flex: 1 1;
+  }
+
+  .gridContainer {
+    display: grid;
+    gap: 24px 17px;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    @media screen and (min-width: $tablet) {
+      gap: 24px;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 32px 24px;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(8, 1fr);
+    }
+    .chkItem {
+      display: none;
+      &:checked + .labelItem::after {
+        position: absolute;
+        background:
+          url("../../assets/icons/Checkmark.svg") no-repeat center,
+          linear-gradient(
+            271.36deg,
+            rgba(249, 110, 104, 0.5) -9.84%,
+            rgba(254, 87, 143, 0.5) 107.18%
+          );
+        background-size: 45.45% 45.45%;
+        content: "";
+        inset: 5px;
+        border-radius: 50%;
+      }
+    }
+    .labelItem {
+      position: relative;
+      cursor: pointer;
+    }
+    .imgWrap {
+      padding-bottom: 100%;
+      position: relative;
+      width: 100%;
+      @media screen and (min-width: $desktop) {
+        padding-bottom: 128px;
+        width: 128px;
+      }
+      > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .itemInfo {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 8px;
+      .itemTitle {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 2.6rem;
+        color: #f4efef;
+      }
+      .itemCategory {
+        font-size: 1.4rem;
+        line-height: 1.67rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+  .mobileSlider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* 파이어폭스 */
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .content {
+      display: flex;
+      gap: 17px;
+      width: 100%;
+
+      .sentinel {
+        margin-left: 10vh;
+        min-width: 50px;
+        opacity: 0;
+      }
+    }
+
+    .idolGrid {
+      min-width: 100%;
+      display: grid;
+      gap: 24px 17px;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      scroll-snap-align: start;
+      flex-grow: 1;
+      flex-shrink: 0;
+      user-select: none;
+
+      .chkItem {
+        display: none;
+        &:checked + .labelItem::after {
+          position: absolute;
+          background:
+            url("../../assets/icons/Checkmark.svg") no-repeat center,
+            linear-gradient(
+              271.36deg,
+              rgba(249, 110, 104, 0.5) -9.84%,
+              rgba(254, 87, 143, 0.5) 107.18%
+            );
+          background-size: 45.45% 45.45%;
+          content: "";
+          inset: 5px;
+          border-radius: 50%;
+        }
+      }
+      .labelItem {
+        position: relative;
+        cursor: pointer;
+      }
+      .imgWrap {
+        padding-bottom: 100%;
+        position: relative;
+        width: 100%;
+        @media screen and (min-width: $desktop) {
+          padding-bottom: 128px;
+          width: 128px;
+        }
+        > div {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .itemInfo {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 8px;
+        .itemTitle {
+          font-size: 1.6rem;
+          font-weight: 700;
+          line-height: 2.6rem;
+          color: #f4efef;
+        }
+        .itemCategory {
+          font-size: 1.4rem;
+          line-height: 1.67rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+  }
+}
+.btnAddFavorite {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  @media screen and (min-width: $desktop) {
+    margin-top: 48px;
+  }
+  button {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+

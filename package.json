@@ -6,16 +6,23 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.8",
+    "classnames": "^2.5.1",
+    "jotai": "^2.8.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:style": "stylelint --fix **/*.scss"
   },
   "eslintConfig": {},
   "browserslist": {
@@ -31,8 +38,20 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "axios": "^1.6.8",
+    "classname": "^0.0.0",
     "eslint-config-naver": "^2.1.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "3.2.5"
+    "jotai": "^2.8.0",
+    "prettier": "3.2.5",
+    "react-responsive": "^10.0.0",
+    "sass": "^1.75.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^2.3.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0"
   }
 }

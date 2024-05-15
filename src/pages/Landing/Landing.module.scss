@@ -1,0 +1,289 @@
+@import "/src/styles/mixin_var.scss";
+
+* {
+  color: white;
+  box-sizing: border-box;
+}
+
+.view {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.landingTitle {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  margin-bottom: 67px;
+  min-width: 311px;
+  @media screen and (min-width: $tablet) {
+    align-items: center;
+    padding-bottom: 39px;
+    text-align: center;
+  }
+  @media screen and (min-width: $desktop) {
+    align-items: center;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+}
+
+.mainTitle {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--txt-yellow);
+  @media screen and (min-width: $tablet) {
+    font-size: 1.6rem;
+  }
+}
+
+.subTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  @media screen and (min-width: $desktop) {
+    font-size: 2.4rem;
+  }
+}
+
+.mobileImg {
+  z-index: -1;
+  width: 240px;
+  height: 520px;
+  @media screen and (min-width: $tablet) {
+    width: 200px;
+    height: 434px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 320px;
+    height: 694px;
+  }
+}
+
+.sectionBGImg {
+  position: absolute;
+  z-index: -3;
+  width: 375px;
+  opacity: 0.7;
+  @media screen and (min-width: 560px) {
+    width: 560px;
+  }
+  &::before {
+    position: absolute;
+    background: linear-gradient(
+      90deg,
+      rgba(217, 217, 217, 0) 0%,
+      rgba(217, 217, 217, 0.4) 30.73%,
+      rgba(217, 217, 217, 0.6) 51.04%,
+      rgba(217, 217, 217, 0.4) 71.87%,
+      rgba(217, 217, 217, 0) 100%
+    );
+    content: "";
+    inset: 0;
+    opacity: 0.05;
+  }
+  @media screen and (min-width: $tablet) {
+    width: $tablet;
+    min-height: $tablet;
+  }
+  @media screen and (min-width: $desktop) {
+    width: $desktop;
+    min-height: $desktop;
+  }
+}
+
+.commonSection {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  .sectionContent {
+    padding: 76px 0;
+    @media screen and (min-width: $tablet) {
+      padding: 74px 0;
+    }
+    @media screen and (min-width: $desktop) {
+      padding: 160px 0;
+    }
+  }
+  .sectionImgWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+  }
+}
+
+.thumbnail {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  min-height: 812px;
+  @media screen and (min-width: $tablet) {
+    min-height: 1200px;
+  }
+  @media screen and (min-width: $desktop) {
+    min-height: 1080px;
+  }
+  & > h2 {
+    padding: 100px 0 20px;
+    font-size: 2rem;
+    font-weight: 400;
+    @media screen and (min-width: $tablet) {
+      padding: 120px 0 32px;
+      font-weight: 700;
+    }
+    @media screen and (min-width: $desktop) {
+      padding: 140px 0 29px;
+      font-size: 2.6rem;
+    }
+  }
+
+  .highlight {
+    color: var(--txt-orange);
+  }
+
+  .thumbnailLogo {
+    margin-bottom: 451px;
+    width: 237px;
+    height: 45px;
+    cursor: pointer;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 770px;
+      width: 325px;
+      height: 62px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 584px;
+      width: 509px;
+      height: 97px;
+    }
+  }
+
+  .thumbnailBackground {
+    position: absolute;
+    top: 241px;
+    z-index: -1;
+    width: 394px;
+    height: 330px;
+    opacity: 0.7;
+    @media screen and (min-width: $tablet) {
+      top: 301px;
+      width: 714px;
+      height: 598px;
+    }
+    @media screen and (min-width: $desktop) {
+      top: 95px;
+      width: 932px;
+      height: 781px;
+    }
+  }
+
+  .thumbnailLinear {
+    position: absolute;
+    top: 178px;
+    z-index: -1;
+    width: 375px;
+    height: 375px;
+    background: linear-gradient(
+      90deg,
+      rgba(217, 217, 217, 0) 0%,
+      rgba(217, 217, 217, 0.4) 30.73%,
+      rgba(217, 217, 217, 0.6) 51.04%,
+      rgba(217, 217, 217, 0.4) 71.87%,
+      rgba(217, 217, 217, 0) 100%
+    );
+    opacity: 0.05;
+    @media screen and (min-width: $tablet) {
+      top: 187px;
+      width: $tablet;
+      height: $tablet;
+    }
+    @media screen and (min-width: $desktop) {
+      top: 0;
+      width: 1080px;
+      height: 1080px;
+    }
+  }
+
+  .startButton {
+    width: 230px;
+    height: 48px;
+    font-weight: 400;
+    @media screen and (min-width: $tablet) {
+      width: 477px;
+      height: 48px;
+    }
+  }
+}
+
+.firstSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 812px;
+}
+
+.secondSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 812px;
+
+  .landingRightTitle {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-bottom: 67px;
+    min-width: 311px;
+    text-align: right;
+    @media screen and (min-width: $tablet) {
+      align-items: center;
+      padding: 0 0 39px;
+      text-align: center;
+    }
+
+    @media screen and (min-width: $desktop) {
+      align-items: center;
+      padding: 0 0 60px;
+      text-align: center;
+    }
+  }
+}
+
+.thirdSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 812px;
+}
+
+.centerLine {
+  position: absolute;
+  top: 1029px;
+  z-index: -2;
+  width: 117px;
+  height: 2133px;
+  background-image: linear-gradient(
+    180deg,
+    #030615 0%,
+    #051d31 42.67%,
+    #051e32 53.12%,
+    #051c30 74.27%,
+    #030b1c 100%
+  );
+  @media screen and (min-width: $tablet) {
+    top: 1450px;
+    height: 2050px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 187px;
+    height: 3091px;
+  }
+}

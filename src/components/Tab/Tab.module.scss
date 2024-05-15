@@ -1,0 +1,33 @@
+@import "/src/styles/mixin_var.scss";
+
+.tabContainer {
+  display: flex;
+  align-items: center;
+  width: inherit;
+  height: 42px;
+  background-color: #02000e;
+  color: var(--btn-disabled);
+  .tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 2);
+    height: 42px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    cursor: pointer;
+    @media screen and (min-width: $tablet) {
+      width: calc(100% / 2);
+    }
+    @media screen and (min-width: $desktop) {
+      width: calc(100% / 2);
+    }
+  }
+  .tabFocused {
+    border-bottom: 1px solid var(--txt-white);
+    background-color: var(--tab-focused);
+    color: var(--txt-white);
+    cursor: pointer;
+  }
+}

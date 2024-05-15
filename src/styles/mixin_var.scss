@@ -1,0 +1,12 @@
+$desktop: 1200px;
+$tablet: 744px;
+$mobile: 375px;
+
+// 말줄임 mixin
+// 사용 : @include collpase(line수);
+@mixin collapse($line) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+}

@@ -1,0 +1,41 @@
+@import "/src/styles/mixin_var.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 23px 5px;
+  width: 100%;
+  @media screen and (min-width: $tablet) {
+    padding: 29px 24px;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 1200px;
+    padding: 24px 0;
+    margin: 0 auto;
+  }
+  div {
+    width: 32px;
+  }
+  .navbarLogo {
+    width: 108px;
+    height: 21px;
+    cursor: pointer;
+    @media screen and (min-width: $tablet) {
+      width: 120px;
+      height: 23px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 168px;
+      height: 32px;
+    }
+  }
+  .navbarProfile {
+    width: 32px;
+    height: 32px;
+  }
+}
