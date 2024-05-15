@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 
-const storedCreditAtom = atom(localStorage.getItem("Credit") || 0);
+const storedCreditAtom = atom(localStorage.getItem("Credit") || 100000);
 
 const creditAtomWithPersistence = atom(
   (get) => get(storedCreditAtom),
